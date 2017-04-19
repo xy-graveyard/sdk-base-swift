@@ -1,5 +1,5 @@
 #
-#  Be sure to run `pod spec lint XYApi.podspec' to ensure this is a
+#  Be sure to run `pod spec lint XYCore.podspec' to ensure this is a
 #  valid spec and to remove all comments including this before submitting the spec.
 #
 #  To learn more about Podspec attributes see http://docs.cocoapods.org/specification.html
@@ -15,9 +15,9 @@ Pod::Spec.new do |s|
   #  summary should be tweet-length, and the description more in depth.
   #
 
-  s.name         = "XYApi"
+  s.name         = "XYCore"
   s.version      = "1.0.0"
-  s.summary      = "iOS Wrapper for XY API Rest Calls"
+  s.summary      = "iOS Core Library"
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
@@ -77,7 +77,7 @@ Pod::Spec.new do |s|
 
   s.source       = { :git => "https://github.com/xycorp/api-ios.git", :tag => "#{s.version}" }
 
-  s.ios.vendored_frameworks = 'XYApi.framework'
+  s.ios.vendored_frameworks = 'XYCore.framework'
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -88,7 +88,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "Classes", "XYApi/**/*.{swift}"
+  s.source_files  = "Classes", "XYCore/**/*.{swift}"
   # s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
@@ -105,8 +105,6 @@ Pod::Spec.new do |s|
   # s.resource  = "icon.png"
   # s.resources = "Resources/*.png"
 
-  s.resource = "XYApi/XYDataModel.xcdatamodeld"
-
   # s.preserve_paths = "FilesToSave", "MoreFilesToSave"
 
 
@@ -115,12 +113,6 @@ Pod::Spec.new do |s|
   #  Link your library with frameworks, or libraries. Libraries do not include
   #  the lib prefix of their name.
   #
-
-  # s.framework  = "SomeFramework"
-  # s.frameworks = "Fabric", "Crashlytics"
-
-  # s.library   = "Crashlytics"
-  # s.libraries = "Fabric", "Crashlytics"
 
 
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
