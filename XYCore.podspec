@@ -77,7 +77,7 @@ Pod::Spec.new do |s|
 
   s.source       = { :git => "https://github.com/xycorp/core-ios.git", :tag => "#{s.version}" }
 
-  s.ios.vendored_frameworks = 'XYCore.framework'
+  # s.ios.vendored_frameworks = 'XYCore.framework'
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
