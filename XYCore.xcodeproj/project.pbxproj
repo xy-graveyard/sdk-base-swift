@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		26CC7D531EA7F63500E37FDD /* XYBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CC7D521EA7F63500E37FDD /* XYBase.swift */; };
 		26CC7D591EA7F80100E37FDD /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 26CC7D581EA7F80100E37FDD /* Info.plist */; };
-		26CC7D5B1EA8051200E37FDD /* core-ios.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 26CC7D5A1EA8051200E37FDD /* core-ios.podspec */; };
+		26CC7D5B1EA8051200E37FDD /* XYCore.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 26CC7D5A1EA8051200E37FDD /* XYCore.podspec */; };
 		D7F7421F8023F281A5193672 /* Pods_XYCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5733F652DA1369AFB5B3122E /* Pods_XYCore.framework */; };
 /* End PBXBuildFile section */
 
@@ -17,7 +17,7 @@
 		26CC7D451EA7F38600E37FDD /* XYCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XYCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		26CC7D521EA7F63500E37FDD /* XYBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XYBase.swift; path = XYCore/XYBase.swift; sourceTree = SOURCE_ROOT; };
 		26CC7D581EA7F80100E37FDD /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = XYCore/Info.plist; sourceTree = SOURCE_ROOT; };
-		26CC7D5A1EA8051200E37FDD /* core-ios.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "core-ios.podspec"; sourceTree = "<group>"; };
+		26CC7D5A1EA8051200E37FDD /* XYCore.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = XYCore.podspec; sourceTree = "<group>"; };
 		5733F652DA1369AFB5B3122E /* Pods_XYCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XYCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DABCED4C1FD8B31387A1555 /* Pods-XYCore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XYCore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XYCore/Pods-XYCore.debug.xcconfig"; sourceTree = "<group>"; };
 		A146220E89354F5501BF4ED4 /* Pods-XYCore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XYCore.release.xcconfig"; path = "Pods/Target Support Files/Pods-XYCore/Pods-XYCore.release.xcconfig"; sourceTree = "<group>"; };
@@ -38,7 +38,7 @@
 		26CC7D3B1EA7F38600E37FDD = {
 			isa = PBXGroup;
 			children = (
-				26CC7D5A1EA8051200E37FDD /* core-ios.podspec */,
+				26CC7D5A1EA8051200E37FDD /* XYCore.podspec */,
 				26CC7D471EA7F38600E37FDD /* XYCore */,
 				26CC7D461EA7F38600E37FDD /* Products */,
 				8F06270966D7F77BB659F7A9 /* Pods */,
@@ -154,7 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				26CC7D591EA7F80100E37FDD /* Info.plist in Resources */,
-				26CC7D5B1EA8051200E37FDD /* core-ios.podspec in Resources */,
+				26CC7D5B1EA8051200E37FDD /* XYCore.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
