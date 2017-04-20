@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = "XY Core Library - Used by all XY Findables iOS Swift Libraries"
 
-  s.homepage     = "developer.xyfindables.com"
+s.homepage     = "http://www.xyfindables.com"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -124,7 +124,12 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  # s.dependency "Crashlytics"
-  # s.dependency "Fabric"
+  s.dependency "Crashlytics"
+  s.dependency "Fabric"
+
+s.pod_target_xcconfig = {
+'FRAMEWORK_SEARCH_PATHS' => '$(inherited) $(PODS_ROOT)/Crashlytics',
+'OTHER_LDFLAGS'          => '$(inherited) -undefined dynamic_lookup'
+}
 
 end
