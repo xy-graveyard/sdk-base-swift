@@ -124,8 +124,8 @@ s.homepage     = "http://www.xyfindables.com"
   s.requires_arc = true
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  s.dependency "Crashlytics"
-  s.dependency "Fabric"
+  # s.dependency "Crashlytics"
+  # s.dependency "Fabric"
 
 s.pod_target_xcconfig = {
 'FRAMEWORK_SEARCH_PATHS' => '$(inherited) $(PODS_ROOT)/Crashlytics',

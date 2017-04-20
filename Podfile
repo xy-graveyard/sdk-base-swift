@@ -10,7 +10,7 @@ pre_install do |installer|
     def installer.verify_no_static_framework_transitive_dependencies; end
 end
     
-pod "Fabric"
-pod "Crashlytics"
+# pod "Fabric"
+# pod "Crashlytics"
 
 end
