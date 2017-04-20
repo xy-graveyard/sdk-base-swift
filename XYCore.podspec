@@ -17,16 +17,16 @@ Pod::Spec.new do |s|
 
   s.name         = "XYCore"
   s.version      = "1.0.0"
-  s.summary      = "iOS Core Library"
+  s.summary      = "XY Core Library"
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
   #   * Try to keep it short, snappy and to the point.
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
-  s.description  = "XY Findables API Wrapper"
+  s.description  = "XY Core Library - Used by all XY Findables iOS Swift Libraries"
 
-  s.homepage     = "http//:developer.xyfindables.com"
+  s.homepage     = "developer.xyfindables.com"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -75,7 +75,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/xycorp/api-ios.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/xycorp/core-ios.git", :tag => "#{s.version}" }
 
   s.ios.vendored_frameworks = 'XYCore.framework'
 
@@ -88,7 +88,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "Classes", "XYCore/**/*.{swift}"
+  s.source_files  = "**/*.{swift}"
   # s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
