@@ -8,7 +8,7 @@
 
 import Foundation
 
-class XYTimer {
+@objc open class XYTimer : XYBase {
     /**
      setTimeout()
      
