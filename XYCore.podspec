@@ -127,5 +127,8 @@ s.homepage     = "http://www.xyfindables.com"
   # s.dependency "Crashlytics"
   # s.dependency "Fabric"
 
+s.pod_target_xcconfig = {
+'OTHER_LDFLAGS'          => '$(inherited) -undefined dynamic_lookup'
+}
 
 end
