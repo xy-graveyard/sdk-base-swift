@@ -9,13 +9,15 @@
 /* Begin PBXBuildFile section */
 		268852161EAA246600C8C4C1 /* XYTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268852141EAA246600C8C4C1 /* XYTimer.swift */; };
 		268852171EAA246600C8C4C1 /* XYBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268852151EAA246600C8C4C1 /* XYBase.swift */; };
+		2688521B1EAA2BD700C8C4C1 /* XYCore.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 2688521A1EAA2BD700C8C4C1 /* XYCore.podspec */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		268852091EAA241100C8C4C1 /* XYCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = XYCore.framework; path = "/Users/arietrouw/xycorp/core-ios/build/Debug-iphoneos/XYCore.framework"; sourceTree = "<absolute>"; };
 		2688520D1EAA241100C8C4C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		268852141EAA246600C8C4C1 /* XYTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XYTimer.swift; sourceTree = "<group>"; };
 		268852151EAA246600C8C4C1 /* XYBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XYBase.swift; sourceTree = "<group>"; };
+		268852181EAA2AC800C8C4C1 /* XYCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XYCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2688521A1EAA2BD700C8C4C1 /* XYCore.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = XYCore.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,7 +34,9 @@
 		268851FF1EAA241100C8C4C1 = {
 			isa = PBXGroup;
 			children = (
+				2688521A1EAA2BD700C8C4C1 /* XYCore.podspec */,
 				2688520B1EAA241100C8C4C1 /* XYCore */,
+				268852181EAA2AC800C8C4C1 /* XYCore.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,7 +78,7 @@
 			);
 			name = XYCore;
 			productName = XYCore;
-			productReference = 268852091EAA241100C8C4C1 /* XYCore.framework */;
+			productReference = 268852181EAA2AC800C8C4C1 /* XYCore.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -116,6 +120,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2688521B1EAA2BD700C8C4C1 /* XYCore.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,11 +253,12 @@
 				INFOPLIST_FILE = XYCore/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.xyfindables.XYCore;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xyfindables.core;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -269,10 +275,11 @@
 				INFOPLIST_FILE = XYCore/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.xyfindables.XYCore;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xyfindables.core;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

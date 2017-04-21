@@ -127,9 +127,5 @@ s.homepage     = "http://www.xyfindables.com"
   # s.dependency "Crashlytics"
   # s.dependency "Fabric"
 
-s.pod_target_xcconfig = {
-'FRAMEWORK_SEARCH_PATHS' => '$(inherited) $(PODS_ROOT)/Crashlytics',
-'OTHER_LDFLAGS'          => '$(inherited) -undefined dynamic_lookup'
-}
 
 end
