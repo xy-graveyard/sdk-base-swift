@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "26CC7D441EA7F38600E37FDD"
+               BlueprintIdentifier = "268852081EAA241100C8C4C1"
                BuildableName = "XYCore.framework"
                BlueprintName = "XYCore"
                ReferencedContainer = "container:XYCore.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "26CC7D441EA7F38600E37FDD"
+            BlueprintIdentifier = "268852081EAA241100C8C4C1"
             BuildableName = "XYCore.framework"
             BlueprintName = "XYCore"
             ReferencedContainer = "container:XYCore.xcodeproj">
@@ -63,7 +63,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "26CC7D441EA7F38600E37FDD"
+            BlueprintIdentifier = "268852081EAA241100C8C4C1"
             BuildableName = "XYCore.framework"
             BlueprintName = "XYCore"
             ReferencedContainer = "container:XYCore.xcodeproj">
