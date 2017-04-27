@@ -68,6 +68,19 @@ import Foundation
         }
     }
     
+    open static func verifyMainThreadAsync(closure : @escaping () -> Void)
+    {
+        if (Thread.isMainThread)
+        {
+            closure();
+        }
+        else
+        {
+            logInfo(module: #file, function: #function, message: "verifyMainThreadAsync: Dispatching to Main Thread!");
+            DispatchQueue.main.async(execute:closure);
+        }
+    }
+    
     open static func logInfo(module: String, function: String, message: String){
         logInfoAttemptCount+=1
         if (infoLoggingEnabled) {
