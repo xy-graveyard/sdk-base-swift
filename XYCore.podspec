@@ -88,7 +88,7 @@ s.homepage     = "http://www.xyfindables.com"
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "**/*.{swift}"
+  s.source_files  = "XYCore/**/*.{swift}"
   # s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"

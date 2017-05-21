@@ -105,6 +105,10 @@ import Foundation
         XYBase.logExtreme(module: module, function: function, message: message)
     }
     
+    open static func logException(module: String, function: String, exception:exception) {
+
+    }
+    
     open static func logError(module: String, function: String, message: String, data: Any?) {
         logErrorAttemptCount+=1
         if (errorLoggingEnabled) {

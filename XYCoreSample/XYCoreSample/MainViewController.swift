@@ -21,7 +21,9 @@ class MainViewController: UIViewController {
     }
 
     @IBAction func testLoggingPressed(_ sender: Any) {
-        
+        //XYBase.logInfo(module: #file, function: #function, message: "Testing Info Logging")
+        //XYBase.logError(module: #file, function: #function, message: "Testing Error Logging")
+        //XYBase.logExtreme(module: #file, function: #function, message: "Testing Extreme Logging")
     }
     
     override func didReceiveMemoryWarning() {
