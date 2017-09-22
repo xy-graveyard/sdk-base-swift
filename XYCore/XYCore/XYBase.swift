@@ -8,6 +8,29 @@
 
 import Foundation
 
+public class XYDateFormatter : DateFormatter{
+    
+    public class func sharedFormatter() -> DateFormatter {
+        // current thread's hash
+        let threadHash = Thread.current.hash
+        // check if a date formatter has already been created for this thread
+        if let existingFormatter = Thread.current.threadDictionary[threadHash] as? DateFormatter{
+            // a date formatter has already been created, return that
+            return existingFormatter
+        }else{
+            // otherwise, create a new date formatter
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss.SSSS"
+            // and store it in the threadDictionary (so that we can access it later on in the current thread)
+            Thread.current.threadDictionary[threadHash] = dateFormatter
+            return dateFormatter
+            
+        }
+        
+    }
+    
+}
+
 @objc open class XYBase : NSObject {
     
     open class func dump() -> Dictionary<String, Any> {
@@ -36,7 +59,6 @@ import Foundation
     internal static var haltOnError = false
     #endif
     
-    internal static let dateFormatter = intializeDateFormatter()
     internal static var logExtremeAttemptCount = 0
     internal static var logExtremeExecuteCount = 0
     internal static var logInfoAttemptCount = 0
@@ -44,15 +66,10 @@ import Foundation
     internal static var logErrorAttemptCount = 0
     internal static var logErrorExecuteCount = 0
     internal static var reportStatus = Array<String>()
-    
-    internal static func intializeDateFormatter() -> DateFormatter {
-        let df = DateFormatter()
-        df.dateFormat = "yyyy-MM-dd hh:mm:ss.SSSS"
-        return df
-    }
+
     
     internal static func now() -> String {
-        return dateFormatter.string(from: Date())
+        return XYDateFormatter.sharedFormatter().string(from: Date())
     }
     
     open func verifyMainThreadAsync(closure : @escaping () -> Void)
