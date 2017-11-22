@@ -51,7 +51,7 @@ public class XYDateFormatter : DateFormatter{
     internal static var extremeLoggingEnabled = false
     internal static var infoLoggingEnabled = true
     internal static var errorLoggingEnabled = true
-    internal static var haltOnError = true
+    internal static var haltOnError = false
     #else
     internal static var extremeLoggingEnabled = false
     internal static var infoLoggingEnabled = false
@@ -138,38 +138,38 @@ public class XYDateFormatter : DateFormatter{
 
     }
     
-    open static func logError(_ object:Any?, module: String, function: String, message: String, data: Any?) {
+    open static func logError(_ object:Any? = nil, module: String, function: String, message: String, data: Any? = nil, halt:Bool? = nil) {
         logErrorAttemptCount+=1
         if (errorLoggingEnabled) {
             logErrorExecuteCount+=1
             //logCustomEvent(withName: "Error", customAttributes:["Module": module, "Function":function, "Message":message, "Data":data ?? "None"])
         }
         log("XY-Error", object:object, module:module, function:function, message:message)
-        if (haltOnError) {
+        if (halt != nil) {
+            if (halt!) {
+                fatalError()
+            }
+        } else if (haltOnError) {
             fatalError()
         }
     }
     
-    open static func logError(module: String, function: String, message: String, data: Any?) {
-        logError(nil, module: module, function: function, message: message, data: data)
+    open static func logError(_ object:Any? = nil, module: String, function: String, message: String, halt:Bool?) {
+        logError(object, module: module, function: function, message: message, data: nil, halt:halt)
     }
     
-    open static func logError(_ object:Any?, module: String, function: String, message: String) {
-        logError(object, module: module, function: function, message: message, data: nil)
+    open static func logError(module: String, function: String, message: String, halt:Bool? = nil) {
+        logError(nil, module: module, function: function, message: message, data: nil, halt:halt)
     }
     
-    open static func logError(module: String, function: String, message: String) {
-        logError(nil, module: module, function: function, message: message, data: nil)
+    open func logError(module: String, function: String, message: String, data: Any? = nil, halt:Bool? = nil) {
+        XYBase.logError(self, module: module, function: function, message: message, data: data, halt:halt)
     }
     
     open func logError(module: String, function: String, message: String, data: Any?) {
         XYBase.logError(self, module: module, function: function, message: message, data: data)
     }
-    
-    open func logError(module: String, function: String, message: String) {
-        XYBase.logError(self, module: module, function: function, message: message)
-    }
-    
+
     open class func reportStatus(_ status:String) {
         reportStatus.append(status)
         print("XY-Status:\(status)")
