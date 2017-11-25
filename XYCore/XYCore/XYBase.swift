@@ -51,7 +51,7 @@ public class XYDateFormatter : DateFormatter{
     internal static var extremeLoggingEnabled = false
     internal static var infoLoggingEnabled = true
     internal static var errorLoggingEnabled = true
-    internal static var haltOnError = false
+    internal static var haltOnError = true
     #else
     internal static var extremeLoggingEnabled = false
     internal static var infoLoggingEnabled = false
