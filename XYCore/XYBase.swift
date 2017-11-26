@@ -72,6 +72,10 @@ public class XYDateFormatter : DateFormatter{
         return XYDateFormatter.sharedFormatter().string(from: Date())
     }
     
+    open class func enableExtremeLogging(_ enable:Bool) {
+        extremeLoggingEnabled = enable
+    }
+    
     open func verifyMainThreadAsync(closure : @escaping () -> Void)
     {
         if (Thread.isMainThread)
