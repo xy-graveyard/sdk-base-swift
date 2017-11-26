@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import XYCore
 
 class MainViewController: UIViewController {
 

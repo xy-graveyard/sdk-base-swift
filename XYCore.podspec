@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "XYCore"
-  s.version      = "1.0.1"
+  s.version      = "1.0.9"
   s.summary      = "XY Core Library"
 
   # This description is used to generate tags and improve search results.
@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = "XY Core Library - Used by all XY Findables iOS Swift Libraries"
 
-s.homepage     = "http://www.xyfindables.com"
+  s.homepage     = "http://www.xyfindables.com"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
