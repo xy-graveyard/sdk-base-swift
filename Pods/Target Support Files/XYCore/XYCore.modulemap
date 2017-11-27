@@ -1,0 +1,6 @@
+framework module XYCore {
+  umbrella header "XYCore-umbrella.h"
+
+  export *
+  module * { export * }
+}

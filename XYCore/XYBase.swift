@@ -31,7 +31,7 @@ public class XYDateFormatter : DateFormatter{
     
 }
 
-@objc open class XYBase : NSObject {
+open class XYBase : NSObject {
     
     open class func dump() -> Dictionary<String, Any> {
         var dump = Dictionary<String, Any>()
@@ -51,7 +51,7 @@ public class XYDateFormatter : DateFormatter{
     internal static var extremeLoggingEnabled = false
     internal static var infoLoggingEnabled = true
     internal static var errorLoggingEnabled = true
-    internal static var haltOnError = false
+    internal static var haltOnError = true
     #else
     internal static var extremeLoggingEnabled = false
     internal static var infoLoggingEnabled = false
@@ -70,6 +70,10 @@ public class XYDateFormatter : DateFormatter{
     
     internal static func now() -> String {
         return XYDateFormatter.sharedFormatter().string(from: Date())
+    }
+    
+    open class func enableExtremeLogging(_ enable:Bool) {
+        extremeLoggingEnabled = enable
     }
     
     open func verifyMainThreadAsync(closure : @escaping () -> Void)
@@ -93,63 +97,83 @@ public class XYDateFormatter : DateFormatter{
         }
         else
         {
-            logInfo(module: #file, function: #function, message: "verifyMainThreadAsync: Dispatching to Main Thread!");
+            logInfo(nil, module: #file, function: #function, message: "verifyMainThreadAsync: Dispatching to Main Thread!");
             DispatchQueue.main.async(execute:closure);
         }
     }
     
-    open static func logInfo(module: String, function: String, message: String){
+    open static func log(_ prefix:String, object:Any? ,module: String, function: String, message: String) {
+        print("\(now()) \(prefix):\((module as NSString).lastPathComponent):\(String(describing:object)):\(function):\(message)")
+    }
+    
+    open static func logInfo(_ object:Any?, module: String, function: String, message: String){
         logInfoAttemptCount+=1
         if (infoLoggingEnabled) {
             logInfoExecuteCount+=1
-            print("\(now()) XY-Info:\((module as NSString).lastPathComponent):\(function):\(message)")
+            log("XY-Info", object:object, module:module, function:function, message:message)
         }
+    }
+    
+    open static func logInfo(module: String, function: String, message: String){
+        logInfo(nil, module:module, function:function, message:message)
     }
     
     open func logInfo(module: String, function: String, message: String){
-        XYBase.logInfo(module: module, function: function, message: message)
+        XYBase.logInfo(self, module: module, function: function, message: message)
     }
     
-    open static func logExtreme(module: String, function: String, message: String){
+    open static func logExtreme(_ object:Any?, module: String, function: String, message: String){
         logExtremeAttemptCount+=1
         if (extremeLoggingEnabled) {
             logExtremeExecuteCount+=1
-            print("\(now()) XY-Extreme:\((module as NSString).lastPathComponent):\(function):\(message)")
+            log("XY-Extreme", object:object, module:module, function:function, message:message)
         }
+    }
+    
+    open static func logExtreme(module: String, function: String, message: String){
+        logExtreme(nil, module:module, function:function, message:message)
     }
     
     open func logExtreme(module: String, function: String, message: String){
-        XYBase.logExtreme(module: module, function: function, message: message)
+        XYBase.logExtreme(self, module: module, function: function, message: message)
     }
     
-    open static func logException(module: String, function: String, exception:exception) {
+    open static func logException(_ object:Any?, module: String, function: String, exception:exception) {
 
     }
     
-    open static func logError(module: String, function: String, message: String, data: Any?) {
+    open static func logError(_ object:Any? = nil, module: String, function: String, message: String, data: Any? = nil, halt:Bool? = nil) {
         logErrorAttemptCount+=1
         if (errorLoggingEnabled) {
             logErrorExecuteCount+=1
-            print("\(now()) XY-Error:\((module as NSString).lastPathComponent):\(function):\(message):\(String(describing: data))")
             //logCustomEvent(withName: "Error", customAttributes:["Module": module, "Function":function, "Message":message, "Data":data ?? "None"])
         }
-        if (haltOnError) {
+        log("XY-Error", object:object, module:module, function:function, message:message)
+        if (halt != nil) {
+            if (halt!) {
+                fatalError()
+            }
+        } else if (haltOnError) {
             fatalError()
         }
     }
     
-    open static func logError(module: String, function: String, message: String) {
-        logError(module: module, function: function, message: message, data: nil)
+    open static func logError(_ object:Any? = nil, module: String, function: String, message: String, halt:Bool?) {
+        logError(object, module: module, function: function, message: message, data: nil, halt:halt)
+    }
+    
+    open static func logError(module: String, function: String, message: String, halt:Bool? = nil) {
+        logError(nil, module: module, function: function, message: message, data: nil, halt:halt)
+    }
+    
+    open func logError(module: String, function: String, message: String, data: Any? = nil, halt:Bool? = nil) {
+        XYBase.logError(self, module: module, function: function, message: message, data: data, halt:halt)
     }
     
     open func logError(module: String, function: String, message: String, data: Any?) {
-        XYBase.logError(module: module, function: function, message: message, data: data)
+        XYBase.logError(self, module: module, function: function, message: message, data: data)
     }
-    
-    open func logError(module: String, function: String, message: String) {
-        XYBase.logError(module: module, function: function, message: message)
-    }
-    
+
     open class func reportStatus(_ status:String) {
         reportStatus.append(status)
         print("XY-Status:\(status)")
