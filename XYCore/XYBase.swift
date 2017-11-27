@@ -31,7 +31,7 @@ public class XYDateFormatter : DateFormatter{
     
 }
 
-@objc open class XYBase : NSObject {
+open class XYBase : NSObject {
     
     open class func dump() -> Dictionary<String, Any> {
         var dump = Dictionary<String, Any>()
