@@ -76,6 +76,14 @@ open class XYBase : NSObject {
         extremeLoggingEnabled = enable
     }
     
+    public typealias ExternalLoggingClosure = (_ prefix:String, _ object:Any?, _ module: String, _ function: String, _ message: String, _ data:Data?)->Void
+    
+    internal static var externalLoggingClosure : ExternalLoggingClosure?
+    
+    open class func setExternalLogging(closure: @escaping ExternalLoggingClosure) {
+        externalLoggingClosure = closure
+    }
+    
     open func verifyMainThreadAsync(closure : @escaping () -> Void)
     {
         if (Thread.isMainThread)
@@ -139,15 +147,15 @@ open class XYBase : NSObject {
     }
     
     open static func logException(_ object:Any?, module: String, function: String, exception:exception) {
-
+        externalLoggingClosure?("XY-Exception", object, module, function, String(describing: exception), nil)
     }
     
     open static func logError(_ object:Any? = nil, module: String, function: String, message: String, data: Any? = nil, halt:Bool? = nil) {
         logErrorAttemptCount+=1
         if (errorLoggingEnabled) {
             logErrorExecuteCount+=1
-            //logCustomEvent(withName: "Error", customAttributes:["Module": module, "Function":function, "Message":message, "Data":data ?? "None"])
         }
+        externalLoggingClosure?("XY-Error", object, module, function, message, nil)
         log("XY-Error", object:object, module:module, function:function, message:message)
         if (halt != nil) {
             if (halt!) {
