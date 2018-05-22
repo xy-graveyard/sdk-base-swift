@@ -4,10 +4,4 @@
    <FileRef
       location = "group:XYCore.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:XYCoreSample.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:Pods/Pods.xcodeproj">
-   </FileRef>
 </Workspace>
