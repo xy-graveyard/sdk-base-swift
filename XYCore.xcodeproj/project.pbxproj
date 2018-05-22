@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26221E8920B4826C00F7C38D /* XYCore.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 26221E8820B4826C00F7C38D /* XYCore.podspec */; };
 		2658DE822072D65300A7E7F7 /* XYBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2658DE812072D65300A7E7F7 /* XYBase.swift */; };
 		2658DE842072D65B00A7E7F7 /* XYTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2658DE832072D65B00A7E7F7 /* XYTimer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		26221E8820B4826C00F7C38D /* XYCore.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = XYCore.podspec; sourceTree = "<group>"; };
 		2658DE762072D5DB00A7E7F7 /* XYCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XYCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2658DE7A2072D5DB00A7E7F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2658DE812072D65300A7E7F7 /* XYBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XYBase.swift; sourceTree = "<group>"; };
@@ -32,6 +34,7 @@
 		2658DE6C2072D5DB00A7E7F7 = {
 			isa = PBXGroup;
 			children = (
+				26221E8820B4826C00F7C38D /* XYCore.podspec */,
 				2658DE782072D5DB00A7E7F7 /* XYCore */,
 				2658DE772072D5DB00A7E7F7 /* Products */,
 			);
@@ -123,6 +126,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26221E8920B4826C00F7C38D /* XYCore.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,0 +1,16 @@
+PODS:
+  - XYCore (1.0.9)
+
+DEPENDENCIES:
+  - XYCore (from `..`)
+
+EXTERNAL SOURCES:
+  XYCore:
+    :path: ..
+
+SPEC CHECKSUMS:
+  XYCore: 2dbcfeaab36b1a32976406c8127ca93c8dfe4b02
+
+PODFILE CHECKSUM: e5201d5e57cfb419794eddf63fe0e84944f0ba70
+
+COCOAPODS: 1.4.0
