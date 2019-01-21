@@ -51,14 +51,14 @@ open class XYBase : NSObject {
     internal static var extremeLoggingEnabled = false
     internal static var infoLoggingEnabled = true
     internal static var errorLoggingEnabled = true
-    internal static var haltOnError = true
     #else
     internal static var extremeLoggingEnabled = false
     internal static var infoLoggingEnabled = false
     internal static var errorLoggingEnabled = false
-    internal static var haltOnError = false
     #endif
-    
+
+    internal static var haltOnError = false
+
     internal static var logExtremeAttemptCount = 0
     internal static var logExtremeExecuteCount = 0
     internal static var logInfoAttemptCount = 0
