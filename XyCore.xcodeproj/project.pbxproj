@@ -1,0 +1,482 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		315591E72204FE5700DC4556 /* XyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 315591DE2204FE5700DC4556 /* XyCore.framework */; };
+		315591F62204FFDB00DC4556 /* XYBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315591D62204FCBF00DC4556 /* XYBase.swift */; };
+		315591F72204FFDF00DC4556 /* XYTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315591D52204FCBF00DC4556 /* XYTimer.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		315591E82204FE5700DC4556 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 315591B12204FBB300DC4556 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 315591DD2204FE5700DC4556;
+			remoteInfo = XyCoreiOS;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		315591BD2204FBB400DC4556 /* XyCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XyCore.h; sourceTree = "<group>"; };
+		315591BE2204FBB400DC4556 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		315591C82204FBB400DC4556 /* XyCoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XyCoreTests.swift; sourceTree = "<group>"; };
+		315591CA2204FBB400DC4556 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		315591D52204FCBF00DC4556 /* XYTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XYTimer.swift; sourceTree = "<group>"; };
+		315591D62204FCBF00DC4556 /* XYBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XYBase.swift; sourceTree = "<group>"; };
+		315591DE2204FE5700DC4556 /* XyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		315591E62204FE5700DC4556 /* XyCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XyCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		315591DB2204FE5700DC4556 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		315591E32204FE5700DC4556 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				315591E72204FE5700DC4556 /* XyCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		315591B02204FBB300DC4556 = {
+			isa = PBXGroup;
+			children = (
+				315591BC2204FBB400DC4556 /* Source */,
+				315591C72204FBB400DC4556 /* XyCoreTests */,
+				315591BB2204FBB400DC4556 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		315591BB2204FBB400DC4556 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				315591DE2204FE5700DC4556 /* XyCore.framework */,
+				315591E62204FE5700DC4556 /* XyCoreTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		315591BC2204FBB400DC4556 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				315591F82205002A00DC4556 /* Supporting Files */,
+				315591D42204FCA300DC4556 /* Legacy */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		315591C72204FBB400DC4556 /* XyCoreTests */ = {
+			isa = PBXGroup;
+			children = (
+				315591C82204FBB400DC4556 /* XyCoreTests.swift */,
+				315591CA2204FBB400DC4556 /* Info.plist */,
+			);
+			path = XyCoreTests;
+			sourceTree = "<group>";
+		};
+		315591D42204FCA300DC4556 /* Legacy */ = {
+			isa = PBXGroup;
+			children = (
+				315591D62204FCBF00DC4556 /* XYBase.swift */,
+				315591D52204FCBF00DC4556 /* XYTimer.swift */,
+			);
+			path = Legacy;
+			sourceTree = "<group>";
+		};
+		315591F82205002A00DC4556 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				315591BD2204FBB400DC4556 /* XyCore.h */,
+				315591BE2204FBB400DC4556 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		315591D92204FE5700DC4556 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		315591DD2204FE5700DC4556 /* XyCoreiOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 315591F32204FE5700DC4556 /* Build configuration list for PBXNativeTarget "XyCoreiOS" */;
+			buildPhases = (
+				315591D92204FE5700DC4556 /* Headers */,
+				315591DA2204FE5700DC4556 /* Sources */,
+				315591DB2204FE5700DC4556 /* Frameworks */,
+				315591DC2204FE5700DC4556 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XyCoreiOS;
+			productName = XyCoreiOS;
+			productReference = 315591DE2204FE5700DC4556 /* XyCore.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		315591E52204FE5700DC4556 /* XyCoreiOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 315591F42204FE5700DC4556 /* Build configuration list for PBXNativeTarget "XyCoreiOSTests" */;
+			buildPhases = (
+				315591E22204FE5700DC4556 /* Sources */,
+				315591E32204FE5700DC4556 /* Frameworks */,
+				315591E42204FE5700DC4556 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				315591E92204FE5700DC4556 /* PBXTargetDependency */,
+			);
+			name = XyCoreiOSTests;
+			productName = XyCoreiOSTests;
+			productReference = 315591E62204FE5700DC4556 /* XyCoreTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		315591B12204FBB300DC4556 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = "XYO Network";
+				TargetAttributes = {
+					315591DD2204FE5700DC4556 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					315591E52204FE5700DC4556 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+				};
+			};
+			buildConfigurationList = 315591B42204FBB300DC4556 /* Build configuration list for PBXProject "XyCore" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 315591B02204FBB300DC4556;
+			productRefGroup = 315591BB2204FBB400DC4556 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				315591DD2204FE5700DC4556 /* XyCoreiOS */,
+				315591E52204FE5700DC4556 /* XyCoreiOSTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		315591DC2204FE5700DC4556 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		315591E42204FE5700DC4556 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		315591DA2204FE5700DC4556 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				315591F72204FFDF00DC4556 /* XYTimer.swift in Sources */,
+				315591F62204FFDB00DC4556 /* XYBase.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		315591E22204FE5700DC4556 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		315591E92204FE5700DC4556 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 315591DD2204FE5700DC4556 /* XyCoreiOS */;
+			targetProxy = 315591E82204FE5700DC4556 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		315591CC2204FBB400DC4556 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		315591CD2204FBB400DC4556 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		315591EF2204FE5700DC4556 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = HFUC9P67W4;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Source/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = network.xyo.XyCore;
+				PRODUCT_NAME = XyCore;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		315591F02204FE5700DC4556 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = HFUC9P67W4;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Source/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = network.xyo.XyCore;
+				PRODUCT_NAME = XyCore;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		315591F12204FE5700DC4556 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HFUC9P67W4;
+				INFOPLIST_FILE = XyCoreTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = network.xyo.XyCoreTests;
+				PRODUCT_NAME = XyCoreTests;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		315591F22204FE5700DC4556 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HFUC9P67W4;
+				INFOPLIST_FILE = XyCoreTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = network.xyo.XyCoreTests;
+				PRODUCT_NAME = XyCoreTests;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		315591B42204FBB300DC4556 /* Build configuration list for PBXProject "XyCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				315591CC2204FBB400DC4556 /* Debug */,
+				315591CD2204FBB400DC4556 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		315591F32204FE5700DC4556 /* Build configuration list for PBXNativeTarget "XyCoreiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				315591EF2204FE5700DC4556 /* Debug */,
+				315591F02204FE5700DC4556 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		315591F42204FE5700DC4556 /* Build configuration list for PBXNativeTarget "XyCoreiOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				315591F12204FE5700DC4556 /* Debug */,
+				315591F22204FE5700DC4556 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 315591B12204FBB300DC4556 /* Project object */;
+}

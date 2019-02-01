@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class XYDateFormatter : DateFormatter{
+public class XYDateFormatter : DateFormatter {
     
     public class func sharedFormatter() -> DateFormatter {
         // current thread's hash
@@ -28,7 +28,6 @@ public class XYDateFormatter : DateFormatter{
         }
         
     }
-    
 }
 
 open class XYBase : NSObject {
