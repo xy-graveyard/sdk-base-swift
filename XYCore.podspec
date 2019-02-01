@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name = 'XYCore'
+  s.name = 'XyCore'
   s.version = '1.0.9'
   s.license = { :type => 'MIT', :file => 'LICENSE' }
   s.summary = 'XY Core Library'
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '11.0'
 
-  s.source_files = 'XYCore/**/*.{swift}'
+  s.source_files = 'Source/**/*.{swift}'
   
   s.dependency 'Apollo'
 end
