@@ -97,7 +97,7 @@ open class XYBase : NSObject {
         }
     }
     
-    open static func verifyMainThreadAsync(closure : @escaping () -> Void)
+    public static func verifyMainThreadAsync(closure : @escaping () -> Void)
     {
         if (Thread.isMainThread)
         {
@@ -110,11 +110,11 @@ open class XYBase : NSObject {
         }
     }
     
-    open static func log(_ prefix:String, object:Any? ,module: String, function: String, message: String) {
+    public static func log(_ prefix:String, object:Any? ,module: String, function: String, message: String) {
 //        print("\(now()) \(prefix):\((module as NSString).lastPathComponent):\(String(describing:object)):\(function):\(message)")
     }
     
-    open static func logInfo(_ object:Any?, module: String, function: String, message: String){
+    public static func logInfo(_ object:Any?, module: String, function: String, message: String){
 //        logInfoAttemptCount+=1
 //        if (infoLoggingEnabled) {
 //            logInfoExecuteCount+=1
@@ -122,7 +122,7 @@ open class XYBase : NSObject {
 //        }
     }
     
-    open static func logInfo(module: String, function: String, message: String){
+    public static func logInfo(module: String, function: String, message: String){
 //        logInfo(nil, module:module, function:function, message:message)
     }
     
@@ -130,7 +130,7 @@ open class XYBase : NSObject {
 //        XYBase.logInfo(self, module: module, function: function, message: message)
     }
     
-    open static func logExtreme(_ object:Any?, module: String, function: String, message: String){
+    public static func logExtreme(_ object:Any?, module: String, function: String, message: String){
 //        logExtremeAttemptCount+=1
 //        if (extremeLoggingEnabled) {
 //            logExtremeExecuteCount+=1
@@ -138,7 +138,7 @@ open class XYBase : NSObject {
 //        }
     }
     
-    open static func logExtreme(module: String, function: String, message: String){
+    public static func logExtreme(module: String, function: String, message: String){
 //        logExtreme(nil, module:module, function:function, message:message)
     }
     
@@ -146,11 +146,11 @@ open class XYBase : NSObject {
 //        XYBase.logExtreme(self, module: module, function: function, message: message)
     }
     
-    open static func logException(_ object:Any?, module: String, function: String, exception:exception) {
+    public static func logException(_ object:Any?, module: String, function: String, exception:exception) {
 //        externalLoggingClosure?("XY-Exception", object, module, function, String(describing: exception), nil)
     }
     
-    open static func logError(_ object:Any? = nil, module: String, function: String, message: String, data: Any? = nil, halt:Bool? = nil) {
+    public static func logError(_ object:Any? = nil, module: String, function: String, message: String, data: Any? = nil, halt:Bool? = nil) {
 //        logErrorAttemptCount+=1
 //        if (errorLoggingEnabled) {
 //            logErrorExecuteCount+=1
@@ -166,11 +166,11 @@ open class XYBase : NSObject {
 //        }
     }
     
-    open static func logError(_ object:Any? = nil, module: String, function: String, message: String, halt:Bool?) {
+    public static func logError(_ object:Any? = nil, module: String, function: String, message: String, halt:Bool?) {
 //        logError(object, module: module, function: function, message: message, data: nil, halt:halt)
     }
     
-    open static func logError(module: String, function: String, message: String, halt:Bool? = nil) {
+    public static func logError(module: String, function: String, message: String, halt:Bool? = nil) {
 //        logError(nil, module: module, function: function, message: message, data: nil, halt:halt)
     }
     

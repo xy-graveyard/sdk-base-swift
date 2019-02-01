@@ -127,6 +127,8 @@ Pod::Spec.new do |s|
   # s.dependency "Crashlytics"
   # s.dependency "Fabric"
 
+  s.dependency "Apollo"
+
 s.pod_target_xcconfig = {
 'OTHER_LDFLAGS'          => '$(inherited)'
 }

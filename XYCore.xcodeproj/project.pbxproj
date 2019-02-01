@@ -51,11 +51,19 @@
 		2658DE782072D5DB00A7E7F7 /* XYCore */ = {
 			isa = PBXGroup;
 			children = (
-				2658DE832072D65B00A7E7F7 /* XYTimer.swift */,
-				2658DE812072D65300A7E7F7 /* XYBase.swift */,
+				3195A4992204F21500A3A943 /* Legacy */,
 				2658DE7A2072D5DB00A7E7F7 /* Info.plist */,
 			);
 			path = XYCore;
+			sourceTree = "<group>";
+		};
+		3195A4992204F21500A3A943 /* Legacy */ = {
+			isa = PBXGroup;
+			children = (
+				2658DE832072D65B00A7E7F7 /* XYTimer.swift */,
+				2658DE812072D65300A7E7F7 /* XYBase.swift */,
+			);
+			path = Legacy;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
