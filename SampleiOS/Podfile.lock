@@ -1,0 +1,25 @@
+PODS:
+  - Apollo (0.9.4):
+    - Apollo/Core (= 0.9.4)
+  - Apollo/Core (0.9.4)
+  - XyCore (1.0.9):
+    - Apollo
+
+DEPENDENCIES:
+  - XyCore (from `../`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Apollo
+
+EXTERNAL SOURCES:
+  XyCore:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Apollo: 450856adbdebcdf28c3c671f81732ac3f9944065
+  XyCore: e03bda3c4e8ca9780a25bd8de5cff9917b64d84b
+
+PODFILE CHECKSUM: 228d6f0e59388f11f8591c3b399360712d53d2cf
+
+COCOAPODS: 1.6.0.beta.2

@@ -7,14 +7,25 @@
 //
 
 import UIKit
+import XyCore
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        self.validateClient()
     }
 
 
 }
 
+fileprivate extension ViewController {
+
+    func validateClient() {
+        guard let client = XYApolloManager() else { return }
+        client.client.fetch(query: GetInfoQuery()) { result, error in
+            print(result)
+        }
+    }
+
+}
