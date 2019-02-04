@@ -10,6 +10,8 @@
 		315591E72204FE5700DC4556 /* XyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 315591DE2204FE5700DC4556 /* XyCore.framework */; };
 		315591F62204FFDB00DC4556 /* XYBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315591D62204FCBF00DC4556 /* XYBase.swift */; };
 		315591F72204FFDF00DC4556 /* XYTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315591D52204FCBF00DC4556 /* XYTimer.swift */; };
+		31DC14ED2208B3BB00F19571 /* XYApolloGQLApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DC14EC2208B3BB00F19571 /* XYApolloGQLApi.swift */; };
+		31DC14EF2208B3D000F19571 /* XYApolloManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DC14EE2208B3D000F19571 /* XYApolloManager.swift */; };
 		31FF96E922050AE700B89104 /* XYModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF96E822050AE700B89104 /* XYModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +34,8 @@
 		315591D62204FCBF00DC4556 /* XYBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XYBase.swift; sourceTree = "<group>"; };
 		315591DE2204FE5700DC4556 /* XyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		315591E62204FE5700DC4556 /* XyCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XyCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		31DC14EC2208B3BB00F19571 /* XYApolloGQLApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XYApolloGQLApi.swift; sourceTree = "<group>"; };
+		31DC14EE2208B3D000F19571 /* XYApolloManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYApolloManager.swift; sourceTree = "<group>"; };
 		31FF96E822050AE700B89104 /* XYModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,6 +79,7 @@
 		315591BC2204FBB400DC4556 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				31DC14EB2208B3A300F19571 /* Apollo */,
 				31FF96E722050AD700B89104 /* Models */,
 				315591F82205002A00DC4556 /* Supporting Files */,
 				315591D42204FCA300DC4556 /* Legacy */,
@@ -109,6 +114,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		31DC14EB2208B3A300F19571 /* Apollo */ = {
+			isa = PBXGroup;
+			children = (
+				31DC14EC2208B3BB00F19571 /* XYApolloGQLApi.swift */,
+				31DC14EE2208B3D000F19571 /* XYApolloManager.swift */,
+			);
+			path = Apollo;
+			sourceTree = "<group>";
+		};
 		31FF96E722050AD700B89104 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,7 +152,6 @@
 				315591DA2204FE5700DC4556 /* Sources */,
 				315591DB2204FE5700DC4556 /* Frameworks */,
 				315591DC2204FE5700DC4556 /* Resources */,
-				31640CDD22050CA50086909B /* Apollo */,
 			);
 			buildRules = (
 			);
@@ -220,33 +233,14 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		31640CDD22050CA50086909B /* Apollo */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = Apollo;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "APOLLO_FRAMEWORK_PATH=\"$(eval find $FRAMEWORK_SEARCH_PATHS -name \"Apollo.framework\" -maxdepth 1)\"\n\nif [ -z \"$APOLLO_FRAMEWORK_PATH\" ]; then\necho \"error: Couldn't find Apollo.framework in FRAMEWORK_SEARCH_PATHS; make sure to add the framework to your project.\"\nexit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n$APOLLO_FRAMEWORK_PATH/check-and-run-apollo-cli.sh codegen:generate --queries=\"$(find . -name '*.graphql')\" --schema=schema.json API.swift\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		315591DA2204FE5700DC4556 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31DC14EF2208B3D000F19571 /* XYApolloManager.swift in Sources */,
 				315591F72204FFDF00DC4556 /* XYTimer.swift in Sources */,
+				31DC14ED2208B3BB00F19571 /* XYApolloGQLApi.swift in Sources */,
 				315591F62204FFDB00DC4556 /* XYBase.swift in Sources */,
 				31FF96E922050AE700B89104 /* XYModel.swift in Sources */,
 			);
