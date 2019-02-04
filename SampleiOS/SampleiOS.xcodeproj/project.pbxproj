@@ -77,7 +77,6 @@
 				6C892E116A182147B459FD17 /* Pods-SampleiOS.debug.xcconfig */,
 				B313E19C3381CE7716726823 /* Pods-SampleiOS.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -97,6 +96,7 @@
 			buildConfigurationList = 31DC150B2208B48500F19571 /* Build configuration list for PBXNativeTarget "SampleiOS" */;
 			buildPhases = (
 				A326889DF9BA7E8E2B1A9765 /* [CP] Check Pods Manifest.lock */,
+				31DC150E2208B97200F19571 /* Generate Apollo GraphQL API */,
 				31DC14F52208B48500F19571 /* Sources */,
 				31DC14F62208B48500F19571 /* Frameworks */,
 				31DC14F72208B48500F19571 /* Resources */,
@@ -158,6 +158,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		31DC150E2208B97200F19571 /* Generate Apollo GraphQL API */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Generate Apollo GraphQL API";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "APOLLO_FRAMEWORK_PATH=\"$(eval find $FRAMEWORK_SEARCH_PATHS -name \"Apollo.framework\" -maxdepth 1)\"\nXYCORE_CODEGEN_PATH=\"${SRCROOT}/../Source/Apollo\"\nXYCORE_INPUT_FILES_PATH=\"${XYCORE_CODEGEN_PATH}/Queries\"\n\nif [ -z \"$APOLLO_FRAMEWORK_PATH\" ]; then\necho \"error: Couldn't find Apollo.framework in FRAMEWORK_SEARCH_PATHS; make sure to add the framework to your project.\"\nexit 1\nfi\n\ncd $XYCORE_INPUT_FILES_PATH\n$APOLLO_FRAMEWORK_PATH/check-and-run-apollo-cli.sh codegen:generate --queries=\"$(find . -name '*.graphql')\" --schema=schema.json $XYCORE_CODEGEN_PATH/XYApolloGQLApi.swift\n";
+		};
 		89AAE15397D2E9FE467C7C6A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
