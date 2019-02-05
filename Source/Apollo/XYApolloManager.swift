@@ -9,26 +9,56 @@
 import Apollo
 import Foundation
 
-public protocol XYQueryManager {
+public protocol XYQueryManager: class {
     func fetch<Query: GraphQLQuery>(for query: Query, then callback: OperationResultHandler<Query>?)
+    func watch<Query: GraphQLQuery>(for query: Query, then callback: @escaping OperationResultHandler<Query>) -> GraphQLQueryWatcher<Query>
 }
 
-public class XYApolloManager: XYQueryManager {
+public class XYApolloQueryManager {
 
-    fileprivate static let endpointUrl = "https://cmsltk3yhg.execute-api.us-east-1.amazonaws.com/dev/graphql"
+    private let client: ApolloClient
+    private let queue: DispatchQueue
 
-    fileprivate let queue: DispatchQueue
+    private static let xyAuthHeader = "X-Auth-Token"
+    private static let endpointUrl = "https://cmsltk3yhg.execute-api.us-east-1.amazonaws.com/dev/graphql"
 
-    public let client: ApolloClient
+    private static var serverUrl: URL = {
+        guard let url = URL(string: endpointUrl) else {
+            fatalError("Invalid GraphQL connection URL")
+        }
+        return url
+    }()
 
-    public init?(queue: DispatchQueue = DispatchQueue.main) {
-        guard let validUrl = URL(string: XYApolloManager.endpointUrl) else { return nil }
-        self.client = ApolloClient(url: validUrl)
+    fileprivate init(client: ApolloClient, queue: DispatchQueue = .main) {
+        self.client = client
         self.queue = queue
     }
+}
+
+public extension XYApolloQueryManager {
+
+    public class func nonAuth(on queue: DispatchQueue = .main) -> XYApolloQueryManager {
+        return XYApolloQueryManager(client: ApolloClient(url: serverUrl), queue: queue)
+    }
+
+    public class func auth(token: String, on queue: DispatchQueue = .main) -> XYApolloQueryManager {
+        let configuration = URLSessionConfiguration.default
+        configuration.httpAdditionalHeaders = [xyAuthHeader: token]
+
+        let client = ApolloClient(networkTransport: HTTPNetworkTransport(url: serverUrl, configuration: configuration))
+        return XYApolloQueryManager(client: client, queue: queue)
+    }
+
+}
+
+extension XYApolloQueryManager: XYQueryManager {
 
     public func fetch<Query: GraphQLQuery>(for query: Query, then callback: OperationResultHandler<Query>?) {
-        self.client.fetch(query: query, resultHandler: callback)
+        self.client.fetch(query: query, queue: self.queue, resultHandler: callback)
+    }
+
+    public func watch<Query: GraphQLQuery>(for query: Query, then callback: @escaping OperationResultHandler<Query>) -> GraphQLQueryWatcher<Query> {
+        return self.client.watch(query: query, resultHandler: callback)
     }
 
 }
