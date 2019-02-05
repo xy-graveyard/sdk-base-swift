@@ -9,7 +9,11 @@
 import Apollo
 import Foundation
 
-public class XYApolloManager {
+public protocol XYQueryManager {
+    func fetch<Query: GraphQLQuery>(for query: Query, then callback: OperationResultHandler<Query>?)
+}
+
+public class XYApolloManager: XYQueryManager {
 
     fileprivate static let endpointUrl = "https://cmsltk3yhg.execute-api.us-east-1.amazonaws.com/dev/graphql"
 

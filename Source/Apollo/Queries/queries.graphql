@@ -1,0 +1,107 @@
+query TotalXyoTokens($ethAddress: String) {
+  totalXyoTokens(ethAddress: $ethAddress)
+
+  historicalXyoTokensEarned(ethAddress: $ethAddress, from: 1548115722712)
+}
+
+query MyDevices {
+  mySentinels {
+    meta {
+      totalCount
+    }
+    items {
+      name
+      photoUrl
+      publicKey
+    }
+  }
+
+  myBridges {
+    meta {
+      totalCount
+    }
+    items {
+      name
+      photoUrl
+      publicKey
+    }
+  }
+}
+
+mutation AddSentinel($publicKey: String!, $name: String, $photoUrl: String) {
+  addSentinel(
+    sentinel: { publicKey: $publicKey, name: $name, photoUrl: $photoUrl }
+  )
+}
+
+mutation UpdateSentinel($publicKey: String!, $name: String, $photoUrl: String) {
+  updateSentinel(
+    sentinel: { photoUrl: $photoUrl, publicKey: $publicKey, name: $name }
+  )
+}
+
+mutation DeleteSentinel($publicKey: String!) {
+  deleteSentinel(publicKey: $publicKey)
+}
+
+mutation AddBridge($publicKey: String!, $name: String, $photoUrl: String) {
+  addBridge(bridge: { publicKey: $publicKey, name: $name, photoUrl: $photoUrl })
+}
+
+mutation UpdateBridge($publicKey: String!, $name: String, $photoUrl: String) {
+  updateBridge(
+    bridge: { photoUrl: $photoUrl, publicKey: $publicKey, name: $name }
+  )
+}
+
+mutation DeleteBridge($publicKey: String!) {
+  deleteBridge(publicKey: $publicKey)
+}
+
+query AllBridges($limit: Int, $cursor: String) {
+  bridges(paginate: { limit: $limit, cursor: $cursor }) {
+    meta {
+      totalCount
+      cursor
+    }
+    items {
+      publicKey
+      name
+      photoUrl
+      owner
+    }
+  }
+}
+
+query AllSentinels($limit: Int, $cursor: String) {
+  sentinels(paginate: { limit: $limit, cursor: $cursor }) {
+    meta {
+      totalCount
+      cursor
+    }
+    items {
+      publicKey
+      name
+      photoUrl
+      owner
+    }
+  }
+}
+
+query ListArchivists($limit: Int, $cursor: String) {
+  archivists(paginate: {limit: $limit, cursor: $cursor}) {
+    meta {
+      totalCount
+      cursor
+    }
+    items {
+      url
+    }
+  }
+}
+
+mutation AddArchivist($multiaddr: String) {
+  addArchivist (multiaddr: $multiaddr) {
+    url
+  }
+}

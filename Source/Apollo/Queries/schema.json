@@ -115,6 +115,29 @@
             "deprecationReason": null
           },
           {
+            "name": "myBridges",
+            "description": "",
+            "args": [
+              {
+                "name": "paginate",
+                "description": "",
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "Paginate",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "BridgePage",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "bridges",
             "description": "",
             "args": [
@@ -124,72 +147,6 @@
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "Paginate",
-                  "ofType": null
-                },
-                "defaultValue": null
-              }
-            ],
-            "type": {
-              "kind": "OBJECT",
-              "name": "BridgePage",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "bridgesByEmail",
-            "description": "",
-            "args": [
-              {
-                "name": "paginate",
-                "description": "",
-                "type": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "Paginate",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "email",
-                "description": "",
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "defaultValue": null
-              }
-            ],
-            "type": {
-              "kind": "OBJECT",
-              "name": "BridgePage",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "bridgesByPublicKey",
-            "description": "",
-            "args": [
-              {
-                "name": "paginate",
-                "description": "",
-                "type": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "Paginate",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "publicKey",
-                "description": "",
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -311,6 +268,29 @@
             "deprecationReason": null
           },
           {
+            "name": "mySentinels",
+            "description": "",
+            "args": [
+              {
+                "name": "paginate",
+                "description": "",
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "Paginate",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "SentinelPage",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "sentinels",
             "description": "",
             "args": [
@@ -320,72 +300,6 @@
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "Paginate",
-                  "ofType": null
-                },
-                "defaultValue": null
-              }
-            ],
-            "type": {
-              "kind": "OBJECT",
-              "name": "SentinelPage",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "sentinelsByEmail",
-            "description": "",
-            "args": [
-              {
-                "name": "paginate",
-                "description": "",
-                "type": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "Paginate",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "email",
-                "description": "",
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "defaultValue": null
-              }
-            ],
-            "type": {
-              "kind": "OBJECT",
-              "name": "SentinelPage",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "sentinelsByPublicKey",
-            "description": "",
-            "args": [
-              {
-                "name": "paginate",
-                "description": "",
-                "type": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "Paginate",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "publicKey",
-                "description": "",
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -478,14 +392,14 @@
             "defaultValue": "10"
           },
           {
-            "name": "skip",
+            "name": "cursor",
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "Int",
+              "name": "String",
               "ofType": null
             },
-            "defaultValue": "0"
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -612,6 +526,18 @@
             },
             "isDeprecated": false,
             "deprecationReason": null
+          },
+          {
+            "name": "cursor",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
           }
         ],
         "inputFields": null,
@@ -648,6 +574,18 @@
           },
           {
             "name": "partyOne",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "BlockParty",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "partyTwo",
             "description": "",
             "args": [],
             "type": {
@@ -774,7 +712,43 @@
         "description": "",
         "fields": [
           {
+            "name": "name",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "owner",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "photoUrl",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "publicKey",
             "description": "",
             "args": [],
             "type": {
@@ -820,9 +794,62 @@
             },
             "isDeprecated": false,
             "deprecationReason": null
-          },
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [
+          {
+            "kind": "INTERFACE",
+            "name": "Address",
+            "ofType": null
+          }
+        ],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "Address",
+        "description": "",
+        "fields": [
           {
             "name": "name",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "owner",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "photoUrl",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "publicKey",
             "description": "",
             "args": [],
             "type": {
@@ -835,9 +862,20 @@
           }
         ],
         "inputFields": null,
-        "interfaces": [],
+        "interfaces": null,
         "enumValues": null,
-        "possibleTypes": null
+        "possibleTypes": [
+          {
+            "kind": "OBJECT",
+            "name": "Bridge",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "Sentinel",
+            "ofType": null
+          }
+        ]
       },
       {
         "kind": "SCALAR",
@@ -900,7 +938,43 @@
         "description": "",
         "fields": [
           {
+            "name": "name",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "owner",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "photoUrl",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "publicKey",
             "description": "",
             "args": [],
             "type": {
@@ -946,22 +1020,16 @@
             },
             "isDeprecated": false,
             "deprecationReason": null
-          },
-          {
-            "name": "name",
-            "description": "",
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
           }
         ],
         "inputFields": null,
-        "interfaces": [],
+        "interfaces": [
+          {
+            "kind": "INTERFACE",
+            "name": "Address",
+            "ofType": null
+          }
+        ],
         "enumValues": null,
         "possibleTypes": null
       },
@@ -1167,8 +1235,58 @@
                 "description": "",
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "BridgeInput",
+                  "name": "AddAddressInput",
                   "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "updateBridge",
+            "description": "",
+            "args": [
+              {
+                "name": "bridge",
+                "description": "",
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "UpdateAddressInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "deleteBridge",
+            "description": "",
+            "args": [
+              {
+                "name": "publicKey",
+                "description": "",
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
                 },
                 "defaultValue": null
               }
@@ -1190,8 +1308,58 @@
                 "description": "",
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "SentinelInput",
+                  "name": "AddAddressInput",
                   "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "updateSentinel",
+            "description": "",
+            "args": [
+              {
+                "name": "sentinel",
+                "description": "",
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "UpdateAddressInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "deleteSentinel",
+            "description": "",
+            "args": [
+              {
+                "name": "publicKey",
+                "description": "",
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
                 },
                 "defaultValue": null
               }
@@ -1258,12 +1426,12 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "BridgeInput",
+        "name": "AddAddressInput",
         "description": "",
         "fields": null,
         "inputFields": [
           {
-            "name": "email",
+            "name": "name",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -1273,7 +1441,7 @@
             "defaultValue": null
           },
           {
-            "name": "uuid",
+            "name": "owner",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -1283,21 +1451,21 @@
             "defaultValue": null
           },
           {
-            "name": "major",
+            "name": "photoUrl",
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "Int",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null
           },
           {
-            "name": "minor",
+            "name": "publicKey",
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "Int",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null
@@ -1319,12 +1487,12 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "SentinelInput",
+        "name": "UpdateAddressInput",
         "description": "",
         "fields": null,
         "inputFields": [
           {
-            "name": "email",
+            "name": "name",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -1334,7 +1502,7 @@
             "defaultValue": null
           },
           {
-            "name": "uuid",
+            "name": "owner",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -1344,21 +1512,21 @@
             "defaultValue": null
           },
           {
-            "name": "major",
+            "name": "photoUrl",
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "Int",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null
           },
           {
-            "name": "minor",
+            "name": "publicKey",
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "Int",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null
