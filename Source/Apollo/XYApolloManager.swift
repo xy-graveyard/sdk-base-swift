@@ -42,8 +42,8 @@ public class XYApolloQueryManager {
 
 public extension XYApolloQueryManager {
 
-    public class func nonAuth(on queue: DispatchQueue = .main) -> XYApolloQueryManager {
-        let client = ApolloClient(networkTransport: HTTPNetworkTransport(url: serverUrl), store: store)
+    public class func nonAuth(on queue: DispatchQueue = .main, configuration: URLSessionConfiguration = URLSessionConfiguration.default) -> XYApolloQueryManager {
+        let client = ApolloClient(networkTransport: HTTPNetworkTransport(url: serverUrl, configuration: configuration), store: store)
         client.cacheKeyForObject = { $0["id"] }
         return XYApolloQueryManager(client: client, queue: queue)
     }
@@ -51,10 +51,7 @@ public extension XYApolloQueryManager {
     public class func auth(token: String, on queue: DispatchQueue = .main) -> XYApolloQueryManager {
         let configuration = URLSessionConfiguration.default
         configuration.httpAdditionalHeaders = [xyAuthHeader: token]
-
-        let client = ApolloClient(networkTransport: HTTPNetworkTransport(url: serverUrl, configuration: configuration), store: store)
-        client.cacheKeyForObject = { $0["id"] }
-        return XYApolloQueryManager(client: client, queue: queue)
+        return self.nonAuth(on: queue, configuration: configuration)
     }
 
 }
