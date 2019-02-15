@@ -105,3 +105,14 @@ mutation AddArchivist($multiaddr: String) {
     url
   }
 }
+
+query MyUserInfo {
+  myUserInfo {
+    publicKey
+    isAnonymous
+  }
+}
+
+mutation UpdateMyUserInfo($publicKey: String, $isAnonymous: Boolean) {
+  updateMyUserInfo (info: { publicKey: $publicKey, isAnonymous: $isAnonymous })
+}

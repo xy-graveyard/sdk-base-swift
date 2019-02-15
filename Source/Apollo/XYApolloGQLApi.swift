@@ -1313,6 +1313,132 @@ public final class AddArchivistMutation: GraphQLMutation {
   }
 }
 
+public final class MyUserInfoQuery: GraphQLQuery {
+  public let operationDefinition =
+    "query MyUserInfo {\n  myUserInfo {\n    __typename\n    publicKey\n    isAnonymous\n  }\n}"
+
+  public init() {
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Query"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("myUserInfo", type: .object(MyUserInfo.selections)),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(myUserInfo: MyUserInfo? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Query", "myUserInfo": myUserInfo.flatMap { (value: MyUserInfo) -> ResultMap in value.resultMap }])
+    }
+
+    public var myUserInfo: MyUserInfo? {
+      get {
+        return (resultMap["myUserInfo"] as? ResultMap).flatMap { MyUserInfo(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "myUserInfo")
+      }
+    }
+
+    public struct MyUserInfo: GraphQLSelectionSet {
+      public static let possibleTypes = ["UserInfo"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("publicKey", type: .scalar(String.self)),
+        GraphQLField("isAnonymous", type: .scalar(Bool.self)),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(publicKey: String? = nil, isAnonymous: Bool? = nil) {
+        self.init(unsafeResultMap: ["__typename": "UserInfo", "publicKey": publicKey, "isAnonymous": isAnonymous])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var publicKey: String? {
+        get {
+          return resultMap["publicKey"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "publicKey")
+        }
+      }
+
+      public var isAnonymous: Bool? {
+        get {
+          return resultMap["isAnonymous"] as? Bool
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "isAnonymous")
+        }
+      }
+    }
+  }
+}
+
+public final class UpdateMyUserInfoMutation: GraphQLMutation {
+  public let operationDefinition =
+    "mutation UpdateMyUserInfo($publicKey: String, $isAnonymous: Boolean) {\n  updateMyUserInfo(info: {publicKey: $publicKey, isAnonymous: $isAnonymous})\n}"
+
+  public var publicKey: String?
+  public var isAnonymous: Bool?
+
+  public init(publicKey: String? = nil, isAnonymous: Bool? = nil) {
+    self.publicKey = publicKey
+    self.isAnonymous = isAnonymous
+  }
+
+  public var variables: GraphQLMap? {
+    return ["publicKey": publicKey, "isAnonymous": isAnonymous]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Mutation"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("updateMyUserInfo", arguments: ["info": ["publicKey": GraphQLVariable("publicKey"), "isAnonymous": GraphQLVariable("isAnonymous")]], type: .scalar(Bool.self)),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(updateMyUserInfo: Bool? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "updateMyUserInfo": updateMyUserInfo])
+    }
+
+    public var updateMyUserInfo: Bool? {
+      get {
+        return resultMap["updateMyUserInfo"] as? Bool
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "updateMyUserInfo")
+      }
+    }
+  }
+}
+
 public final class GetInfoQuery: GraphQLQuery {
   public let operationDefinition =
     "query getInfo {\n  totalXyoTokens(ethAddress: \"\")\n  historicalXyoTokensEarned(ethAddress: \"\", from: 1548115722712)\n  blocks(paginate: {limit: 2}) {\n    __typename\n    meta {\n      __typename\n      totalCount\n    }\n    items {\n      __typename\n      signedHash\n    }\n  }\n  bridges {\n    __typename\n    meta {\n      __typename\n      totalCount\n    }\n    items {\n      __typename\n      photoUrl\n      name\n      uuid\n      major\n      minor\n    }\n  }\n  sentinels {\n    __typename\n    meta {\n      __typename\n      totalCount\n    }\n    items {\n      __typename\n      photoUrl\n      name\n      uuid\n      major\n      minor\n    }\n  }\n}"
