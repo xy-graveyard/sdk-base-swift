@@ -98,6 +98,7 @@ mutation DeleteSentinel($publicKey: String!) {
       photoUrl
     }
   }
+  
 
 query AllBridges($limit: Int, $cursor: String) {
   bridges(paginate: { limit: $limit, cursor: $cursor }) {
@@ -176,5 +177,33 @@ mutation UpdateMyUserInfo(
       email
       publicKey
       isAnonymous
+    }
+  }
+
+  mutation AddBridge(
+    $id: String!
+    $name: String
+    $photoUrl: String
+    $publicKey: String
+    $uuid: String
+    $major: Int
+    $minor: Int
+  ) {
+    addBridge(
+      address: {
+        id: $id
+        publicKey: $publicKey
+        name: $name
+        photoUrl: $photoUrl
+      }
+      bridge: { uuid: $uuid, major: $major, minor: $minor }
+    ) {
+      id
+      name
+      photoUrl
+      publicKey
+      uuid
+      major
+      minor
     }
   }
