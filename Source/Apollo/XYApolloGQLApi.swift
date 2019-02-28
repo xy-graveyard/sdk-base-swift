@@ -56,7 +56,7 @@ public final class TotalXyoTokensQuery: GraphQLQuery {
 
 public final class MyDevicesQuery: GraphQLQuery {
   public let operationDefinition =
-    "query MyDevices {\n  mySentinels {\n    __typename\n    meta {\n      __typename\n      totalCount\n    }\n    items {\n      __typename\n      name\n      photoUrl\n      publicKey\n    }\n  }\n  myBridges {\n    __typename\n    meta {\n      __typename\n      totalCount\n    }\n    items {\n      __typename\n      name\n      photoUrl\n      publicKey\n    }\n  }\n}"
+    "query MyDevices {\n  mySentinels {\n    __typename\n    meta {\n      __typename\n      totalCount\n    }\n    items {\n      __typename\n      id\n      name\n      photoUrl\n      publicKey\n      uuid\n      major\n      minor\n    }\n  }\n  myBridges {\n    __typename\n    meta {\n      __typename\n      totalCount\n    }\n    items {\n      __typename\n      id\n      name\n      photoUrl\n      publicKey\n      uuid\n      major\n      minor\n    }\n  }\n}"
 
   public init() {
   }
@@ -185,9 +185,13 @@ public final class MyDevicesQuery: GraphQLQuery {
 
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .scalar(String.self)),
           GraphQLField("name", type: .scalar(String.self)),
           GraphQLField("photoUrl", type: .scalar(String.self)),
           GraphQLField("publicKey", type: .scalar(String.self)),
+          GraphQLField("uuid", type: .scalar(String.self)),
+          GraphQLField("major", type: .scalar(Int.self)),
+          GraphQLField("minor", type: .scalar(Int.self)),
         ]
 
         public private(set) var resultMap: ResultMap
@@ -196,8 +200,8 @@ public final class MyDevicesQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(name: String? = nil, photoUrl: String? = nil, publicKey: String? = nil) {
-          self.init(unsafeResultMap: ["__typename": "Sentinel", "name": name, "photoUrl": photoUrl, "publicKey": publicKey])
+        public init(id: String? = nil, name: String? = nil, photoUrl: String? = nil, publicKey: String? = nil, uuid: String? = nil, major: Int? = nil, minor: Int? = nil) {
+          self.init(unsafeResultMap: ["__typename": "Sentinel", "id": id, "name": name, "photoUrl": photoUrl, "publicKey": publicKey, "uuid": uuid, "major": major, "minor": minor])
         }
 
         public var __typename: String {
@@ -206,6 +210,15 @@ public final class MyDevicesQuery: GraphQLQuery {
           }
           set {
             resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: String? {
+          get {
+            return resultMap["id"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "id")
           }
         }
 
@@ -233,6 +246,33 @@ public final class MyDevicesQuery: GraphQLQuery {
           }
           set {
             resultMap.updateValue(newValue, forKey: "publicKey")
+          }
+        }
+
+        public var uuid: String? {
+          get {
+            return resultMap["uuid"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "uuid")
+          }
+        }
+
+        public var major: Int? {
+          get {
+            return resultMap["major"] as? Int
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "major")
+          }
+        }
+
+        public var minor: Int? {
+          get {
+            return resultMap["minor"] as? Int
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "minor")
           }
         }
       }
@@ -326,9 +366,13 @@ public final class MyDevicesQuery: GraphQLQuery {
 
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .scalar(String.self)),
           GraphQLField("name", type: .scalar(String.self)),
           GraphQLField("photoUrl", type: .scalar(String.self)),
           GraphQLField("publicKey", type: .scalar(String.self)),
+          GraphQLField("uuid", type: .scalar(String.self)),
+          GraphQLField("major", type: .scalar(Int.self)),
+          GraphQLField("minor", type: .scalar(Int.self)),
         ]
 
         public private(set) var resultMap: ResultMap
@@ -337,8 +381,8 @@ public final class MyDevicesQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(name: String? = nil, photoUrl: String? = nil, publicKey: String? = nil) {
-          self.init(unsafeResultMap: ["__typename": "Bridge", "name": name, "photoUrl": photoUrl, "publicKey": publicKey])
+        public init(id: String? = nil, name: String? = nil, photoUrl: String? = nil, publicKey: String? = nil, uuid: String? = nil, major: Int? = nil, minor: Int? = nil) {
+          self.init(unsafeResultMap: ["__typename": "Bridge", "id": id, "name": name, "photoUrl": photoUrl, "publicKey": publicKey, "uuid": uuid, "major": major, "minor": minor])
         }
 
         public var __typename: String {
@@ -347,6 +391,15 @@ public final class MyDevicesQuery: GraphQLQuery {
           }
           set {
             resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: String? {
+          get {
+            return resultMap["id"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "id")
           }
         }
 
@@ -376,6 +429,33 @@ public final class MyDevicesQuery: GraphQLQuery {
             resultMap.updateValue(newValue, forKey: "publicKey")
           }
         }
+
+        public var uuid: String? {
+          get {
+            return resultMap["uuid"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "uuid")
+          }
+        }
+
+        public var major: Int? {
+          get {
+            return resultMap["major"] as? Int
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "major")
+          }
+        }
+
+        public var minor: Int? {
+          get {
+            return resultMap["minor"] as? Int
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "minor")
+          }
+        }
       }
     }
   }
@@ -383,27 +463,35 @@ public final class MyDevicesQuery: GraphQLQuery {
 
 public final class AddSentinelMutation: GraphQLMutation {
   public let operationDefinition =
-    "mutation AddSentinel($publicKey: String!, $name: String, $photoUrl: String) {\n  addSentinel(sentinel: {publicKey: $publicKey, name: $name, photoUrl: $photoUrl})\n}"
+    "mutation AddSentinel($id: String!, $name: String, $photoUrl: String, $publicKey: String, $uuid: String, $major: Int, $minor: Int) {\n  addSentinel(address: {id: $id, publicKey: $publicKey, name: $name, photoUrl: $photoUrl}, sentinel: {uuid: $uuid, major: $major, minor: $minor}) {\n    __typename\n    id\n    name\n    photoUrl\n    publicKey\n    uuid\n    major\n    minor\n  }\n}"
 
-  public var publicKey: String
+  public var id: String
   public var name: String?
   public var photoUrl: String?
+  public var publicKey: String?
+  public var uuid: String?
+  public var major: Int?
+  public var minor: Int?
 
-  public init(publicKey: String, name: String? = nil, photoUrl: String? = nil) {
-    self.publicKey = publicKey
+  public init(id: String, name: String? = nil, photoUrl: String? = nil, publicKey: String? = nil, uuid: String? = nil, major: Int? = nil, minor: Int? = nil) {
+    self.id = id
     self.name = name
     self.photoUrl = photoUrl
+    self.publicKey = publicKey
+    self.uuid = uuid
+    self.major = major
+    self.minor = minor
   }
 
   public var variables: GraphQLMap? {
-    return ["publicKey": publicKey, "name": name, "photoUrl": photoUrl]
+    return ["id": id, "name": name, "photoUrl": photoUrl, "publicKey": publicKey, "uuid": uuid, "major": major, "minor": minor]
   }
 
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes = ["Mutation"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("addSentinel", arguments: ["sentinel": ["publicKey": GraphQLVariable("publicKey"), "name": GraphQLVariable("name"), "photoUrl": GraphQLVariable("photoUrl")]], type: .scalar(Bool.self)),
+      GraphQLField("addSentinel", arguments: ["address": ["id": GraphQLVariable("id"), "publicKey": GraphQLVariable("publicKey"), "name": GraphQLVariable("name"), "photoUrl": GraphQLVariable("photoUrl")], "sentinel": ["uuid": GraphQLVariable("uuid"), "major": GraphQLVariable("major"), "minor": GraphQLVariable("minor")]], type: .object(AddSentinel.selections)),
     ]
 
     public private(set) var resultMap: ResultMap
@@ -412,16 +500,113 @@ public final class AddSentinelMutation: GraphQLMutation {
       self.resultMap = unsafeResultMap
     }
 
-    public init(addSentinel: Bool? = nil) {
-      self.init(unsafeResultMap: ["__typename": "Mutation", "addSentinel": addSentinel])
+    public init(addSentinel: AddSentinel? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "addSentinel": addSentinel.flatMap { (value: AddSentinel) -> ResultMap in value.resultMap }])
     }
 
-    public var addSentinel: Bool? {
+    public var addSentinel: AddSentinel? {
       get {
-        return resultMap["addSentinel"] as? Bool
+        return (resultMap["addSentinel"] as? ResultMap).flatMap { AddSentinel(unsafeResultMap: $0) }
       }
       set {
-        resultMap.updateValue(newValue, forKey: "addSentinel")
+        resultMap.updateValue(newValue?.resultMap, forKey: "addSentinel")
+      }
+    }
+
+    public struct AddSentinel: GraphQLSelectionSet {
+      public static let possibleTypes = ["Sentinel"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .scalar(String.self)),
+        GraphQLField("name", type: .scalar(String.self)),
+        GraphQLField("photoUrl", type: .scalar(String.self)),
+        GraphQLField("publicKey", type: .scalar(String.self)),
+        GraphQLField("uuid", type: .scalar(String.self)),
+        GraphQLField("major", type: .scalar(Int.self)),
+        GraphQLField("minor", type: .scalar(Int.self)),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(id: String? = nil, name: String? = nil, photoUrl: String? = nil, publicKey: String? = nil, uuid: String? = nil, major: Int? = nil, minor: Int? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Sentinel", "id": id, "name": name, "photoUrl": photoUrl, "publicKey": publicKey, "uuid": uuid, "major": major, "minor": minor])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: String? {
+        get {
+          return resultMap["id"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      public var name: String? {
+        get {
+          return resultMap["name"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "name")
+        }
+      }
+
+      public var photoUrl: String? {
+        get {
+          return resultMap["photoUrl"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "photoUrl")
+        }
+      }
+
+      public var publicKey: String? {
+        get {
+          return resultMap["publicKey"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "publicKey")
+        }
+      }
+
+      public var uuid: String? {
+        get {
+          return resultMap["uuid"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "uuid")
+        }
+      }
+
+      public var major: Int? {
+        get {
+          return resultMap["major"] as? Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "major")
+        }
+      }
+
+      public var minor: Int? {
+        get {
+          return resultMap["minor"] as? Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "minor")
+        }
       }
     }
   }
@@ -429,27 +614,35 @@ public final class AddSentinelMutation: GraphQLMutation {
 
 public final class UpdateSentinelMutation: GraphQLMutation {
   public let operationDefinition =
-    "mutation UpdateSentinel($publicKey: String!, $name: String, $photoUrl: String) {\n  updateSentinel(sentinel: {photoUrl: $photoUrl, publicKey: $publicKey, name: $name})\n}"
+    "mutation UpdateSentinel($id: String!, $name: String, $photoUrl: String, $publicKey: String, $uuid: String, $major: Int, $minor: Int) {\n  updateSentinel(address: {id: $id, publicKey: $publicKey, name: $name, photoUrl: $photoUrl}, sentinel: {uuid: $uuid, major: $major, minor: $minor}) {\n    __typename\n    id\n    name\n    photoUrl\n    publicKey\n    uuid\n    major\n    minor\n  }\n}"
 
-  public var publicKey: String
+  public var id: String
   public var name: String?
   public var photoUrl: String?
+  public var publicKey: String?
+  public var uuid: String?
+  public var major: Int?
+  public var minor: Int?
 
-  public init(publicKey: String, name: String? = nil, photoUrl: String? = nil) {
-    self.publicKey = publicKey
+  public init(id: String, name: String? = nil, photoUrl: String? = nil, publicKey: String? = nil, uuid: String? = nil, major: Int? = nil, minor: Int? = nil) {
+    self.id = id
     self.name = name
     self.photoUrl = photoUrl
+    self.publicKey = publicKey
+    self.uuid = uuid
+    self.major = major
+    self.minor = minor
   }
 
   public var variables: GraphQLMap? {
-    return ["publicKey": publicKey, "name": name, "photoUrl": photoUrl]
+    return ["id": id, "name": name, "photoUrl": photoUrl, "publicKey": publicKey, "uuid": uuid, "major": major, "minor": minor]
   }
 
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes = ["Mutation"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("updateSentinel", arguments: ["sentinel": ["photoUrl": GraphQLVariable("photoUrl"), "publicKey": GraphQLVariable("publicKey"), "name": GraphQLVariable("name")]], type: .scalar(Bool.self)),
+      GraphQLField("updateSentinel", arguments: ["address": ["id": GraphQLVariable("id"), "publicKey": GraphQLVariable("publicKey"), "name": GraphQLVariable("name"), "photoUrl": GraphQLVariable("photoUrl")], "sentinel": ["uuid": GraphQLVariable("uuid"), "major": GraphQLVariable("major"), "minor": GraphQLVariable("minor")]], type: .object(UpdateSentinel.selections)),
     ]
 
     public private(set) var resultMap: ResultMap
@@ -458,16 +651,113 @@ public final class UpdateSentinelMutation: GraphQLMutation {
       self.resultMap = unsafeResultMap
     }
 
-    public init(updateSentinel: Bool? = nil) {
-      self.init(unsafeResultMap: ["__typename": "Mutation", "updateSentinel": updateSentinel])
+    public init(updateSentinel: UpdateSentinel? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "updateSentinel": updateSentinel.flatMap { (value: UpdateSentinel) -> ResultMap in value.resultMap }])
     }
 
-    public var updateSentinel: Bool? {
+    public var updateSentinel: UpdateSentinel? {
       get {
-        return resultMap["updateSentinel"] as? Bool
+        return (resultMap["updateSentinel"] as? ResultMap).flatMap { UpdateSentinel(unsafeResultMap: $0) }
       }
       set {
-        resultMap.updateValue(newValue, forKey: "updateSentinel")
+        resultMap.updateValue(newValue?.resultMap, forKey: "updateSentinel")
+      }
+    }
+
+    public struct UpdateSentinel: GraphQLSelectionSet {
+      public static let possibleTypes = ["Sentinel"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .scalar(String.self)),
+        GraphQLField("name", type: .scalar(String.self)),
+        GraphQLField("photoUrl", type: .scalar(String.self)),
+        GraphQLField("publicKey", type: .scalar(String.self)),
+        GraphQLField("uuid", type: .scalar(String.self)),
+        GraphQLField("major", type: .scalar(Int.self)),
+        GraphQLField("minor", type: .scalar(Int.self)),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(id: String? = nil, name: String? = nil, photoUrl: String? = nil, publicKey: String? = nil, uuid: String? = nil, major: Int? = nil, minor: Int? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Sentinel", "id": id, "name": name, "photoUrl": photoUrl, "publicKey": publicKey, "uuid": uuid, "major": major, "minor": minor])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: String? {
+        get {
+          return resultMap["id"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      public var name: String? {
+        get {
+          return resultMap["name"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "name")
+        }
+      }
+
+      public var photoUrl: String? {
+        get {
+          return resultMap["photoUrl"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "photoUrl")
+        }
+      }
+
+      public var publicKey: String? {
+        get {
+          return resultMap["publicKey"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "publicKey")
+        }
+      }
+
+      public var uuid: String? {
+        get {
+          return resultMap["uuid"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "uuid")
+        }
+      }
+
+      public var major: Int? {
+        get {
+          return resultMap["major"] as? Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "major")
+        }
+      }
+
+      public var minor: Int? {
+        get {
+          return resultMap["minor"] as? Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "minor")
+        }
       }
     }
   }
@@ -475,7 +765,7 @@ public final class UpdateSentinelMutation: GraphQLMutation {
 
 public final class DeleteSentinelMutation: GraphQLMutation {
   public let operationDefinition =
-    "mutation DeleteSentinel($publicKey: String!) {\n  deleteSentinel(publicKey: $publicKey)\n}"
+    "mutation DeleteSentinel($publicKey: String!) {\n  deleteSentinel(publicKey: $publicKey) {\n    __typename\n    name\n    publicKey\n    photoUrl\n  }\n}"
 
   public var publicKey: String
 
@@ -491,7 +781,7 @@ public final class DeleteSentinelMutation: GraphQLMutation {
     public static let possibleTypes = ["Mutation"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("deleteSentinel", arguments: ["publicKey": GraphQLVariable("publicKey")], type: .scalar(Bool.self)),
+      GraphQLField("deleteSentinel", arguments: ["publicKey": GraphQLVariable("publicKey")], type: .object(DeleteSentinel.selections)),
     ]
 
     public private(set) var resultMap: ResultMap
@@ -500,150 +790,73 @@ public final class DeleteSentinelMutation: GraphQLMutation {
       self.resultMap = unsafeResultMap
     }
 
-    public init(deleteSentinel: Bool? = nil) {
-      self.init(unsafeResultMap: ["__typename": "Mutation", "deleteSentinel": deleteSentinel])
+    public init(deleteSentinel: DeleteSentinel? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "deleteSentinel": deleteSentinel.flatMap { (value: DeleteSentinel) -> ResultMap in value.resultMap }])
     }
 
-    public var deleteSentinel: Bool? {
+    public var deleteSentinel: DeleteSentinel? {
       get {
-        return resultMap["deleteSentinel"] as? Bool
+        return (resultMap["deleteSentinel"] as? ResultMap).flatMap { DeleteSentinel(unsafeResultMap: $0) }
       }
       set {
-        resultMap.updateValue(newValue, forKey: "deleteSentinel")
+        resultMap.updateValue(newValue?.resultMap, forKey: "deleteSentinel")
       }
     }
-  }
-}
 
-public final class AddBridgeMutation: GraphQLMutation {
-  public let operationDefinition =
-    "mutation AddBridge($publicKey: String!, $name: String, $photoUrl: String) {\n  addBridge(bridge: {publicKey: $publicKey, name: $name, photoUrl: $photoUrl})\n}"
+    public struct DeleteSentinel: GraphQLSelectionSet {
+      public static let possibleTypes = ["Sentinel"]
 
-  public var publicKey: String
-  public var name: String?
-  public var photoUrl: String?
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("name", type: .scalar(String.self)),
+        GraphQLField("publicKey", type: .scalar(String.self)),
+        GraphQLField("photoUrl", type: .scalar(String.self)),
+      ]
 
-  public init(publicKey: String, name: String? = nil, photoUrl: String? = nil) {
-    self.publicKey = publicKey
-    self.name = name
-    self.photoUrl = photoUrl
-  }
+      public private(set) var resultMap: ResultMap
 
-  public var variables: GraphQLMap? {
-    return ["publicKey": publicKey, "name": name, "photoUrl": photoUrl]
-  }
-
-  public struct Data: GraphQLSelectionSet {
-    public static let possibleTypes = ["Mutation"]
-
-    public static let selections: [GraphQLSelection] = [
-      GraphQLField("addBridge", arguments: ["bridge": ["publicKey": GraphQLVariable("publicKey"), "name": GraphQLVariable("name"), "photoUrl": GraphQLVariable("photoUrl")]], type: .scalar(Bool.self)),
-    ]
-
-    public private(set) var resultMap: ResultMap
-
-    public init(unsafeResultMap: ResultMap) {
-      self.resultMap = unsafeResultMap
-    }
-
-    public init(addBridge: Bool? = nil) {
-      self.init(unsafeResultMap: ["__typename": "Mutation", "addBridge": addBridge])
-    }
-
-    public var addBridge: Bool? {
-      get {
-        return resultMap["addBridge"] as? Bool
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
       }
-      set {
-        resultMap.updateValue(newValue, forKey: "addBridge")
+
+      public init(name: String? = nil, publicKey: String? = nil, photoUrl: String? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Sentinel", "name": name, "publicKey": publicKey, "photoUrl": photoUrl])
       }
-    }
-  }
-}
 
-public final class UpdateBridgeMutation: GraphQLMutation {
-  public let operationDefinition =
-    "mutation UpdateBridge($publicKey: String!, $name: String, $photoUrl: String) {\n  updateBridge(bridge: {photoUrl: $photoUrl, publicKey: $publicKey, name: $name})\n}"
-
-  public var publicKey: String
-  public var name: String?
-  public var photoUrl: String?
-
-  public init(publicKey: String, name: String? = nil, photoUrl: String? = nil) {
-    self.publicKey = publicKey
-    self.name = name
-    self.photoUrl = photoUrl
-  }
-
-  public var variables: GraphQLMap? {
-    return ["publicKey": publicKey, "name": name, "photoUrl": photoUrl]
-  }
-
-  public struct Data: GraphQLSelectionSet {
-    public static let possibleTypes = ["Mutation"]
-
-    public static let selections: [GraphQLSelection] = [
-      GraphQLField("updateBridge", arguments: ["bridge": ["photoUrl": GraphQLVariable("photoUrl"), "publicKey": GraphQLVariable("publicKey"), "name": GraphQLVariable("name")]], type: .scalar(Bool.self)),
-    ]
-
-    public private(set) var resultMap: ResultMap
-
-    public init(unsafeResultMap: ResultMap) {
-      self.resultMap = unsafeResultMap
-    }
-
-    public init(updateBridge: Bool? = nil) {
-      self.init(unsafeResultMap: ["__typename": "Mutation", "updateBridge": updateBridge])
-    }
-
-    public var updateBridge: Bool? {
-      get {
-        return resultMap["updateBridge"] as? Bool
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
       }
-      set {
-        resultMap.updateValue(newValue, forKey: "updateBridge")
+
+      public var name: String? {
+        get {
+          return resultMap["name"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "name")
+        }
       }
-    }
-  }
-}
 
-public final class DeleteBridgeMutation: GraphQLMutation {
-  public let operationDefinition =
-    "mutation DeleteBridge($publicKey: String!) {\n  deleteBridge(publicKey: $publicKey)\n}"
-
-  public var publicKey: String
-
-  public init(publicKey: String) {
-    self.publicKey = publicKey
-  }
-
-  public var variables: GraphQLMap? {
-    return ["publicKey": publicKey]
-  }
-
-  public struct Data: GraphQLSelectionSet {
-    public static let possibleTypes = ["Mutation"]
-
-    public static let selections: [GraphQLSelection] = [
-      GraphQLField("deleteBridge", arguments: ["publicKey": GraphQLVariable("publicKey")], type: .scalar(Bool.self)),
-    ]
-
-    public private(set) var resultMap: ResultMap
-
-    public init(unsafeResultMap: ResultMap) {
-      self.resultMap = unsafeResultMap
-    }
-
-    public init(deleteBridge: Bool? = nil) {
-      self.init(unsafeResultMap: ["__typename": "Mutation", "deleteBridge": deleteBridge])
-    }
-
-    public var deleteBridge: Bool? {
-      get {
-        return resultMap["deleteBridge"] as? Bool
+      public var publicKey: String? {
+        get {
+          return resultMap["publicKey"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "publicKey")
+        }
       }
-      set {
-        resultMap.updateValue(newValue, forKey: "deleteBridge")
+
+      public var photoUrl: String? {
+        get {
+          return resultMap["photoUrl"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "photoUrl")
+        }
       }
     }
   }
@@ -1315,7 +1528,7 @@ public final class AddArchivistMutation: GraphQLMutation {
 
 public final class MyUserInfoQuery: GraphQLQuery {
   public let operationDefinition =
-    "query MyUserInfo {\n  myUserInfo {\n    __typename\n    publicKey\n    isAnonymous\n  }\n}"
+    "query MyUserInfo {\n  myUserInfo {\n    __typename\n    displayName\n    email\n    photoURL\n    publicKey\n    isAnonymous\n  }\n}"
 
   public init() {
   }
@@ -1351,6 +1564,9 @@ public final class MyUserInfoQuery: GraphQLQuery {
 
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("displayName", type: .scalar(String.self)),
+        GraphQLField("email", type: .scalar(String.self)),
+        GraphQLField("photoURL", type: .scalar(String.self)),
         GraphQLField("publicKey", type: .scalar(String.self)),
         GraphQLField("isAnonymous", type: .scalar(Bool.self)),
       ]
@@ -1361,8 +1577,8 @@ public final class MyUserInfoQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(publicKey: String? = nil, isAnonymous: Bool? = nil) {
-        self.init(unsafeResultMap: ["__typename": "UserInfo", "publicKey": publicKey, "isAnonymous": isAnonymous])
+      public init(displayName: String? = nil, email: String? = nil, photoUrl: String? = nil, publicKey: String? = nil, isAnonymous: Bool? = nil) {
+        self.init(unsafeResultMap: ["__typename": "UserInfo", "displayName": displayName, "email": email, "photoURL": photoUrl, "publicKey": publicKey, "isAnonymous": isAnonymous])
       }
 
       public var __typename: String {
@@ -1371,6 +1587,33 @@ public final class MyUserInfoQuery: GraphQLQuery {
         }
         set {
           resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var displayName: String? {
+        get {
+          return resultMap["displayName"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "displayName")
+        }
+      }
+
+      public var email: String? {
+        get {
+          return resultMap["email"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "email")
+        }
+      }
+
+      public var photoUrl: String? {
+        get {
+          return resultMap["photoURL"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "photoURL")
         }
       }
 
@@ -1397,25 +1640,29 @@ public final class MyUserInfoQuery: GraphQLQuery {
 
 public final class UpdateMyUserInfoMutation: GraphQLMutation {
   public let operationDefinition =
-    "mutation UpdateMyUserInfo($publicKey: String, $isAnonymous: Boolean) {\n  updateMyUserInfo(info: {publicKey: $publicKey, isAnonymous: $isAnonymous})\n}"
+    "mutation UpdateMyUserInfo($displayName: String, $photoURL: String, $publicKey: String, $isAnonymous: Boolean) {\n  updateMyUserInfo(info: {displayName: $displayName, photoURL: $photoURL, publicKey: $publicKey, isAnonymous: $isAnonymous}) {\n    __typename\n    displayName\n    photoURL\n    email\n    publicKey\n    isAnonymous\n  }\n}"
 
+  public var displayName: String?
+  public var photoURL: String?
   public var publicKey: String?
   public var isAnonymous: Bool?
 
-  public init(publicKey: String? = nil, isAnonymous: Bool? = nil) {
+  public init(displayName: String? = nil, photoURL: String? = nil, publicKey: String? = nil, isAnonymous: Bool? = nil) {
+    self.displayName = displayName
+    self.photoURL = photoURL
     self.publicKey = publicKey
     self.isAnonymous = isAnonymous
   }
 
   public var variables: GraphQLMap? {
-    return ["publicKey": publicKey, "isAnonymous": isAnonymous]
+    return ["displayName": displayName, "photoURL": photoURL, "publicKey": publicKey, "isAnonymous": isAnonymous]
   }
 
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes = ["Mutation"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("updateMyUserInfo", arguments: ["info": ["publicKey": GraphQLVariable("publicKey"), "isAnonymous": GraphQLVariable("isAnonymous")]], type: .scalar(Bool.self)),
+      GraphQLField("updateMyUserInfo", arguments: ["info": ["displayName": GraphQLVariable("displayName"), "photoURL": GraphQLVariable("photoURL"), "publicKey": GraphQLVariable("publicKey"), "isAnonymous": GraphQLVariable("isAnonymous")]], type: .object(UpdateMyUserInfo.selections)),
     ]
 
     public private(set) var resultMap: ResultMap
@@ -1424,16 +1671,93 @@ public final class UpdateMyUserInfoMutation: GraphQLMutation {
       self.resultMap = unsafeResultMap
     }
 
-    public init(updateMyUserInfo: Bool? = nil) {
-      self.init(unsafeResultMap: ["__typename": "Mutation", "updateMyUserInfo": updateMyUserInfo])
+    public init(updateMyUserInfo: UpdateMyUserInfo? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "updateMyUserInfo": updateMyUserInfo.flatMap { (value: UpdateMyUserInfo) -> ResultMap in value.resultMap }])
     }
 
-    public var updateMyUserInfo: Bool? {
+    public var updateMyUserInfo: UpdateMyUserInfo? {
       get {
-        return resultMap["updateMyUserInfo"] as? Bool
+        return (resultMap["updateMyUserInfo"] as? ResultMap).flatMap { UpdateMyUserInfo(unsafeResultMap: $0) }
       }
       set {
-        resultMap.updateValue(newValue, forKey: "updateMyUserInfo")
+        resultMap.updateValue(newValue?.resultMap, forKey: "updateMyUserInfo")
+      }
+    }
+
+    public struct UpdateMyUserInfo: GraphQLSelectionSet {
+      public static let possibleTypes = ["UserInfo"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("displayName", type: .scalar(String.self)),
+        GraphQLField("photoURL", type: .scalar(String.self)),
+        GraphQLField("email", type: .scalar(String.self)),
+        GraphQLField("publicKey", type: .scalar(String.self)),
+        GraphQLField("isAnonymous", type: .scalar(Bool.self)),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(displayName: String? = nil, photoUrl: String? = nil, email: String? = nil, publicKey: String? = nil, isAnonymous: Bool? = nil) {
+        self.init(unsafeResultMap: ["__typename": "UserInfo", "displayName": displayName, "photoURL": photoUrl, "email": email, "publicKey": publicKey, "isAnonymous": isAnonymous])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var displayName: String? {
+        get {
+          return resultMap["displayName"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "displayName")
+        }
+      }
+
+      public var photoUrl: String? {
+        get {
+          return resultMap["photoURL"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "photoURL")
+        }
+      }
+
+      public var email: String? {
+        get {
+          return resultMap["email"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "email")
+        }
+      }
+
+      public var publicKey: String? {
+        get {
+          return resultMap["publicKey"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "publicKey")
+        }
+      }
+
+      public var isAnonymous: Bool? {
+        get {
+          return resultMap["isAnonymous"] as? Bool
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "isAnonymous")
+        }
       }
     }
   }

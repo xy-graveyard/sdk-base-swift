@@ -5,58 +5,99 @@ query TotalXyoTokens($ethAddress: String) {
 }
 
 query MyDevices {
-  mySentinels {
-    meta {
-      totalCount
+    mySentinels {
+      meta {
+        totalCount
+      }
+      items {
+        id
+        name
+        photoUrl
+        publicKey
+        uuid
+        major
+        minor
+      }
     }
-    items {
-      name
-      photoUrl
-      publicKey
+    myBridges {
+      meta {
+        totalCount
+      }
+      items {
+        id
+        name
+        photoUrl
+        publicKey
+        uuid
+        major
+        minor
+      }
     }
   }
 
-  myBridges {
-    meta {
-      totalCount
-    }
-    items {
+mutation AddSentinel(
+    $id: String!
+    $name: String
+    $photoUrl: String
+    $publicKey: String
+    $uuid: String
+    $major: Int
+    $minor: Int
+  ) {
+    addSentinel(
+      address: {
+        id: $id
+        publicKey: $publicKey
+        name: $name
+        photoUrl: $photoUrl
+      }
+      sentinel: { uuid: $uuid, major: $major, minor: $minor }
+    ) {
+      id
       name
       photoUrl
       publicKey
+      uuid
+      major
+      minor
     }
   }
-}
 
-mutation AddSentinel($publicKey: String!, $name: String, $photoUrl: String) {
-  addSentinel(
-    sentinel: { publicKey: $publicKey, name: $name, photoUrl: $photoUrl }
-  )
-}
-
-mutation UpdateSentinel($publicKey: String!, $name: String, $photoUrl: String) {
-  updateSentinel(
-    sentinel: { photoUrl: $photoUrl, publicKey: $publicKey, name: $name }
-  )
-}
+mutation UpdateSentinel(
+    $id: String!
+    $name: String
+    $photoUrl: String
+    $publicKey: String
+    $uuid: String
+    $major: Int
+    $minor: Int
+  ) {
+    updateSentinel(
+      address: {
+        id: $id
+        publicKey: $publicKey
+        name: $name
+        photoUrl: $photoUrl
+      }
+      sentinel: { uuid: $uuid, major: $major, minor: $minor }
+    ) {
+      id
+      name
+      photoUrl
+      publicKey
+      uuid
+      major
+      minor
+    }
+  }
 
 mutation DeleteSentinel($publicKey: String!) {
-  deleteSentinel(publicKey: $publicKey)
-}
-
-mutation AddBridge($publicKey: String!, $name: String, $photoUrl: String) {
-  addBridge(bridge: { publicKey: $publicKey, name: $name, photoUrl: $photoUrl })
-}
-
-mutation UpdateBridge($publicKey: String!, $name: String, $photoUrl: String) {
-  updateBridge(
-    bridge: { photoUrl: $photoUrl, publicKey: $publicKey, name: $name }
-  )
-}
-
-mutation DeleteBridge($publicKey: String!) {
-  deleteBridge(publicKey: $publicKey)
-}
+    deleteSentinel(publicKey: $publicKey) {
+      name
+      publicKey
+      photoUrl
+    }
+  }
 
 query AllBridges($limit: Int, $cursor: String) {
   bridges(paginate: { limit: $limit, cursor: $cursor }) {
@@ -107,12 +148,33 @@ mutation AddArchivist($multiaddr: String) {
 }
 
 query MyUserInfo {
-  myUserInfo {
-    publicKey
-    isAnonymous
+    myUserInfo {
+      displayName
+      email
+      photoURL
+      publicKey
+      isAnonymous
+    }
   }
-}
 
-mutation UpdateMyUserInfo($publicKey: String, $isAnonymous: Boolean) {
-  updateMyUserInfo (info: { publicKey: $publicKey, isAnonymous: $isAnonymous })
-}
+mutation UpdateMyUserInfo(
+    $displayName: String
+    $photoURL: String
+    $publicKey: String
+    $isAnonymous: Boolean
+  ) {
+    updateMyUserInfo(
+      info: {
+        displayName: $displayName
+        photoURL: $photoURL
+        publicKey: $publicKey
+        isAnonymous: $isAnonymous
+      }
+    ) {
+      displayName
+      photoURL
+      email
+      publicKey
+      isAnonymous
+    }
+  }
