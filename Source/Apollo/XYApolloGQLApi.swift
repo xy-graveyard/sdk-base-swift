@@ -1913,7 +1913,7 @@ public final class DetachFromArchivistClientMutation: GraphQLMutation {
 
 public final class MyAttachedArchivistsQuery: GraphQLQuery {
   public let operationDefinition =
-    "query MyAttachedArchivists {\n  myAttachedArchivists {\n    __typename\n    id\n    name\n    owner\n    photoUrl\n    publicKey\n    multiaddr\n    port\n    ip\n  }\n}"
+    "query MyAttachedArchivists {\n  myAttachedArchivists {\n    __typename\n    id\n    name\n    owner\n    photoUrl\n    dns\n    publicKey\n    multiaddr\n    port\n    ip\n  }\n}"
 
   public init() {
   }
@@ -1953,6 +1953,7 @@ public final class MyAttachedArchivistsQuery: GraphQLQuery {
         GraphQLField("name", type: .scalar(String.self)),
         GraphQLField("owner", type: .scalar(String.self)),
         GraphQLField("photoUrl", type: .scalar(String.self)),
+        GraphQLField("dns", type: .scalar(String.self)),
         GraphQLField("publicKey", type: .scalar(String.self)),
         GraphQLField("multiaddr", type: .scalar(String.self)),
         GraphQLField("port", type: .scalar(Int.self)),
@@ -1965,8 +1966,8 @@ public final class MyAttachedArchivistsQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(id: String? = nil, name: String? = nil, owner: String? = nil, photoUrl: String? = nil, publicKey: String? = nil, multiaddr: String? = nil, port: Int? = nil, ip: String? = nil) {
-        self.init(unsafeResultMap: ["__typename": "Archivist", "id": id, "name": name, "owner": owner, "photoUrl": photoUrl, "publicKey": publicKey, "multiaddr": multiaddr, "port": port, "ip": ip])
+      public init(id: String? = nil, name: String? = nil, owner: String? = nil, photoUrl: String? = nil, dns: String? = nil, publicKey: String? = nil, multiaddr: String? = nil, port: Int? = nil, ip: String? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Archivist", "id": id, "name": name, "owner": owner, "photoUrl": photoUrl, "dns": dns, "publicKey": publicKey, "multiaddr": multiaddr, "port": port, "ip": ip])
       }
 
       public var __typename: String {
@@ -2011,6 +2012,15 @@ public final class MyAttachedArchivistsQuery: GraphQLQuery {
         }
         set {
           resultMap.updateValue(newValue, forKey: "photoUrl")
+        }
+      }
+
+      public var dns: String? {
+        get {
+          return resultMap["dns"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "dns")
         }
       }
 

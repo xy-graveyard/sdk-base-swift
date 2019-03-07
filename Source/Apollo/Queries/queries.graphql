@@ -220,6 +220,7 @@ query MyAttachedArchivists {
     name
     owner
     photoUrl
+    dns
     publicKey
     multiaddr
     port
