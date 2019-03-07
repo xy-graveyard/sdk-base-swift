@@ -1911,6 +1911,148 @@ public final class DetachFromArchivistClientMutation: GraphQLMutation {
   }
 }
 
+public final class MyAttachedArchivistsQuery: GraphQLQuery {
+  public let operationDefinition =
+    "query MyAttachedArchivists {\n  myAttachedArchivists {\n    __typename\n    id\n    name\n    owner\n    photoUrl\n    publicKey\n    multiaddr\n    port\n    ip\n  }\n}"
+
+  public init() {
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Query"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("myAttachedArchivists", type: .list(.object(MyAttachedArchivist.selections))),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(myAttachedArchivists: [MyAttachedArchivist?]? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Query", "myAttachedArchivists": myAttachedArchivists.flatMap { (value: [MyAttachedArchivist?]) -> [ResultMap?] in value.map { (value: MyAttachedArchivist?) -> ResultMap? in value.flatMap { (value: MyAttachedArchivist) -> ResultMap in value.resultMap } } }])
+    }
+
+    public var myAttachedArchivists: [MyAttachedArchivist?]? {
+      get {
+        return (resultMap["myAttachedArchivists"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [MyAttachedArchivist?] in value.map { (value: ResultMap?) -> MyAttachedArchivist? in value.flatMap { (value: ResultMap) -> MyAttachedArchivist in MyAttachedArchivist(unsafeResultMap: value) } } }
+      }
+      set {
+        resultMap.updateValue(newValue.flatMap { (value: [MyAttachedArchivist?]) -> [ResultMap?] in value.map { (value: MyAttachedArchivist?) -> ResultMap? in value.flatMap { (value: MyAttachedArchivist) -> ResultMap in value.resultMap } } }, forKey: "myAttachedArchivists")
+      }
+    }
+
+    public struct MyAttachedArchivist: GraphQLSelectionSet {
+      public static let possibleTypes = ["Archivist"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .scalar(String.self)),
+        GraphQLField("name", type: .scalar(String.self)),
+        GraphQLField("owner", type: .scalar(String.self)),
+        GraphQLField("photoUrl", type: .scalar(String.self)),
+        GraphQLField("publicKey", type: .scalar(String.self)),
+        GraphQLField("multiaddr", type: .scalar(String.self)),
+        GraphQLField("port", type: .scalar(Int.self)),
+        GraphQLField("ip", type: .scalar(String.self)),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(id: String? = nil, name: String? = nil, owner: String? = nil, photoUrl: String? = nil, publicKey: String? = nil, multiaddr: String? = nil, port: Int? = nil, ip: String? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Archivist", "id": id, "name": name, "owner": owner, "photoUrl": photoUrl, "publicKey": publicKey, "multiaddr": multiaddr, "port": port, "ip": ip])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: String? {
+        get {
+          return resultMap["id"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      public var name: String? {
+        get {
+          return resultMap["name"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "name")
+        }
+      }
+
+      public var owner: String? {
+        get {
+          return resultMap["owner"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "owner")
+        }
+      }
+
+      public var photoUrl: String? {
+        get {
+          return resultMap["photoUrl"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "photoUrl")
+        }
+      }
+
+      public var publicKey: String? {
+        get {
+          return resultMap["publicKey"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "publicKey")
+        }
+      }
+
+      public var multiaddr: String? {
+        get {
+          return resultMap["multiaddr"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "multiaddr")
+        }
+      }
+
+      public var port: Int? {
+        get {
+          return resultMap["port"] as? Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "port")
+        }
+      }
+
+      public var ip: String? {
+        get {
+          return resultMap["ip"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "ip")
+        }
+      }
+    }
+  }
+}
+
 public final class AddFeedbackMutation: GraphQLMutation {
   public let operationDefinition =
     "mutation AddFeedback($value: Int!, $text: String) {\n  addFeedback(value: $value, text: $text) {\n    __typename\n    id\n    owner\n    value\n    text\n    created\n    updated\n  }\n}"

@@ -214,6 +214,19 @@ mutation DetachFromArchivistClient($id: String!) {
   }
 }
 
+query MyAttachedArchivists {
+  myAttachedArchivists {
+    id
+    name
+    owner
+    photoUrl
+    publicKey
+    multiaddr
+    port
+    ip
+  }
+}
+
 mutation AddFeedback($value: Int!, $text: String) {
     addFeedback(value: $value, text: $text) {
       id
