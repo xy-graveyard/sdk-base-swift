@@ -130,24 +130,6 @@ query AllSentinels($limit: Int, $cursor: String) {
   }
 }
 
-query ListArchivists($limit: Int, $cursor: String) {
-  archivists(paginate: {limit: $limit, cursor: $cursor}) {
-    meta {
-      totalCount
-      cursor
-    }
-    items {
-      url
-    }
-  }
-}
-
-mutation AddArchivist($multiaddr: String) {
-  addArchivist (multiaddr: $multiaddr) {
-    url
-  }
-}
-
 query MyUserInfo {
     myUserInfo {
       displayName
@@ -155,6 +137,13 @@ query MyUserInfo {
       photoURL
       publicKey
       isAnonymous
+      archivists {
+        id
+        multiaddr
+        dns
+        ip
+        port
+      }
     }
   }
 
@@ -205,5 +194,44 @@ mutation UpdateMyUserInfo(
       uuid
       major
       minor
+    }
+  }
+
+  mutation AttachToArchivistClient($multiaddr: String, $dns: String, $ip: String, $port: Int) {
+  attachToArchivistClient (archivist: {
+    multiaddr: $multiaddr
+    port: $port
+    dns: $dns
+    ip: $ip
+  }) {
+    id
+  }
+}
+
+mutation DetachFromArchivistClient($id: String!) {
+  detachFromArchivistClient (id: $id) {
+    id
+  }
+}
+
+mutation AddFeedback($value: Int!, $text: String) {
+    addFeedback(value: $value, text: $text) {
+      id
+      owner
+      value
+      text
+      created
+      updated
+    }
+  }
+
+  mutation UpdateFeedback($id: String!, $value: Int, $text: String) {
+    updateFeedback(id: $id, value: $value, text: $text) {
+      id
+      owner
+      value
+      text
+      created
+      updated
     }
   }
