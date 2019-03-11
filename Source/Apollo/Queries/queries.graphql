@@ -132,17 +132,18 @@ query AllSentinels($limit: Int, $cursor: String) {
 
 query MyUserInfo {
     myUserInfo {
+      id
       displayName
       email
       photoURL
       publicKey
       isAnonymous
+      defaultArchivistId
       archivists {
         id
+        name
+        publicKey
         multiaddr
-        dns
-        ip
-        port
       }
     }
   }
@@ -152,6 +153,7 @@ mutation UpdateMyUserInfo(
     $photoURL: String
     $publicKey: String
     $isAnonymous: Boolean
+    $defaultArchivistId: String
   ) {
     updateMyUserInfo(
       info: {
@@ -159,13 +161,16 @@ mutation UpdateMyUserInfo(
         photoURL: $photoURL
         publicKey: $publicKey
         isAnonymous: $isAnonymous
+        defaultArchivistId: $defaultArchivistId
       }
     ) {
+      id
       displayName
       photoURL
       email
       publicKey
       isAnonymous
+      defaultArchivistId
     }
   }
 
@@ -247,5 +252,17 @@ mutation AddFeedback($value: Int!, $text: String) {
       text
       created
       updated
+    }
+  }
+
+mutation SetDefaultArchivist(
+    $defaultArchivistId: String
+  ) {
+    updateMyUserInfo(
+      info: {
+        defaultArchivistId: $defaultArchivistId
+      }
+    ) {
+      id
     }
   }

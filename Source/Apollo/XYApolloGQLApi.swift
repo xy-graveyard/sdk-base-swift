@@ -1274,7 +1274,7 @@ public final class AllSentinelsQuery: GraphQLQuery {
 
 public final class MyUserInfoQuery: GraphQLQuery {
   public let operationDefinition =
-    "query MyUserInfo {\n  myUserInfo {\n    __typename\n    displayName\n    email\n    photoURL\n    publicKey\n    isAnonymous\n    archivists {\n      __typename\n      id\n      multiaddr\n      dns\n      ip\n      port\n    }\n  }\n}"
+    "query MyUserInfo {\n  myUserInfo {\n    __typename\n    id\n    displayName\n    email\n    photoURL\n    publicKey\n    isAnonymous\n    defaultArchivistId\n    archivists {\n      __typename\n      id\n      name\n      publicKey\n      multiaddr\n    }\n  }\n}"
 
   public init() {
   }
@@ -1310,11 +1310,13 @@ public final class MyUserInfoQuery: GraphQLQuery {
 
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .scalar(String.self)),
         GraphQLField("displayName", type: .scalar(String.self)),
         GraphQLField("email", type: .scalar(String.self)),
         GraphQLField("photoURL", type: .scalar(String.self)),
         GraphQLField("publicKey", type: .scalar(String.self)),
         GraphQLField("isAnonymous", type: .scalar(Bool.self)),
+        GraphQLField("defaultArchivistId", type: .scalar(String.self)),
         GraphQLField("archivists", type: .list(.object(Archivist.selections))),
       ]
 
@@ -1324,8 +1326,8 @@ public final class MyUserInfoQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(displayName: String? = nil, email: String? = nil, photoUrl: String? = nil, publicKey: String? = nil, isAnonymous: Bool? = nil, archivists: [Archivist?]? = nil) {
-        self.init(unsafeResultMap: ["__typename": "UserInfo", "displayName": displayName, "email": email, "photoURL": photoUrl, "publicKey": publicKey, "isAnonymous": isAnonymous, "archivists": archivists.flatMap { (value: [Archivist?]) -> [ResultMap?] in value.map { (value: Archivist?) -> ResultMap? in value.flatMap { (value: Archivist) -> ResultMap in value.resultMap } } }])
+      public init(id: String? = nil, displayName: String? = nil, email: String? = nil, photoUrl: String? = nil, publicKey: String? = nil, isAnonymous: Bool? = nil, defaultArchivistId: String? = nil, archivists: [Archivist?]? = nil) {
+        self.init(unsafeResultMap: ["__typename": "UserInfo", "id": id, "displayName": displayName, "email": email, "photoURL": photoUrl, "publicKey": publicKey, "isAnonymous": isAnonymous, "defaultArchivistId": defaultArchivistId, "archivists": archivists.flatMap { (value: [Archivist?]) -> [ResultMap?] in value.map { (value: Archivist?) -> ResultMap? in value.flatMap { (value: Archivist) -> ResultMap in value.resultMap } } }])
       }
 
       public var __typename: String {
@@ -1334,6 +1336,15 @@ public final class MyUserInfoQuery: GraphQLQuery {
         }
         set {
           resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: String? {
+        get {
+          return resultMap["id"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
         }
       }
 
@@ -1382,6 +1393,15 @@ public final class MyUserInfoQuery: GraphQLQuery {
         }
       }
 
+      public var defaultArchivistId: String? {
+        get {
+          return resultMap["defaultArchivistId"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "defaultArchivistId")
+        }
+      }
+
       public var archivists: [Archivist?]? {
         get {
           return (resultMap["archivists"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [Archivist?] in value.map { (value: ResultMap?) -> Archivist? in value.flatMap { (value: ResultMap) -> Archivist in Archivist(unsafeResultMap: value) } } }
@@ -1397,10 +1417,9 @@ public final class MyUserInfoQuery: GraphQLQuery {
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("id", type: .scalar(String.self)),
+          GraphQLField("name", type: .scalar(String.self)),
+          GraphQLField("publicKey", type: .scalar(String.self)),
           GraphQLField("multiaddr", type: .scalar(String.self)),
-          GraphQLField("dns", type: .scalar(String.self)),
-          GraphQLField("ip", type: .scalar(String.self)),
-          GraphQLField("port", type: .scalar(Int.self)),
         ]
 
         public private(set) var resultMap: ResultMap
@@ -1409,8 +1428,8 @@ public final class MyUserInfoQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(id: String? = nil, multiaddr: String? = nil, dns: String? = nil, ip: String? = nil, port: Int? = nil) {
-          self.init(unsafeResultMap: ["__typename": "Archivist", "id": id, "multiaddr": multiaddr, "dns": dns, "ip": ip, "port": port])
+        public init(id: String? = nil, name: String? = nil, publicKey: String? = nil, multiaddr: String? = nil) {
+          self.init(unsafeResultMap: ["__typename": "Archivist", "id": id, "name": name, "publicKey": publicKey, "multiaddr": multiaddr])
         }
 
         public var __typename: String {
@@ -1431,39 +1450,30 @@ public final class MyUserInfoQuery: GraphQLQuery {
           }
         }
 
+        public var name: String? {
+          get {
+            return resultMap["name"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "name")
+          }
+        }
+
+        public var publicKey: String? {
+          get {
+            return resultMap["publicKey"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "publicKey")
+          }
+        }
+
         public var multiaddr: String? {
           get {
             return resultMap["multiaddr"] as? String
           }
           set {
             resultMap.updateValue(newValue, forKey: "multiaddr")
-          }
-        }
-
-        public var dns: String? {
-          get {
-            return resultMap["dns"] as? String
-          }
-          set {
-            resultMap.updateValue(newValue, forKey: "dns")
-          }
-        }
-
-        public var ip: String? {
-          get {
-            return resultMap["ip"] as? String
-          }
-          set {
-            resultMap.updateValue(newValue, forKey: "ip")
-          }
-        }
-
-        public var port: Int? {
-          get {
-            return resultMap["port"] as? Int
-          }
-          set {
-            resultMap.updateValue(newValue, forKey: "port")
           }
         }
       }
@@ -1473,29 +1483,31 @@ public final class MyUserInfoQuery: GraphQLQuery {
 
 public final class UpdateMyUserInfoMutation: GraphQLMutation {
   public let operationDefinition =
-    "mutation UpdateMyUserInfo($displayName: String, $photoURL: String, $publicKey: String, $isAnonymous: Boolean) {\n  updateMyUserInfo(info: {displayName: $displayName, photoURL: $photoURL, publicKey: $publicKey, isAnonymous: $isAnonymous}) {\n    __typename\n    displayName\n    photoURL\n    email\n    publicKey\n    isAnonymous\n  }\n}"
+    "mutation UpdateMyUserInfo($displayName: String, $photoURL: String, $publicKey: String, $isAnonymous: Boolean, $defaultArchivistId: String) {\n  updateMyUserInfo(info: {displayName: $displayName, photoURL: $photoURL, publicKey: $publicKey, isAnonymous: $isAnonymous, defaultArchivistId: $defaultArchivistId}) {\n    __typename\n    id\n    displayName\n    photoURL\n    email\n    publicKey\n    isAnonymous\n    defaultArchivistId\n  }\n}"
 
   public var displayName: String?
   public var photoURL: String?
   public var publicKey: String?
   public var isAnonymous: Bool?
+  public var defaultArchivistId: String?
 
-  public init(displayName: String? = nil, photoURL: String? = nil, publicKey: String? = nil, isAnonymous: Bool? = nil) {
+  public init(displayName: String? = nil, photoURL: String? = nil, publicKey: String? = nil, isAnonymous: Bool? = nil, defaultArchivistId: String? = nil) {
     self.displayName = displayName
     self.photoURL = photoURL
     self.publicKey = publicKey
     self.isAnonymous = isAnonymous
+    self.defaultArchivistId = defaultArchivistId
   }
 
   public var variables: GraphQLMap? {
-    return ["displayName": displayName, "photoURL": photoURL, "publicKey": publicKey, "isAnonymous": isAnonymous]
+    return ["displayName": displayName, "photoURL": photoURL, "publicKey": publicKey, "isAnonymous": isAnonymous, "defaultArchivistId": defaultArchivistId]
   }
 
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes = ["Mutation"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("updateMyUserInfo", arguments: ["info": ["displayName": GraphQLVariable("displayName"), "photoURL": GraphQLVariable("photoURL"), "publicKey": GraphQLVariable("publicKey"), "isAnonymous": GraphQLVariable("isAnonymous")]], type: .object(UpdateMyUserInfo.selections)),
+      GraphQLField("updateMyUserInfo", arguments: ["info": ["displayName": GraphQLVariable("displayName"), "photoURL": GraphQLVariable("photoURL"), "publicKey": GraphQLVariable("publicKey"), "isAnonymous": GraphQLVariable("isAnonymous"), "defaultArchivistId": GraphQLVariable("defaultArchivistId")]], type: .object(UpdateMyUserInfo.selections)),
     ]
 
     public private(set) var resultMap: ResultMap
@@ -1522,11 +1534,13 @@ public final class UpdateMyUserInfoMutation: GraphQLMutation {
 
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .scalar(String.self)),
         GraphQLField("displayName", type: .scalar(String.self)),
         GraphQLField("photoURL", type: .scalar(String.self)),
         GraphQLField("email", type: .scalar(String.self)),
         GraphQLField("publicKey", type: .scalar(String.self)),
         GraphQLField("isAnonymous", type: .scalar(Bool.self)),
+        GraphQLField("defaultArchivistId", type: .scalar(String.self)),
       ]
 
       public private(set) var resultMap: ResultMap
@@ -1535,8 +1549,8 @@ public final class UpdateMyUserInfoMutation: GraphQLMutation {
         self.resultMap = unsafeResultMap
       }
 
-      public init(displayName: String? = nil, photoUrl: String? = nil, email: String? = nil, publicKey: String? = nil, isAnonymous: Bool? = nil) {
-        self.init(unsafeResultMap: ["__typename": "UserInfo", "displayName": displayName, "photoURL": photoUrl, "email": email, "publicKey": publicKey, "isAnonymous": isAnonymous])
+      public init(id: String? = nil, displayName: String? = nil, photoUrl: String? = nil, email: String? = nil, publicKey: String? = nil, isAnonymous: Bool? = nil, defaultArchivistId: String? = nil) {
+        self.init(unsafeResultMap: ["__typename": "UserInfo", "id": id, "displayName": displayName, "photoURL": photoUrl, "email": email, "publicKey": publicKey, "isAnonymous": isAnonymous, "defaultArchivistId": defaultArchivistId])
       }
 
       public var __typename: String {
@@ -1545,6 +1559,15 @@ public final class UpdateMyUserInfoMutation: GraphQLMutation {
         }
         set {
           resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: String? {
+        get {
+          return resultMap["id"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
         }
       }
 
@@ -1590,6 +1613,15 @@ public final class UpdateMyUserInfoMutation: GraphQLMutation {
         }
         set {
           resultMap.updateValue(newValue, forKey: "isAnonymous")
+        }
+      }
+
+      public var defaultArchivistId: String? {
+        get {
+          return resultMap["defaultArchivistId"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "defaultArchivistId")
         }
       }
     }
@@ -2321,6 +2353,85 @@ public final class UpdateFeedbackMutation: GraphQLMutation {
         }
         set {
           resultMap.updateValue(newValue, forKey: "updated")
+        }
+      }
+    }
+  }
+}
+
+public final class SetDefaultArchivistMutation: GraphQLMutation {
+  public let operationDefinition =
+    "mutation SetDefaultArchivist($defaultArchivistId: String) {\n  updateMyUserInfo(info: {defaultArchivistId: $defaultArchivistId}) {\n    __typename\n    id\n  }\n}"
+
+  public var defaultArchivistId: String?
+
+  public init(defaultArchivistId: String? = nil) {
+    self.defaultArchivistId = defaultArchivistId
+  }
+
+  public var variables: GraphQLMap? {
+    return ["defaultArchivistId": defaultArchivistId]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Mutation"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("updateMyUserInfo", arguments: ["info": ["defaultArchivistId": GraphQLVariable("defaultArchivistId")]], type: .object(UpdateMyUserInfo.selections)),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(updateMyUserInfo: UpdateMyUserInfo? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "updateMyUserInfo": updateMyUserInfo.flatMap { (value: UpdateMyUserInfo) -> ResultMap in value.resultMap }])
+    }
+
+    public var updateMyUserInfo: UpdateMyUserInfo? {
+      get {
+        return (resultMap["updateMyUserInfo"] as? ResultMap).flatMap { UpdateMyUserInfo(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "updateMyUserInfo")
+      }
+    }
+
+    public struct UpdateMyUserInfo: GraphQLSelectionSet {
+      public static let possibleTypes = ["UserInfo"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .scalar(String.self)),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(id: String? = nil) {
+        self.init(unsafeResultMap: ["__typename": "UserInfo", "id": id])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: String? {
+        get {
+          return resultMap["id"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
         }
       }
     }
