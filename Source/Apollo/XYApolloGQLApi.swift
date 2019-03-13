@@ -2437,3 +2437,112 @@ public final class SetDefaultArchivistMutation: GraphQLMutation {
     }
   }
 }
+
+public final class TotalArchivistsQuery: GraphQLQuery {
+  public let operationDefinition =
+    "query TotalArchivists {\n  archivists {\n    __typename\n    meta {\n      __typename\n      totalCount\n    }\n  }\n}"
+
+  public init() {
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Query"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("archivists", type: .object(Archivist.selections)),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(archivists: Archivist? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Query", "archivists": archivists.flatMap { (value: Archivist) -> ResultMap in value.resultMap }])
+    }
+
+    public var archivists: Archivist? {
+      get {
+        return (resultMap["archivists"] as? ResultMap).flatMap { Archivist(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "archivists")
+      }
+    }
+
+    public struct Archivist: GraphQLSelectionSet {
+      public static let possibleTypes = ["ArchivistPage"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("meta", type: .nonNull(.object(Metum.selections))),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(meta: Metum) {
+        self.init(unsafeResultMap: ["__typename": "ArchivistPage", "meta": meta.resultMap])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var meta: Metum {
+        get {
+          return Metum(unsafeResultMap: resultMap["meta"]! as! ResultMap)
+        }
+        set {
+          resultMap.updateValue(newValue.resultMap, forKey: "meta")
+        }
+      }
+
+      public struct Metum: GraphQLSelectionSet {
+        public static let possibleTypes = ["PageMeta"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("totalCount", type: .scalar(Double.self)),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(totalCount: Double? = nil) {
+          self.init(unsafeResultMap: ["__typename": "PageMeta", "totalCount": totalCount])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var totalCount: Double? {
+          get {
+            return resultMap["totalCount"] as? Double
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "totalCount")
+          }
+        }
+      }
+    }
+  }
+}

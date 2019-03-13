@@ -266,3 +266,11 @@ mutation SetDefaultArchivist(
       id
     }
   }
+
+query TotalArchivists {
+  archivists {
+    meta {
+      totalCount
+    }
+  }
+}
