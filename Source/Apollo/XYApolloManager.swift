@@ -12,15 +12,25 @@ import Foundation
 public protocol XYQueryManager: class {
     var cache: ApolloStore { get }
 
-    func fetch<Query: GraphQLQuery>(for query: Query, then callback: OperationResultHandler<Query>?)
+    func fetch<Query: GraphQLQuery>(for query: Query) -> XYApolloFetchRequest<Query>
     func watch<Query: GraphQLQuery>(for query: Query, then callback: @escaping OperationResultHandler<Query>) -> GraphQLQueryWatcher<Query>
-    func mutate<Mutation: GraphQLMutation>(for mutation: Mutation, then callback: @escaping OperationResultHandler<Mutation>)
+    func mutate<Mutation: GraphQLMutation>(for mutation: Mutation) -> XYApolloMutateRequest<Mutation>
+}
+
+public enum XYQueryManagerError: Error {
+    case timedOut
 }
 
 public class XYApolloQueryManager {
 
-    private let client: ApolloClient
-    private let queue: DispatchQueue
+    public static let defaultQueue = DispatchQueue(label:"com.xyonetwork.core.sdk.XYApolloQueryManagerOperationsQueue")
+    public static let defaultTimeout: DispatchTimeInterval = .seconds(15)
+
+    fileprivate static let timeoutQueue = DispatchQueue(label:"com.xyonetwork.core.sdk.XYApolloQueryManagerTimeoutQueue")
+
+    internal let client: ApolloClient
+    internal let queue: DispatchQueue
+    internal let timeout: DispatchTimeInterval
 
     fileprivate static let store = ApolloStore(cache: InMemoryNormalizedCache())
 
@@ -34,24 +44,33 @@ public class XYApolloQueryManager {
         return url
     }()
 
-    fileprivate init(client: ApolloClient, queue: DispatchQueue = .main) {
+    fileprivate init(client: ApolloClient, queue: DispatchQueue, timeout: DispatchTimeInterval) {
         self.client = client
         self.queue = queue
+        self.timeout = timeout
     }
 }
 
 public extension XYApolloQueryManager {
 
-    public class func nonAuth(on queue: DispatchQueue = .main, configuration: URLSessionConfiguration = URLSessionConfiguration.default) -> XYApolloQueryManager {
+    public class func nonAuth(
+        on queue: DispatchQueue = XYApolloQueryManager.defaultQueue,
+        with timeout: DispatchTimeInterval = XYApolloQueryManager.defaultTimeout,
+        configuration: URLSessionConfiguration = URLSessionConfiguration.default) -> XYApolloQueryManager {
+
         let client = ApolloClient(networkTransport: HTTPNetworkTransport(url: serverUrl, configuration: configuration), store: store)
         client.cacheKeyForObject = { $0["id"] }
-        return XYApolloQueryManager(client: client, queue: queue)
+        return XYApolloQueryManager(client: client, queue: queue, timeout: timeout)
     }
 
-    public class func auth(token: String, on queue: DispatchQueue = .main) -> XYApolloQueryManager {
+    public class func auth(
+        token: String,
+        on queue: DispatchQueue = XYApolloQueryManager.defaultQueue,
+        with timeout: DispatchTimeInterval = XYApolloQueryManager.defaultTimeout) -> XYApolloQueryManager {
+
         let configuration = URLSessionConfiguration.default
         configuration.httpAdditionalHeaders = [xyAuthHeader: token]
-        return self.nonAuth(on: queue, configuration: configuration)
+        return self.nonAuth(on: queue, with: timeout, configuration: configuration)
     }
 
 }
@@ -62,16 +81,74 @@ extension XYApolloQueryManager: XYQueryManager {
         return XYApolloQueryManager.store
     }
 
-    public func fetch<Query: GraphQLQuery>(for query: Query, then callback: OperationResultHandler<Query>?) {
-        self.client.fetch(query: query, queue: self.queue, resultHandler: callback)
+    public func fetch<Query: GraphQLQuery>(for query: Query) -> XYApolloFetchRequest<Query> {
+        return XYApolloFetchRequest(query: query, with: self)
     }
 
     public func watch<Query: GraphQLQuery>(for query: Query, then callback: @escaping OperationResultHandler<Query>) -> GraphQLQueryWatcher<Query> {
         return self.client.watch(query: query, queue: self.queue, resultHandler: callback)
     }
 
-    public func mutate<Mutation: GraphQLMutation>(for mutation: Mutation, then callback: @escaping OperationResultHandler<Mutation>) {
-        self.client.perform(mutation: mutation, queue: self.queue, resultHandler: callback)
+    public func mutate<Mutation: GraphQLMutation>(for mutation: Mutation) -> XYApolloMutateRequest<Mutation> {
+        return XYApolloMutateRequest(mutation: mutation, with: self)
+    }
+
+}
+
+/// A self contained fetch request, handles timeouts
+public class XYApolloFetchRequest<Query: GraphQLQuery> {
+
+    private let
+    query: Query,
+    manager: XYApolloQueryManager
+
+    private var timer: DispatchSourceTimer?
+    private var cancelHandle: Cancellable?
+
+    internal init(query: Query, with manager: XYApolloQueryManager) {
+        self.query = query
+        self.manager = manager
+    }
+
+    public func execute(_ callback: OperationResultHandler<Query>?) {
+        self.cancelHandle = self.manager.client.fetch(query: self.query, queue: self.manager.queue) { [weak self] result, error in
+            self?.timer = nil
+            callback?(result, error)
+        }
+
+        self.timer = DispatchSource.singleTimer(interval: self.manager.timeout, queue: XYApolloQueryManager.timeoutQueue) { [weak self] in
+            self?.cancelHandle?.cancel()
+            callback?(nil, XYQueryManagerError.timedOut)
+        }
+    }
+
+}
+
+/// A self contained mutate request, handles timeouts
+public class XYApolloMutateRequest<Mutation: GraphQLMutation> {
+
+    private let
+    mutation: Mutation,
+    manager: XYApolloQueryManager
+
+    private var timer: DispatchSourceTimer?
+    private var cancelHandle: Cancellable?
+
+    internal init(mutation: Mutation, with manager: XYApolloQueryManager) {
+        self.mutation = mutation
+        self.manager = manager
+    }
+
+    public func execute(_ callback: @escaping OperationResultHandler<Mutation>) {
+        self.cancelHandle = self.manager.client.perform(mutation: self.mutation, queue: self.manager.queue) { [weak self] result, error in
+            self?.timer = nil
+            callback(result, error)
+        }
+
+        self.timer = DispatchSource.singleTimer(interval: self.manager.timeout, queue: XYApolloQueryManager.timeoutQueue) { [weak self] in
+            self?.cancelHandle?.cancel()
+            callback(nil, XYQueryManagerError.timedOut)
+        }
     }
 
 }

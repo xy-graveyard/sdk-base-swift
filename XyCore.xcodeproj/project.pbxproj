@@ -10,12 +10,11 @@
 		315591E72204FE5700DC4556 /* XyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 315591DE2204FE5700DC4556 /* XyCore.framework */; };
 		315591F62204FFDB00DC4556 /* XYBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315591D62204FCBF00DC4556 /* XYBase.swift */; };
 		315591F72204FFDF00DC4556 /* XYTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315591D52204FCBF00DC4556 /* XYTimer.swift */; };
+		319A815C223ACDCD0002210B /* Dispatch+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319A815B223ACDCD0002210B /* Dispatch+extensions.swift */; };
 		319AB243220910A6009D37D1 /* queries.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 319AB240220910A6009D37D1 /* queries.graphql */; };
-		319AB244220910A6009D37D1 /* getQuery.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 319AB241220910A6009D37D1 /* getQuery.graphql */; };
 		319AB245220910A6009D37D1 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 319AB242220910A6009D37D1 /* schema.json */; };
 		31DC14ED2208B3BB00F19571 /* XYApolloGQLApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DC14EC2208B3BB00F19571 /* XYApolloGQLApi.swift */; };
 		31DC14EF2208B3D000F19571 /* XYApolloManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DC14EE2208B3D000F19571 /* XYApolloManager.swift */; };
-		31FF96E922050AE700B89104 /* XYModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF96E822050AE700B89104 /* XYModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,12 +36,11 @@
 		315591D62204FCBF00DC4556 /* XYBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XYBase.swift; sourceTree = "<group>"; };
 		315591DE2204FE5700DC4556 /* XyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		315591E62204FE5700DC4556 /* XyCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XyCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		319A815B223ACDCD0002210B /* Dispatch+extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dispatch+extensions.swift"; sourceTree = "<group>"; };
 		319AB240220910A6009D37D1 /* queries.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = queries.graphql; sourceTree = "<group>"; };
-		319AB241220910A6009D37D1 /* getQuery.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = getQuery.graphql; sourceTree = "<group>"; };
 		319AB242220910A6009D37D1 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		31DC14EC2208B3BB00F19571 /* XYApolloGQLApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XYApolloGQLApi.swift; sourceTree = "<group>"; };
 		31DC14EE2208B3D000F19571 /* XYApolloManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYApolloManager.swift; sourceTree = "<group>"; };
-		31FF96E822050AE700B89104 /* XYModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,8 +83,8 @@
 		315591BC2204FBB400DC4556 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				319A815A223ACDCD0002210B /* Extensions */,
 				31DC14EB2208B3A300F19571 /* Apollo */,
-				31FF96E722050AD700B89104 /* Models */,
 				315591F82205002A00DC4556 /* Supporting Files */,
 				315591D42204FCA300DC4556 /* Legacy */,
 			);
@@ -120,11 +118,18 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		319A815A223ACDCD0002210B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				319A815B223ACDCD0002210B /* Dispatch+extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		319AB23F220910A6009D37D1 /* Queries */ = {
 			isa = PBXGroup;
 			children = (
 				319AB240220910A6009D37D1 /* queries.graphql */,
-				319AB241220910A6009D37D1 /* getQuery.graphql */,
 				319AB242220910A6009D37D1 /* schema.json */,
 			);
 			path = Queries;
@@ -138,14 +143,6 @@
 				31DC14EE2208B3D000F19571 /* XYApolloManager.swift */,
 			);
 			path = Apollo;
-			sourceTree = "<group>";
-		};
-		31FF96E722050AD700B89104 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				31FF96E822050AE700B89104 /* XYModel.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,7 +237,6 @@
 			files = (
 				319AB243220910A6009D37D1 /* queries.graphql in Resources */,
 				319AB245220910A6009D37D1 /* schema.json in Resources */,
-				319AB244220910A6009D37D1 /* getQuery.graphql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,10 +255,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				31DC14EF2208B3D000F19571 /* XYApolloManager.swift in Sources */,
+				319A815C223ACDCD0002210B /* Dispatch+extensions.swift in Sources */,
 				315591F72204FFDF00DC4556 /* XYTimer.swift in Sources */,
 				31DC14ED2208B3BB00F19571 /* XYApolloGQLApi.swift in Sources */,
 				315591F62204FFDB00DC4556 /* XYBase.swift in Sources */,
-				31FF96E922050AE700B89104 /* XYModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
