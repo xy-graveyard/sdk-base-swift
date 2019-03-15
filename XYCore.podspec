@@ -15,4 +15,5 @@ Pod::Spec.new do |s|
   s.source_files = 'Source/**/*.{swift}'
   
   s.dependency 'Apollo'
+  s.dependency 'PromisesSwift', '~> 1.2.4'
 end

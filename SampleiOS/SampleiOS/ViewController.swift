@@ -13,7 +13,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.validateClient()
+        self.validateClient()
     }
 
 
@@ -21,11 +21,8 @@ class ViewController: UIViewController {
 
 fileprivate extension ViewController {
 
-//    func validateClient() {
-//        guard let client = XYApolloQueryManager() else { return }
-//        client.client.fetch(query: GetInfoQuery()) { result, error in
-//            print(result)
-//        }
-//    }
+    func validateClient() {
+        
+    }
 
 }

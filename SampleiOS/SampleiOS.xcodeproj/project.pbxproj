@@ -12,10 +12,11 @@
 		31DC15022208B48500F19571 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31DC15002208B48500F19571 /* Main.storyboard */; };
 		31DC15042208B48500F19571 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31DC15032208B48500F19571 /* Assets.xcassets */; };
 		31DC15072208B48500F19571 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31DC15052208B48500F19571 /* LaunchScreen.storyboard */; };
-		A90D35380C4510AE5BEA0480 /* Pods_SampleiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E53833078860E306AB2E331 /* Pods_SampleiOS.framework */; };
+		F1780D04DD96C4C5FD8BD403 /* Pods_SampleiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F710BA4DC8744744FEA48DA1 /* Pods_SampleiOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0CB9F27B09249F7B7E7FBE9A /* Pods-SampleiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleiOS.release.xcconfig"; path = "Target Support Files/Pods-SampleiOS/Pods-SampleiOS.release.xcconfig"; sourceTree = "<group>"; };
 		31DC14F92208B48500F19571 /* SampleiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31DC14FC2208B48500F19571 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		31DC14FE2208B48500F19571 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -23,9 +24,8 @@
 		31DC15032208B48500F19571 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		31DC15062208B48500F19571 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		31DC15082208B48500F19571 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6C892E116A182147B459FD17 /* Pods-SampleiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleiOS.debug.xcconfig"; path = "Target Support Files/Pods-SampleiOS/Pods-SampleiOS.debug.xcconfig"; sourceTree = "<group>"; };
-		8E53833078860E306AB2E331 /* Pods_SampleiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SampleiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B313E19C3381CE7716726823 /* Pods-SampleiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleiOS.release.xcconfig"; path = "Target Support Files/Pods-SampleiOS/Pods-SampleiOS.release.xcconfig"; sourceTree = "<group>"; };
+		8B8ED546E27E0E0B12DA0CA9 /* Pods-SampleiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleiOS.debug.xcconfig"; path = "Target Support Files/Pods-SampleiOS/Pods-SampleiOS.debug.xcconfig"; sourceTree = "<group>"; };
+		F710BA4DC8744744FEA48DA1 /* Pods_SampleiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SampleiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,7 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A90D35380C4510AE5BEA0480 /* Pods_SampleiOS.framework in Frameworks */,
+				F1780D04DD96C4C5FD8BD403 /* Pods_SampleiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,7 +46,7 @@
 				31DC14FB2208B48500F19571 /* SampleiOS */,
 				31DC14FA2208B48500F19571 /* Products */,
 				7FB0B180D2F2E350B5C791F8 /* Pods */,
-				88A207AE800302E1F5B75806 /* Frameworks */,
+				E4AE28E3CBC6FCEB737223D3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,16 +74,16 @@
 		7FB0B180D2F2E350B5C791F8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6C892E116A182147B459FD17 /* Pods-SampleiOS.debug.xcconfig */,
-				B313E19C3381CE7716726823 /* Pods-SampleiOS.release.xcconfig */,
+				8B8ED546E27E0E0B12DA0CA9 /* Pods-SampleiOS.debug.xcconfig */,
+				0CB9F27B09249F7B7E7FBE9A /* Pods-SampleiOS.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		88A207AE800302E1F5B75806 /* Frameworks */ = {
+		E4AE28E3CBC6FCEB737223D3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8E53833078860E306AB2E331 /* Pods_SampleiOS.framework */,
+				F710BA4DC8744744FEA48DA1 /* Pods_SampleiOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -95,12 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 31DC150B2208B48500F19571 /* Build configuration list for PBXNativeTarget "SampleiOS" */;
 			buildPhases = (
-				A326889DF9BA7E8E2B1A9765 /* [CP] Check Pods Manifest.lock */,
+				3815895257603B9031989833 /* [CP] Check Pods Manifest.lock */,
 				31DC150E2208B97200F19571 /* Generate Apollo GraphQL API */,
 				31DC14F52208B48500F19571 /* Sources */,
 				31DC14F62208B48500F19571 /* Frameworks */,
 				31DC14F72208B48500F19571 /* Resources */,
-				89AAE15397D2E9FE467C7C6A /* [CP] Embed Pods Frameworks */,
+				DBAB7AB6FD096AC5FC4F6AFA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -176,31 +176,7 @@
 			shellPath = /bin/sh;
 			shellScript = "APOLLO_FRAMEWORK_PATH=\"$(eval find $FRAMEWORK_SEARCH_PATHS -name \"Apollo.framework\" -maxdepth 1)\"\nXYCORE_CODEGEN_PATH=\"${SRCROOT}/../Source/Apollo\"\nXYCORE_INPUT_FILES_PATH=\"${XYCORE_CODEGEN_PATH}/Queries\"\n\nif [ -z \"$APOLLO_FRAMEWORK_PATH\" ]; then\necho \"error: Couldn't find Apollo.framework in FRAMEWORK_SEARCH_PATHS; make sure to add the framework to your project.\"\nexit 1\nfi\n\ncd $XYCORE_INPUT_FILES_PATH\n$APOLLO_FRAMEWORK_PATH/check-and-run-apollo-cli.sh codegen:generate --queries=\"$(find . -name '*.graphql')\" --schema=schema.json $XYCORE_CODEGEN_PATH/XYApolloGQLApi.swift\n";
 		};
-		89AAE15397D2E9FE467C7C6A /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SampleiOS/Pods-SampleiOS-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Apollo/Apollo.framework",
-				"${BUILT_PRODUCTS_DIR}/XyCore/XyCore.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Apollo.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XyCore.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SampleiOS/Pods-SampleiOS-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A326889DF9BA7E8E2B1A9765 /* [CP] Check Pods Manifest.lock */ = {
+		3815895257603B9031989833 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -220,6 +196,34 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DBAB7AB6FD096AC5FC4F6AFA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SampleiOS/Pods-SampleiOS-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Apollo/Apollo.framework",
+				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
+				"${BUILT_PRODUCTS_DIR}/PromisesSwift/Promises.framework",
+				"${BUILT_PRODUCTS_DIR}/XyCore/XyCore.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Apollo.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Promises.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XyCore.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SampleiOS/Pods-SampleiOS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -374,7 +378,7 @@
 		};
 		31DC150C2208B48500F19571 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6C892E116A182147B459FD17 /* Pods-SampleiOS.debug.xcconfig */;
+			baseConfigurationReference = 8B8ED546E27E0E0B12DA0CA9 /* Pods-SampleiOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -393,7 +397,7 @@
 		};
 		31DC150D2208B48500F19571 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B313E19C3381CE7716726823 /* Pods-SampleiOS.release.xcconfig */;
+			baseConfigurationReference = 0CB9F27B09249F7B7E7FBE9A /* Pods-SampleiOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
