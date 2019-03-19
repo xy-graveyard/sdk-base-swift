@@ -13,8 +13,13 @@
 		319A815C223ACDCD0002210B /* Dispatch+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319A815B223ACDCD0002210B /* Dispatch+extensions.swift */; };
 		319AB243220910A6009D37D1 /* queries.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 319AB240220910A6009D37D1 /* queries.graphql */; };
 		319AB245220910A6009D37D1 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 319AB242220910A6009D37D1 /* schema.json */; };
+		31D735582240406C00B6B230 /* XYQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D735572240406C00B6B230 /* XYQuery.swift */; };
+		31D7355C224040BE00B6B230 /* XYTotalArchivistsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D7355B224040BE00B6B230 /* XYTotalArchivistsQuery.swift */; };
 		31DC14ED2208B3BB00F19571 /* XYApolloGQLApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DC14EC2208B3BB00F19571 /* XYApolloGQLApi.swift */; };
 		31DC14EF2208B3D000F19571 /* XYApolloManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DC14EE2208B3D000F19571 /* XYApolloManager.swift */; };
+		31EAD79C2240456800DDA8C1 /* XYMyAttachedArchivistsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EAD79B2240456800DDA8C1 /* XYMyAttachedArchivistsQuery.swift */; };
+		31EAD79E2240458200DDA8C1 /* XYMyDevicesQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EAD79D2240458200DDA8C1 /* XYMyDevicesQuery.swift */; };
+		31EAD7A02240459900DDA8C1 /* XYMyUserInfoQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EAD79F2240459900DDA8C1 /* XYMyUserInfoQuery.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,8 +44,13 @@
 		319A815B223ACDCD0002210B /* Dispatch+extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dispatch+extensions.swift"; sourceTree = "<group>"; };
 		319AB240220910A6009D37D1 /* queries.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = queries.graphql; sourceTree = "<group>"; };
 		319AB242220910A6009D37D1 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
+		31D735572240406C00B6B230 /* XYQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYQuery.swift; sourceTree = "<group>"; };
+		31D7355B224040BE00B6B230 /* XYTotalArchivistsQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYTotalArchivistsQuery.swift; sourceTree = "<group>"; };
 		31DC14EC2208B3BB00F19571 /* XYApolloGQLApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XYApolloGQLApi.swift; sourceTree = "<group>"; };
 		31DC14EE2208B3D000F19571 /* XYApolloManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYApolloManager.swift; sourceTree = "<group>"; };
+		31EAD79B2240456800DDA8C1 /* XYMyAttachedArchivistsQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYMyAttachedArchivistsQuery.swift; sourceTree = "<group>"; };
+		31EAD79D2240458200DDA8C1 /* XYMyDevicesQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYMyDevicesQuery.swift; sourceTree = "<group>"; };
+		31EAD79F2240459900DDA8C1 /* XYMyUserInfoQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYMyUserInfoQuery.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +93,7 @@
 		315591BC2204FBB400DC4556 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				31D735562240405400B6B230 /* Query Models */,
 				319A815A223ACDCD0002210B /* Extensions */,
 				31DC14EB2208B3A300F19571 /* Apollo */,
 				315591F82205002A00DC4556 /* Supporting Files */,
@@ -133,6 +144,18 @@
 				319AB242220910A6009D37D1 /* schema.json */,
 			);
 			path = Queries;
+			sourceTree = "<group>";
+		};
+		31D735562240405400B6B230 /* Query Models */ = {
+			isa = PBXGroup;
+			children = (
+				31D735572240406C00B6B230 /* XYQuery.swift */,
+				31D7355B224040BE00B6B230 /* XYTotalArchivistsQuery.swift */,
+				31EAD79B2240456800DDA8C1 /* XYMyAttachedArchivistsQuery.swift */,
+				31EAD79D2240458200DDA8C1 /* XYMyDevicesQuery.swift */,
+				31EAD79F2240459900DDA8C1 /* XYMyUserInfoQuery.swift */,
+			);
+			path = "Query Models";
 			sourceTree = "<group>";
 		};
 		31DC14EB2208B3A300F19571 /* Apollo */ = {
@@ -256,9 +279,14 @@
 			files = (
 				31DC14EF2208B3D000F19571 /* XYApolloManager.swift in Sources */,
 				319A815C223ACDCD0002210B /* Dispatch+extensions.swift in Sources */,
+				31EAD7A02240459900DDA8C1 /* XYMyUserInfoQuery.swift in Sources */,
+				31D7355C224040BE00B6B230 /* XYTotalArchivistsQuery.swift in Sources */,
 				315591F72204FFDF00DC4556 /* XYTimer.swift in Sources */,
 				31DC14ED2208B3BB00F19571 /* XYApolloGQLApi.swift in Sources */,
+				31EAD79C2240456800DDA8C1 /* XYMyAttachedArchivistsQuery.swift in Sources */,
 				315591F62204FFDB00DC4556 /* XYBase.swift in Sources */,
+				31D735582240406C00B6B230 /* XYQuery.swift in Sources */,
+				31EAD79E2240458200DDA8C1 /* XYMyDevicesQuery.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
