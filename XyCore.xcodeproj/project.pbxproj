@@ -20,6 +20,7 @@
 		31EAD79C2240456800DDA8C1 /* XYMyAttachedArchivistsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EAD79B2240456800DDA8C1 /* XYMyAttachedArchivistsQuery.swift */; };
 		31EAD79E2240458200DDA8C1 /* XYMyDevicesQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EAD79D2240458200DDA8C1 /* XYMyDevicesQuery.swift */; };
 		31EAD7A02240459900DDA8C1 /* XYMyUserInfoQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EAD79F2240459900DDA8C1 /* XYMyUserInfoQuery.swift */; };
+		31F9D37B2241ACF4002905CD /* XYQueryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F9D37A2241ACF4002905CD /* XYQueryData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		31EAD79B2240456800DDA8C1 /* XYMyAttachedArchivistsQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYMyAttachedArchivistsQuery.swift; sourceTree = "<group>"; };
 		31EAD79D2240458200DDA8C1 /* XYMyDevicesQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYMyDevicesQuery.swift; sourceTree = "<group>"; };
 		31EAD79F2240459900DDA8C1 /* XYMyUserInfoQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYMyUserInfoQuery.swift; sourceTree = "<group>"; };
+		31F9D37A2241ACF4002905CD /* XYQueryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYQueryData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				31D735572240406C00B6B230 /* XYQuery.swift */,
+				31F9D37A2241ACF4002905CD /* XYQueryData.swift */,
 				31D7355B224040BE00B6B230 /* XYTotalArchivistsQuery.swift */,
 				31EAD79B2240456800DDA8C1 /* XYMyAttachedArchivistsQuery.swift */,
 				31EAD79D2240458200DDA8C1 /* XYMyDevicesQuery.swift */,
@@ -278,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				31DC14EF2208B3D000F19571 /* XYApolloManager.swift in Sources */,
+				31F9D37B2241ACF4002905CD /* XYQueryData.swift in Sources */,
 				319A815C223ACDCD0002210B /* Dispatch+extensions.swift in Sources */,
 				31EAD7A02240459900DDA8C1 /* XYMyUserInfoQuery.swift in Sources */,
 				31D7355C224040BE00B6B230 /* XYTotalArchivistsQuery.swift in Sources */,

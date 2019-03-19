@@ -10,28 +10,6 @@ import Apollo
 
 public typealias CommitResult = (Error?) -> Void
 
-public struct XYQueryData<QueryType: GraphQLQuery, QueryModel: GraphQLSelectionSet> {
-
-    typealias ModelConvertor = (GraphQLResult<QueryType.Data>) -> [QueryModel]?
-
-    private var modelConvertor: ModelConvertor?
-
-    private var queryData: GraphQLResult<QueryType.Data>?
-    public fileprivate(set) var queryModels: [QueryModel] = []
-
-    mutating func setConvertor(_ convertor: @escaping ModelConvertor) {
-        self.modelConvertor = convertor
-    }
-
-    mutating func setData(_ data: GraphQLResult<QueryType.Data>?) {
-        self.queryData = data
-        if let queryData = self.queryData {
-            self.queryModels = self.modelConvertor?(queryData) ?? []
-        }
-    }
-
-}
-
 public protocol XYQuery: class {
     associatedtype QueryType: GraphQLQuery
     associatedtype QueryModel: GraphQLSelectionSet

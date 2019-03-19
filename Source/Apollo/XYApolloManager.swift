@@ -97,8 +97,14 @@ extension XYApolloQueryManager: XYQueryManager {
 
 }
 
+public protocol XYApolloRequest {
+    associatedtype QueryType: GraphQLOperation
+    func execute(_ callback: @escaping OperationResultHandler<QueryType>)
+}
+
 /// A self contained fetch request, handles timeouts using promises since Apollo returns a handle to cancel
-public class XYApolloFetchRequest<Query: GraphQLQuery> {
+public class XYApolloFetchRequest<Query: GraphQLQuery>: XYApolloRequest {
+    public typealias QueryType = Query
 
     private struct Result {
         let
@@ -120,13 +126,13 @@ public class XYApolloFetchRequest<Query: GraphQLQuery> {
         self.manager = manager
     }
 
-    public func execute(_ callback: OperationResultHandler<Query>?) {
+    public func execute(_ callback: @escaping OperationResultHandler<Query>) {
         self.workQueue.async {
             do {
                 let result = try await(self.execute())
-                callback?(result.data, result.error)
+                callback(result.data, result.error)
             } catch {
-                callback?(nil, error)
+                callback(nil, error)
             }
         }
     }
@@ -150,7 +156,8 @@ public class XYApolloFetchRequest<Query: GraphQLQuery> {
 }
 
 /// A self contained mutate request, handles timeouts using promises since Apollo returns a handle to cancel
-public class XYApolloMutateRequest<Mutation: GraphQLMutation> {
+public class XYApolloMutateRequest<Mutation: GraphQLMutation>: XYApolloRequest {
+    public typealias QueryType = Mutation
 
     private struct Result {
         let
