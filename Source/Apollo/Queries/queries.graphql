@@ -17,6 +17,10 @@ query MyDevices {
         uuid
         major
         minor
+        lastGps {
+          latitude
+          longitude
+        }
       }
     }
     myBridges {
@@ -31,6 +35,10 @@ query MyDevices {
         uuid
         major
         minor
+        lastGps {
+          latitude
+          longitude
+        }
       }
     }
   }
@@ -271,6 +279,17 @@ query TotalArchivists {
   archivists {
     meta {
       totalCount
+    }
+  }
+}
+
+query GetNode ($publicKey: String) {
+    node (publicKey: $publicKey) {
+    publicKey
+    displayName
+    lastGps {
+      latitude
+      longitude
     }
   }
 }

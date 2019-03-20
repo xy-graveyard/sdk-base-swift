@@ -56,7 +56,7 @@ public final class TotalXyoTokensQuery: GraphQLQuery {
 
 public final class MyDevicesQuery: GraphQLQuery {
   public let operationDefinition =
-    "query MyDevices {\n  mySentinels {\n    __typename\n    meta {\n      __typename\n      totalCount\n    }\n    items {\n      __typename\n      id\n      name\n      photoUrl\n      publicKey\n      uuid\n      major\n      minor\n    }\n  }\n  myBridges {\n    __typename\n    meta {\n      __typename\n      totalCount\n    }\n    items {\n      __typename\n      id\n      name\n      photoUrl\n      publicKey\n      uuid\n      major\n      minor\n    }\n  }\n}"
+    "query MyDevices {\n  mySentinels {\n    __typename\n    meta {\n      __typename\n      totalCount\n    }\n    items {\n      __typename\n      id\n      name\n      photoUrl\n      publicKey\n      uuid\n      major\n      minor\n      lastGps {\n        __typename\n        latitude\n        longitude\n      }\n    }\n  }\n  myBridges {\n    __typename\n    meta {\n      __typename\n      totalCount\n    }\n    items {\n      __typename\n      id\n      name\n      photoUrl\n      publicKey\n      uuid\n      major\n      minor\n      lastGps {\n        __typename\n        latitude\n        longitude\n      }\n    }\n  }\n}"
 
   public init() {
   }
@@ -192,6 +192,7 @@ public final class MyDevicesQuery: GraphQLQuery {
           GraphQLField("uuid", type: .scalar(String.self)),
           GraphQLField("major", type: .scalar(Int.self)),
           GraphQLField("minor", type: .scalar(Int.self)),
+          GraphQLField("lastGps", type: .object(LastGp.selections)),
         ]
 
         public private(set) var resultMap: ResultMap
@@ -200,8 +201,8 @@ public final class MyDevicesQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(id: String? = nil, name: String? = nil, photoUrl: String? = nil, publicKey: String? = nil, uuid: String? = nil, major: Int? = nil, minor: Int? = nil) {
-          self.init(unsafeResultMap: ["__typename": "Sentinel", "id": id, "name": name, "photoUrl": photoUrl, "publicKey": publicKey, "uuid": uuid, "major": major, "minor": minor])
+        public init(id: String? = nil, name: String? = nil, photoUrl: String? = nil, publicKey: String? = nil, uuid: String? = nil, major: Int? = nil, minor: Int? = nil, lastGps: LastGp? = nil) {
+          self.init(unsafeResultMap: ["__typename": "Sentinel", "id": id, "name": name, "photoUrl": photoUrl, "publicKey": publicKey, "uuid": uuid, "major": major, "minor": minor, "lastGps": lastGps.flatMap { (value: LastGp) -> ResultMap in value.resultMap }])
         }
 
         public var __typename: String {
@@ -273,6 +274,62 @@ public final class MyDevicesQuery: GraphQLQuery {
           }
           set {
             resultMap.updateValue(newValue, forKey: "minor")
+          }
+        }
+
+        public var lastGps: LastGp? {
+          get {
+            return (resultMap["lastGps"] as? ResultMap).flatMap { LastGp(unsafeResultMap: $0) }
+          }
+          set {
+            resultMap.updateValue(newValue?.resultMap, forKey: "lastGps")
+          }
+        }
+
+        public struct LastGp: GraphQLSelectionSet {
+          public static let possibleTypes = ["Location"]
+
+          public static let selections: [GraphQLSelection] = [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("latitude", type: .scalar(Double.self)),
+            GraphQLField("longitude", type: .scalar(Double.self)),
+          ]
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public init(latitude: Double? = nil, longitude: Double? = nil) {
+            self.init(unsafeResultMap: ["__typename": "Location", "latitude": latitude, "longitude": longitude])
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          public var latitude: Double? {
+            get {
+              return resultMap["latitude"] as? Double
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "latitude")
+            }
+          }
+
+          public var longitude: Double? {
+            get {
+              return resultMap["longitude"] as? Double
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "longitude")
+            }
           }
         }
       }
@@ -373,6 +430,7 @@ public final class MyDevicesQuery: GraphQLQuery {
           GraphQLField("uuid", type: .scalar(String.self)),
           GraphQLField("major", type: .scalar(Int.self)),
           GraphQLField("minor", type: .scalar(Int.self)),
+          GraphQLField("lastGps", type: .object(LastGp.selections)),
         ]
 
         public private(set) var resultMap: ResultMap
@@ -381,8 +439,8 @@ public final class MyDevicesQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(id: String? = nil, name: String? = nil, photoUrl: String? = nil, publicKey: String? = nil, uuid: String? = nil, major: Int? = nil, minor: Int? = nil) {
-          self.init(unsafeResultMap: ["__typename": "Bridge", "id": id, "name": name, "photoUrl": photoUrl, "publicKey": publicKey, "uuid": uuid, "major": major, "minor": minor])
+        public init(id: String? = nil, name: String? = nil, photoUrl: String? = nil, publicKey: String? = nil, uuid: String? = nil, major: Int? = nil, minor: Int? = nil, lastGps: LastGp? = nil) {
+          self.init(unsafeResultMap: ["__typename": "Bridge", "id": id, "name": name, "photoUrl": photoUrl, "publicKey": publicKey, "uuid": uuid, "major": major, "minor": minor, "lastGps": lastGps.flatMap { (value: LastGp) -> ResultMap in value.resultMap }])
         }
 
         public var __typename: String {
@@ -454,6 +512,62 @@ public final class MyDevicesQuery: GraphQLQuery {
           }
           set {
             resultMap.updateValue(newValue, forKey: "minor")
+          }
+        }
+
+        public var lastGps: LastGp? {
+          get {
+            return (resultMap["lastGps"] as? ResultMap).flatMap { LastGp(unsafeResultMap: $0) }
+          }
+          set {
+            resultMap.updateValue(newValue?.resultMap, forKey: "lastGps")
+          }
+        }
+
+        public struct LastGp: GraphQLSelectionSet {
+          public static let possibleTypes = ["Location"]
+
+          public static let selections: [GraphQLSelection] = [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("latitude", type: .scalar(Double.self)),
+            GraphQLField("longitude", type: .scalar(Double.self)),
+          ]
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public init(latitude: Double? = nil, longitude: Double? = nil) {
+            self.init(unsafeResultMap: ["__typename": "Location", "latitude": latitude, "longitude": longitude])
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          public var latitude: Double? {
+            get {
+              return resultMap["latitude"] as? Double
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "latitude")
+            }
+          }
+
+          public var longitude: Double? {
+            get {
+              return resultMap["longitude"] as? Double
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "longitude")
+            }
           }
         }
       }
@@ -2083,6 +2197,7 @@ public final class MyAttachedArchivistsQuery: GraphQLQuery {
         }
       }
 
+      @available(*, deprecated, message: "Use 'dns'.")
       public var ip: String? {
         get {
           return resultMap["ip"] as? String
@@ -2540,6 +2655,152 @@ public final class TotalArchivistsQuery: GraphQLQuery {
           }
           set {
             resultMap.updateValue(newValue, forKey: "totalCount")
+          }
+        }
+      }
+    }
+  }
+}
+
+public final class GetNodeQuery: GraphQLQuery {
+  public let operationDefinition =
+    "query GetNode($publicKey: String) {\n  node(publicKey: $publicKey) {\n    __typename\n    publicKey\n    displayName\n    lastGps {\n      __typename\n      latitude\n      longitude\n    }\n  }\n}"
+
+  public var publicKey: String?
+
+  public init(publicKey: String? = nil) {
+    self.publicKey = publicKey
+  }
+
+  public var variables: GraphQLMap? {
+    return ["publicKey": publicKey]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Query"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("node", arguments: ["publicKey": GraphQLVariable("publicKey")], type: .object(Node.selections)),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(node: Node? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Query", "node": node.flatMap { (value: Node) -> ResultMap in value.resultMap }])
+    }
+
+    public var node: Node? {
+      get {
+        return (resultMap["node"] as? ResultMap).flatMap { Node(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "node")
+      }
+    }
+
+    public struct Node: GraphQLSelectionSet {
+      public static let possibleTypes = ["Node"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("publicKey", type: .scalar(String.self)),
+        GraphQLField("displayName", type: .scalar(String.self)),
+        GraphQLField("lastGps", type: .object(LastGp.selections)),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(publicKey: String? = nil, displayName: String? = nil, lastGps: LastGp? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Node", "publicKey": publicKey, "displayName": displayName, "lastGps": lastGps.flatMap { (value: LastGp) -> ResultMap in value.resultMap }])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var publicKey: String? {
+        get {
+          return resultMap["publicKey"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "publicKey")
+        }
+      }
+
+      public var displayName: String? {
+        get {
+          return resultMap["displayName"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "displayName")
+        }
+      }
+
+      public var lastGps: LastGp? {
+        get {
+          return (resultMap["lastGps"] as? ResultMap).flatMap { LastGp(unsafeResultMap: $0) }
+        }
+        set {
+          resultMap.updateValue(newValue?.resultMap, forKey: "lastGps")
+        }
+      }
+
+      public struct LastGp: GraphQLSelectionSet {
+        public static let possibleTypes = ["Point"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("latitude", type: .scalar(String.self)),
+          GraphQLField("longitude", type: .scalar(String.self)),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(latitude: String? = nil, longitude: String? = nil) {
+          self.init(unsafeResultMap: ["__typename": "Point", "latitude": latitude, "longitude": longitude])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var latitude: String? {
+          get {
+            return resultMap["latitude"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "latitude")
+          }
+        }
+
+        public var longitude: String? {
+          get {
+            return resultMap["longitude"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "longitude")
           }
         }
       }
