@@ -8,7 +8,7 @@
 
 import Apollo
 
-final public class XYMyDevicesQuery: XYQuery {
+final public class XYMySentinelsQuery: XYQuery {
     public typealias QueryModel = MyDevicesQuery.Data.MySentinel.Item
 
     public var queryData = XYQueryData<MyDevicesQuery, QueryModel>()
@@ -26,7 +26,7 @@ final public class XYMyDevicesQuery: XYQuery {
     }
 }
 
-public extension XYMyDevicesQuery {
+public extension XYMySentinelsQuery {
 
     func addSentinel(id: String, name: String? = nil, photoUrl: String? = nil, publicKey: String? = nil, uuid: String? = nil, major: Int? = nil, minor: Int? = nil, complete: @escaping CommitResult) {
         let mutation = AddSentinelMutation(id: id, name: name, photoUrl: photoUrl, publicKey: publicKey, uuid: uuid, major: major, minor: minor)
@@ -36,10 +36,10 @@ public extension XYMyDevicesQuery {
         }, callback: complete)
     }
 
-    func deleteSentinel(publicKey: String, complete: @escaping CommitResult) {
-        let mutation = DeleteSentinelMutation(publicKey: publicKey)
+    func deleteSentinel(id: String, complete: @escaping CommitResult) {
+        let mutation = DeleteSentinelMutation(id: id)
         self.mutateAndAlterCache(for: mutation, query: MyDevicesQuery(), with: { data, response in
-            data.mySentinels?.items?.removeAll(where: { $0?.publicKey == publicKey })
+            data.mySentinels?.items?.removeAll(where: { $0?.id == id })
         }, callback: complete)
     }
 

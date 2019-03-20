@@ -3167,7 +3167,7 @@
             "description": "",
             "args": [
               {
-                "name": "publicKey",
+                "name": "id",
                 "description": "",
                 "type": {
                   "kind": "NON_NULL",

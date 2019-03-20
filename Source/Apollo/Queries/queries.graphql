@@ -99,14 +99,21 @@ mutation UpdateSentinel(
     }
   }
 
-mutation DeleteSentinel($publicKey: String!) {
-    deleteSentinel(publicKey: $publicKey) {
+mutation DeleteSentinel($id: String!) {
+    deleteSentinel(id: $id) {
       name
       publicKey
       photoUrl
     }
   }
   
+mutation DeleteBridge($id: String!) {
+ deleteBridge(id: $id) {
+   name
+   id
+   photoUrl
+ }
+}
 
 query AllBridges($limit: Int, $cursor: String) {
   bridges(paginate: { limit: $limit, cursor: $cursor }) {

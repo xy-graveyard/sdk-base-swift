@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		311C5A0C2242ACB8001C7DBD /* XYMyBridgesQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311C5A0B2242ACB8001C7DBD /* XYMyBridgesQuery.swift */; };
 		315591E72204FE5700DC4556 /* XyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 315591DE2204FE5700DC4556 /* XyCore.framework */; };
 		315591F62204FFDB00DC4556 /* XYBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315591D62204FCBF00DC4556 /* XYBase.swift */; };
 		315591F72204FFDF00DC4556 /* XYTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315591D52204FCBF00DC4556 /* XYTimer.swift */; };
@@ -18,7 +19,7 @@
 		31DC14ED2208B3BB00F19571 /* XYApolloGQLApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DC14EC2208B3BB00F19571 /* XYApolloGQLApi.swift */; };
 		31DC14EF2208B3D000F19571 /* XYApolloManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DC14EE2208B3D000F19571 /* XYApolloManager.swift */; };
 		31EAD79C2240456800DDA8C1 /* XYMyAttachedArchivistsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EAD79B2240456800DDA8C1 /* XYMyAttachedArchivistsQuery.swift */; };
-		31EAD79E2240458200DDA8C1 /* XYMyDevicesQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EAD79D2240458200DDA8C1 /* XYMyDevicesQuery.swift */; };
+		31EAD79E2240458200DDA8C1 /* XYMySentinelsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EAD79D2240458200DDA8C1 /* XYMySentinelsQuery.swift */; };
 		31EAD7A02240459900DDA8C1 /* XYMyUserInfoQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EAD79F2240459900DDA8C1 /* XYMyUserInfoQuery.swift */; };
 		31F9D37B2241ACF4002905CD /* XYQueryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F9D37A2241ACF4002905CD /* XYQueryData.swift */; };
 /* End PBXBuildFile section */
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		311C5A0B2242ACB8001C7DBD /* XYMyBridgesQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYMyBridgesQuery.swift; sourceTree = "<group>"; };
 		315591BD2204FBB400DC4556 /* XyCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XyCore.h; sourceTree = "<group>"; };
 		315591BE2204FBB400DC4556 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		315591C82204FBB400DC4556 /* XyCoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XyCoreTests.swift; sourceTree = "<group>"; };
@@ -50,7 +52,7 @@
 		31DC14EC2208B3BB00F19571 /* XYApolloGQLApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XYApolloGQLApi.swift; sourceTree = "<group>"; };
 		31DC14EE2208B3D000F19571 /* XYApolloManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYApolloManager.swift; sourceTree = "<group>"; };
 		31EAD79B2240456800DDA8C1 /* XYMyAttachedArchivistsQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYMyAttachedArchivistsQuery.swift; sourceTree = "<group>"; };
-		31EAD79D2240458200DDA8C1 /* XYMyDevicesQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYMyDevicesQuery.swift; sourceTree = "<group>"; };
+		31EAD79D2240458200DDA8C1 /* XYMySentinelsQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYMySentinelsQuery.swift; sourceTree = "<group>"; };
 		31EAD79F2240459900DDA8C1 /* XYMyUserInfoQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYMyUserInfoQuery.swift; sourceTree = "<group>"; };
 		31F9D37A2241ACF4002905CD /* XYQueryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYQueryData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -155,8 +157,9 @@
 				31F9D37A2241ACF4002905CD /* XYQueryData.swift */,
 				31D7355B224040BE00B6B230 /* XYTotalArchivistsQuery.swift */,
 				31EAD79B2240456800DDA8C1 /* XYMyAttachedArchivistsQuery.swift */,
-				31EAD79D2240458200DDA8C1 /* XYMyDevicesQuery.swift */,
+				31EAD79D2240458200DDA8C1 /* XYMySentinelsQuery.swift */,
 				31EAD79F2240459900DDA8C1 /* XYMyUserInfoQuery.swift */,
+				311C5A0B2242ACB8001C7DBD /* XYMyBridgesQuery.swift */,
 			);
 			path = "Query Models";
 			sourceTree = "<group>";
@@ -290,7 +293,8 @@
 				31EAD79C2240456800DDA8C1 /* XYMyAttachedArchivistsQuery.swift in Sources */,
 				315591F62204FFDB00DC4556 /* XYBase.swift in Sources */,
 				31D735582240406C00B6B230 /* XYQuery.swift in Sources */,
-				31EAD79E2240458200DDA8C1 /* XYMyDevicesQuery.swift in Sources */,
+				311C5A0C2242ACB8001C7DBD /* XYMyBridgesQuery.swift in Sources */,
+				31EAD79E2240458200DDA8C1 /* XYMySentinelsQuery.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

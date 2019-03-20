@@ -879,23 +879,23 @@ public final class UpdateSentinelMutation: GraphQLMutation {
 
 public final class DeleteSentinelMutation: GraphQLMutation {
   public let operationDefinition =
-    "mutation DeleteSentinel($publicKey: String!) {\n  deleteSentinel(publicKey: $publicKey) {\n    __typename\n    name\n    publicKey\n    photoUrl\n  }\n}"
+    "mutation DeleteSentinel($id: String!) {\n  deleteSentinel(id: $id) {\n    __typename\n    name\n    publicKey\n    photoUrl\n  }\n}"
 
-  public var publicKey: String
+  public var id: String
 
-  public init(publicKey: String) {
-    self.publicKey = publicKey
+  public init(id: String) {
+    self.id = id
   }
 
   public var variables: GraphQLMap? {
-    return ["publicKey": publicKey]
+    return ["id": id]
   }
 
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes = ["Mutation"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("deleteSentinel", arguments: ["publicKey": GraphQLVariable("publicKey")], type: .object(DeleteSentinel.selections)),
+      GraphQLField("deleteSentinel", arguments: ["id": GraphQLVariable("id")], type: .object(DeleteSentinel.selections)),
     ]
 
     public private(set) var resultMap: ResultMap
@@ -961,6 +961,105 @@ public final class DeleteSentinelMutation: GraphQLMutation {
         }
         set {
           resultMap.updateValue(newValue, forKey: "publicKey")
+        }
+      }
+
+      public var photoUrl: String? {
+        get {
+          return resultMap["photoUrl"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "photoUrl")
+        }
+      }
+    }
+  }
+}
+
+public final class DeleteBridgeMutation: GraphQLMutation {
+  public let operationDefinition =
+    "mutation DeleteBridge($id: String!) {\n  deleteBridge(id: $id) {\n    __typename\n    name\n    id\n    photoUrl\n  }\n}"
+
+  public var id: String
+
+  public init(id: String) {
+    self.id = id
+  }
+
+  public var variables: GraphQLMap? {
+    return ["id": id]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Mutation"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("deleteBridge", arguments: ["id": GraphQLVariable("id")], type: .object(DeleteBridge.selections)),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(deleteBridge: DeleteBridge? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "deleteBridge": deleteBridge.flatMap { (value: DeleteBridge) -> ResultMap in value.resultMap }])
+    }
+
+    public var deleteBridge: DeleteBridge? {
+      get {
+        return (resultMap["deleteBridge"] as? ResultMap).flatMap { DeleteBridge(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "deleteBridge")
+      }
+    }
+
+    public struct DeleteBridge: GraphQLSelectionSet {
+      public static let possibleTypes = ["Bridge"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("name", type: .scalar(String.self)),
+        GraphQLField("id", type: .scalar(String.self)),
+        GraphQLField("photoUrl", type: .scalar(String.self)),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(name: String? = nil, id: String? = nil, photoUrl: String? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Bridge", "name": name, "id": id, "photoUrl": photoUrl])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var name: String? {
+        get {
+          return resultMap["name"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "name")
+        }
+      }
+
+      public var id: String? {
+        get {
+          return resultMap["id"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
         }
       }
 
