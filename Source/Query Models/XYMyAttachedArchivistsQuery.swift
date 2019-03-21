@@ -33,12 +33,14 @@ public extension XYMyAttachedArchivistsQuery {
         self.mutateAndAlterCache(for: mutation, query: MyAttachedArchivistsQuery(), with: alteration, callback: complete)
     }
 
-    func attach(ownerId: String, multiaddr: String? = nil, dns: String? = nil, ip: String? = nil, port: Int? = nil, complete: @escaping CommitResult) {
+    func attach(ownerId: String, multiaddr: String? = nil, dns: String? = nil, ip: String? = nil, port: Int? = nil, complete: @escaping CommitResultWithId) {
         guard let dns = dns, let port = port else {
             // TODO error
-            complete(nil)
+            complete(nil, nil)
             return
         }
+
+        var newId: String?
 
         let mutation = AttachToArchivistClientMutation(multiaddr: nil, dns: dns, ip: nil, port: port)
         self.mutateAndAlterCache(for: mutation, query: MyAttachedArchivistsQuery(), with: { data, response in
@@ -53,10 +55,12 @@ public extension XYMyAttachedArchivistsQuery {
                 port: port,
                 ip: nil)
 
+            newId = response?.data?.attachToArchivistClient?.id
+
             data.myAttachedArchivists?.append(update)
 
         }, callback: { error in
-            complete(error)
+            complete(newId, error)
         })
     }
 

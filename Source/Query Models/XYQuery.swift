@@ -9,6 +9,7 @@
 import Apollo
 
 public typealias CommitResult = (Error?) -> Void
+public typealias CommitResultWithId = (String?, Error?) -> Void
 
 public protocol XYQuery: class {
     associatedtype QueryType: GraphQLQuery
