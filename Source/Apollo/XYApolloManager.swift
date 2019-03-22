@@ -97,6 +97,19 @@ extension XYApolloQueryManager: XYQueryManager {
 
 }
 
+public extension XYApolloQueryManager {
+
+    // Accepts a list of queries that the client wishes to preload with data via the listener
+    func preload(queries: [() -> Promises.Promise<Bool>], complete: @escaping () -> ()) {
+        DispatchQueue.global().async {
+            Promises.any(queries.map { $0() }).then { _ in
+                complete()
+            }
+        }
+    }
+
+}
+
 public protocol XYApolloRequest {
     associatedtype QueryType: GraphQLOperation
     func execute() -> XYQueryResult<QueryType>

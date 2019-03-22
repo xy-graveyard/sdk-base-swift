@@ -20,5 +20,9 @@ final public class XYTotalArchivistsQuery: XYQuery {
     public init(with authToken: String) {
         self.queryManager = XYApolloQueryManager.auth(token: authToken)
         self.watcher = self.queryManager.watch(for: TotalArchivistsQuery(), then: self.processResponse)
+        self.queryData.setConvertor { queryData in
+            return queryData.data?.archivists?.meta != nil ?
+                [QueryModel(meta: (queryData.data?.archivists?.meta)!)] : []
+        }
     }
 }

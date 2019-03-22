@@ -29,14 +29,26 @@ public protocol XYQuery: class {
 }
 
 public extension XYQuery {
+    // Enables listening for this query
     func listen(for key: String, listener: @escaping (_ result: GraphQLResult<QueryType.Data>?, _ error: Error?) -> ()) {
         guard self.listeners[key] == nil else { return }
         self.listeners[key] = listener
     }
 
+    // Processes the response for a query request, notifying the listeners and setting the response data
     func processResponse(_ result: GraphQLResult<QueryType.Data>?, error: Error?) {
         self.queryData.setData(result)
         self.listeners.forEach { $0.value(result, error) }
+    }
+
+    // Preloads the data for any query that supports watching, allowing the UI to be ready when the user loads the app
+    func preload() -> Promises.Promise<Bool> {
+        return Promises.Promise<Bool>(on: .global()) { fulfull, reject in
+            self.listen(for: "Preload") { _, _ in
+                self.listeners["Preload"] = nil
+                fulfull(true)
+            }
+        }
     }
 }
 
