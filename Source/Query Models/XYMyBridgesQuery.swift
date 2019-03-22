@@ -36,6 +36,16 @@ public extension XYMyBridgesQuery {
         }, callback: complete)
     }
 
+    func updateBridge(id: String, name: String? = nil, photoUrl: String? = nil, publicKey: String? = nil, uuid: String? = nil, major: Int? = nil, minor: Int? = nil, complete: @escaping CommitResult) {
+        let mutation = UpdateBridgeMutation(id: id, name: name, photoUrl: photoUrl, publicKey: publicKey, uuid: uuid, major: major, minor: minor)
+        self.mutateAndAlterCache(for: mutation, query: MyDevicesQuery(), with: { data, response in
+            let update = MyDevicesQuery.Data.MyBridge.Item(id: id, name: name, photoUrl: photoUrl, publicKey: publicKey, uuid: uuid, major: major, minor: minor)
+            if let updateIndex = data.myBridges?.items?.index(where: { $0?.id == id }) {
+                data.myBridges?.items?[updateIndex] = update
+            }
+        }, callback: complete)
+    }
+
     func deleteBridge(id: String, complete: @escaping CommitResult) {
         let mutation = DeleteSentinelMutation(id: id)
         self.mutateAndAlterCache(for: mutation, query: MyDevicesQuery(), with: { data, response in

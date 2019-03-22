@@ -1280,6 +1280,157 @@ public final class AllBridgesQuery: GraphQLQuery {
   }
 }
 
+public final class UpdateBridgeMutation: GraphQLMutation {
+  public let operationDefinition =
+    "mutation UpdateBridge($id: String!, $name: String, $photoUrl: String, $publicKey: String, $uuid: String, $major: Int, $minor: Int) {\n  updateBridge(address: {id: $id, publicKey: $publicKey, name: $name, photoUrl: $photoUrl}, bridge: {uuid: $uuid, major: $major, minor: $minor}) {\n    __typename\n    id\n    name\n    photoUrl\n    publicKey\n    uuid\n    major\n    minor\n  }\n}"
+
+  public var id: String
+  public var name: String?
+  public var photoUrl: String?
+  public var publicKey: String?
+  public var uuid: String?
+  public var major: Int?
+  public var minor: Int?
+
+  public init(id: String, name: String? = nil, photoUrl: String? = nil, publicKey: String? = nil, uuid: String? = nil, major: Int? = nil, minor: Int? = nil) {
+    self.id = id
+    self.name = name
+    self.photoUrl = photoUrl
+    self.publicKey = publicKey
+    self.uuid = uuid
+    self.major = major
+    self.minor = minor
+  }
+
+  public var variables: GraphQLMap? {
+    return ["id": id, "name": name, "photoUrl": photoUrl, "publicKey": publicKey, "uuid": uuid, "major": major, "minor": minor]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Mutation"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("updateBridge", arguments: ["address": ["id": GraphQLVariable("id"), "publicKey": GraphQLVariable("publicKey"), "name": GraphQLVariable("name"), "photoUrl": GraphQLVariable("photoUrl")], "bridge": ["uuid": GraphQLVariable("uuid"), "major": GraphQLVariable("major"), "minor": GraphQLVariable("minor")]], type: .object(UpdateBridge.selections)),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(updateBridge: UpdateBridge? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "updateBridge": updateBridge.flatMap { (value: UpdateBridge) -> ResultMap in value.resultMap }])
+    }
+
+    public var updateBridge: UpdateBridge? {
+      get {
+        return (resultMap["updateBridge"] as? ResultMap).flatMap { UpdateBridge(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "updateBridge")
+      }
+    }
+
+    public struct UpdateBridge: GraphQLSelectionSet {
+      public static let possibleTypes = ["Bridge"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .scalar(String.self)),
+        GraphQLField("name", type: .scalar(String.self)),
+        GraphQLField("photoUrl", type: .scalar(String.self)),
+        GraphQLField("publicKey", type: .scalar(String.self)),
+        GraphQLField("uuid", type: .scalar(String.self)),
+        GraphQLField("major", type: .scalar(Int.self)),
+        GraphQLField("minor", type: .scalar(Int.self)),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(id: String? = nil, name: String? = nil, photoUrl: String? = nil, publicKey: String? = nil, uuid: String? = nil, major: Int? = nil, minor: Int? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Bridge", "id": id, "name": name, "photoUrl": photoUrl, "publicKey": publicKey, "uuid": uuid, "major": major, "minor": minor])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: String? {
+        get {
+          return resultMap["id"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      public var name: String? {
+        get {
+          return resultMap["name"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "name")
+        }
+      }
+
+      public var photoUrl: String? {
+        get {
+          return resultMap["photoUrl"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "photoUrl")
+        }
+      }
+
+      public var publicKey: String? {
+        get {
+          return resultMap["publicKey"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "publicKey")
+        }
+      }
+
+      public var uuid: String? {
+        get {
+          return resultMap["uuid"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "uuid")
+        }
+      }
+
+      public var major: Int? {
+        get {
+          return resultMap["major"] as? Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "major")
+        }
+      }
+
+      public var minor: Int? {
+        get {
+          return resultMap["minor"] as? Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "minor")
+        }
+      }
+    }
+  }
+}
+
 public final class AllSentinelsQuery: GraphQLQuery {
   public let operationDefinition =
     "query AllSentinels($limit: Int, $cursor: String) {\n  sentinels(paginate: {limit: $limit, cursor: $cursor}) {\n    __typename\n    meta {\n      __typename\n      totalCount\n      cursor\n    }\n    items {\n      __typename\n      publicKey\n      name\n      photoUrl\n      owner\n    }\n  }\n}"

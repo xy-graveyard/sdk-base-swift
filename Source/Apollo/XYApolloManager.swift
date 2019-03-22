@@ -99,18 +99,18 @@ extension XYApolloQueryManager: XYQueryManager {
 
 public protocol XYApolloRequest {
     associatedtype QueryType: GraphQLOperation
-    func execute(_ callback: @escaping OperationResultHandler<QueryType>)
+    func execute() -> XYQueryResult<QueryType>
+}
+
+public struct XYQueryResult<Query: GraphQLOperation> {
+    public let
+    data: GraphQLResult<Query.Data>?,
+    error: Error?
 }
 
 /// A self contained fetch request, handles timeouts using promises since Apollo returns a handle to cancel
 public class XYApolloFetchRequest<Query: GraphQLQuery>: XYApolloRequest {
     public typealias QueryType = Query
-
-    private struct Result {
-        let
-        data: GraphQLResult<Query.Data>?,
-        error: Error?
-    }
 
     private let
     query: Query,
@@ -119,38 +119,32 @@ public class XYApolloFetchRequest<Query: GraphQLQuery>: XYApolloRequest {
     private var timer: DispatchSourceTimer?
     private var cancelHandle: Cancellable?
 
-    private let workQueue = DispatchQueue(label:"com.xyonetwork.core.sdk.XYApolloFetchRequestQueue")
-
     internal init(query: Query, with manager: XYApolloQueryManager) {
         self.query = query
         self.manager = manager
     }
 
-    public func execute(_ callback: @escaping OperationResultHandler<Query>) {
-        self.workQueue.async {
-            do {
-                let result = try await(self.execute())
-                callback(result.data, result.error)
-            } catch {
-                callback(nil, error)
-            }
+    public func execute() -> XYQueryResult<QueryType> {
+        do {
+            return try await(self.execute())
+        } catch {
+            return XYQueryResult<QueryType>(data: nil, error: error)
         }
     }
 
-    private func execute() -> Promises.Promise<Result> {
-        let operationPromise = Promises.Promise<Result>.pending()
+    private func execute() -> Promises.Promise<XYQueryResult<QueryType>> {
+        return Promises.Promise<XYQueryResult<QueryType>> { fulfill, reject in
 
-        self.cancelHandle = self.manager.client.fetch(query: self.query, queue: self.manager.queue) { [weak self] result, error in
-            self?.timer = nil
-            operationPromise.fulfill(Result(data: result, error: error))
+            self.cancelHandle = self.manager.client.fetch(query: self.query, queue: self.manager.queue) { [weak self] result, error in
+                self?.timer = nil
+                fulfill(XYQueryResult<QueryType>(data: result, error: error))
+            }
+
+            self.timer = DispatchSource.singleTimer(interval: self.manager.timeout, queue: XYApolloQueryManager.timeoutQueue) { [weak self] in
+                self?.cancelHandle?.cancel()
+                reject(XYQueryManagerError.timedOut)
+            }
         }
-
-        self.timer = DispatchSource.singleTimer(interval: self.manager.timeout, queue: XYApolloQueryManager.timeoutQueue) { [weak self] in
-            self?.cancelHandle?.cancel()
-            operationPromise.reject(XYQueryManagerError.timedOut)
-        }
-
-        return operationPromise
     }
 
 }
@@ -159,12 +153,6 @@ public class XYApolloFetchRequest<Query: GraphQLQuery>: XYApolloRequest {
 public class XYApolloMutateRequest<Mutation: GraphQLMutation>: XYApolloRequest {
     public typealias QueryType = Mutation
 
-    private struct Result {
-        let
-        data: GraphQLResult<Mutation.Data>?,
-        error: Error?
-    }
-
     private let
     mutation: Mutation,
     manager: XYApolloQueryManager
@@ -172,38 +160,31 @@ public class XYApolloMutateRequest<Mutation: GraphQLMutation>: XYApolloRequest {
     private var timer: DispatchSourceTimer?
     private var cancelHandle: Cancellable?
 
-    private let workQueue = DispatchQueue(label:"com.xyonetwork.core.sdk.XYApolloMutateRequestQueue")
-
     internal init(mutation: Mutation, with manager: XYApolloQueryManager) {
         self.mutation = mutation
         self.manager = manager
     }
 
-    public func execute(_ callback: @escaping OperationResultHandler<Mutation>) {
-        self.workQueue.async {
-            do {
-                let result = try await(self.execute())
-                callback(result.data, result.error)
-            } catch {
-                callback(nil, error)
-            }
+    public func execute() -> XYQueryResult<Mutation> {
+        do {
+            return try await(self.execute())
+        } catch {
+            return XYQueryResult<Mutation>(data: nil, error: error)
         }
     }
 
-    private func execute() -> Promises.Promise<Result> {
-        let operationPromise = Promises.Promise<Result>.pending()
+    private func execute() -> Promises.Promise<XYQueryResult<Mutation>> {
+        return Promises.Promise<XYQueryResult<Mutation>> { fulfill, reject in
+            self.cancelHandle = self.manager.client.perform(mutation: self.mutation, queue: self.manager.queue) { [weak self] result, error in
+                self?.timer = nil
+                fulfill(XYQueryResult<Mutation>(data: result, error: error))
+            }
 
-        self.cancelHandle = self.manager.client.perform(mutation: self.mutation, queue: self.manager.queue) { [weak self] result, error in
-            self?.timer = nil
-            operationPromise.fulfill(Result(data: result, error: error))
+            self.timer = DispatchSource.singleTimer(interval: self.manager.timeout, queue: XYApolloQueryManager.timeoutQueue) { [weak self] in
+                self?.cancelHandle?.cancel()
+                reject(XYQueryManagerError.timedOut)
+            }
         }
-
-        self.timer = DispatchSource.singleTimer(interval: self.manager.timeout, queue: XYApolloQueryManager.timeoutQueue) { [weak self] in
-            self?.cancelHandle?.cancel()
-            operationPromise.reject(XYQueryManagerError.timedOut)
-        }
-
-        return operationPromise
     }
 
 }

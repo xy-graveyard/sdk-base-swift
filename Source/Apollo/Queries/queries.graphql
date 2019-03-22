@@ -130,6 +130,34 @@ query AllBridges($limit: Int, $cursor: String) {
   }
 }
 
+mutation UpdateBridge(
+    $id: String!
+    $name: String
+    $photoUrl: String
+    $publicKey: String
+    $uuid: String
+    $major: Int
+    $minor: Int
+  ) {
+    updateBridge(
+      address: {
+        id: $id
+        publicKey: $publicKey
+        name: $name
+        photoUrl: $photoUrl
+      }
+      bridge: { uuid: $uuid, major: $major, minor: $minor }
+    ) {
+      id
+      name
+      photoUrl
+      publicKey
+      uuid
+      major
+      minor
+    }
+  }
+
 query AllSentinels($limit: Int, $cursor: String) {
   sentinels(paginate: { limit: $limit, cursor: $cursor }) {
     meta {

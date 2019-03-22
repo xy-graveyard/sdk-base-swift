@@ -7,6 +7,7 @@
 //
 
 import Apollo
+import Promises
 
 public typealias CommitResult = (Error?) -> Void
 public typealias CommitResultWithId = (String?, Error?) -> Void
@@ -39,20 +40,21 @@ public extension XYQuery {
     }
 }
 
-public extension XYQuery {
+internal extension XYQuery {
 
     // Run a mutation and then refresh the cache for the associate QueryType which will trigger any watch() queries in the view models
     func mutateAndAlterCache<Mutation: GraphQLMutation>(for mutation: Mutation, query: QueryType, with alteration: @escaping (inout QueryType.Data, GraphQLResult<Mutation.Data>?) -> Void, callback: @escaping CommitResult) {
-        self.queryManager.mutate(for: mutation).execute { result, error in
-            guard error == nil else {
-                callback(error)
+        DispatchQueue.global().async {
+            let result = self.queryManager.mutate(for: mutation).execute()
+            guard result.error == nil else {
+                callback(result.error)
                 return
             }
 
             // Update the cache with the new value, sending back the result of this query if needed for the cache alteration
             _ = self.queryManager.cache.withinReadWriteTransaction { transaction in
                 try transaction.update(query: query) { (data: inout QueryType.Data) in
-                    alteration(&data, result)
+                    alteration(&data, result.data)
                 }
 
                 // Re-read from the cache to trigger the watch (sigh)
@@ -62,5 +64,5 @@ public extension XYQuery {
             }
         }
     }
-    
+
 }

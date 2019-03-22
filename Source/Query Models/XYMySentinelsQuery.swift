@@ -36,6 +36,16 @@ public extension XYMySentinelsQuery {
         }, callback: complete)
     }
 
+    func updateSentinel(id: String, name: String? = nil, photoUrl: String? = nil, publicKey: String? = nil, uuid: String? = nil, major: Int? = nil, minor: Int? = nil, complete: @escaping CommitResult) {
+        let mutation = UpdateSentinelMutation(id: id, name: name, photoUrl: photoUrl, publicKey: publicKey, uuid: uuid, major: major, minor: minor)
+        self.mutateAndAlterCache(for: mutation, query: MyDevicesQuery(), with: { data, response in
+            let update = MyDevicesQuery.Data.MySentinel.Item(id: id, name: name, photoUrl: photoUrl, publicKey: publicKey, uuid: uuid, major: major, minor: minor)
+            if let updateIndex = data.mySentinels?.items?.index(where: { $0?.id == id }) {
+                data.mySentinels?.items?[updateIndex] = update
+            }
+        }, callback: complete)
+    }
+
     func deleteSentinel(id: String, complete: @escaping CommitResult) {
         let mutation = DeleteSentinelMutation(id: id)
         self.mutateAndAlterCache(for: mutation, query: MyDevicesQuery(), with: { data, response in

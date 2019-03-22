@@ -25,3 +25,18 @@ final public class XYMyUserInfoQuery: XYQuery {
         }
     }
 }
+
+public extension XYMyUserInfoQuery {
+
+    func updateUser(displayName: String? = nil, photoURL: String? = nil, publicKey: String? = nil, isAnonymous: Bool? = nil, defaultArchivistId: String? = nil, complete: @escaping CommitResult) {
+        let mutation = UpdateMyUserInfoMutation(displayName: displayName, photoURL: photoURL, publicKey: publicKey, isAnonymous: isAnonymous, defaultArchivistId: defaultArchivistId)
+        self.mutateAndAlterCache(for: mutation, query: MyUserInfoQuery(), with: { data, response in
+            data.myUserInfo?.displayName = displayName
+            data.myUserInfo?.photoUrl = photoURL
+            data.myUserInfo?.publicKey = publicKey
+            data.myUserInfo?.isAnonymous = isAnonymous
+            data.myUserInfo?.defaultArchivistId = defaultArchivistId
+        }, callback: complete)
+    }
+
+}
