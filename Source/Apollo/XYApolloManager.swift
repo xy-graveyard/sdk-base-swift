@@ -33,7 +33,7 @@ public class XYApolloQueryManager {
     internal let queue: DispatchQueue
     internal let timeout: DispatchTimeInterval
 
-    fileprivate static let store = ApolloStore(cache: InMemoryNormalizedCache())
+    fileprivate static var store = ApolloStore(cache: InMemoryNormalizedCache())
 
     private static let xyAuthHeader = "X-Auth-Token"
     private static let endpointUrl = "https://cmsltk3yhg.execute-api.us-east-1.amazonaws.com/dev/graphql"
@@ -54,7 +54,11 @@ public class XYApolloQueryManager {
 
 public extension XYApolloQueryManager {
 
-    public class func nonAuth(
+    class func clearCache() {
+        self.store = ApolloStore(cache: InMemoryNormalizedCache())
+    }
+
+    class func nonAuth(
         on queue: DispatchQueue = XYApolloQueryManager.defaultQueue,
         with timeout: DispatchTimeInterval = XYApolloQueryManager.defaultTimeout,
         configuration: URLSessionConfiguration = URLSessionConfiguration.default) -> XYApolloQueryManager {
@@ -64,7 +68,7 @@ public extension XYApolloQueryManager {
         return XYApolloQueryManager(client: client, queue: queue, timeout: timeout)
     }
 
-    public class func auth(
+    class func auth(
         token: String,
         on queue: DispatchQueue = XYApolloQueryManager.defaultQueue,
         with timeout: DispatchTimeInterval = XYApolloQueryManager.defaultTimeout) -> XYApolloQueryManager {
