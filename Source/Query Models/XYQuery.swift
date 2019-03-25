@@ -12,6 +12,21 @@ import Promises
 public typealias CommitResult = (Error?) -> Void
 public typealias CommitResultWithId = (String?, Error?) -> Void
 
+public enum XYQueryError: Error {
+    case timedOut
+    case validationFailure
+    case error(Error)
+
+    static func fromPromiseError(_ error: Error) -> XYQueryError {
+        guard let promiseError = error as? PromiseError else { return .error(error) }
+        switch promiseError {
+        case .timedOut: return .timedOut
+        case .validationFailure: return .validationFailure
+        }
+    }
+
+}
+
 public protocol XYQuery: class {
     associatedtype QueryType: GraphQLQuery
     associatedtype QueryModel: GraphQLSelectionSet
@@ -42,13 +57,15 @@ public extension XYQuery {
     }
 
     // Preloads the data for any query that supports watching, allowing the UI to be ready when the user loads the app
+    // Will timeout after 15 seconds
     func preload() -> Promises.Promise<Bool> {
-        return Promises.Promise<Bool>(on: .global()) { fulfull, reject in
-            self.listen(for: "Preload") { _, _ in
-                self.listeners["Preload"] = nil
-                fulfull(true)
+        let preloadKey = "XYQuery.Preload"
+        return Promises.Promise<Bool>(on: .global()) { fulfill, reject in
+            self.listen(for: preloadKey) { _, _ in
+                self.listeners[preloadKey] = nil
+                fulfill(true)
             }
-        }
+        }.timeout(15)
     }
 }
 

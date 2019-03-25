@@ -104,11 +104,15 @@ extension XYApolloQueryManager: XYQueryManager {
 public extension XYApolloQueryManager {
 
     // Accepts a list of queries that the client wishes to preload with data via the listener
-    func preload(queries: [() -> Promises.Promise<Bool>], complete: @escaping () -> ()) {
+    func preload(queries: [() -> Promises.Promise<Bool>], complete: @escaping (XYQueryError?) -> Void) {
         DispatchQueue.global().async {
-            Promises.any(queries.map { $0() }).then { _ in
-                complete()
-            }
+            Promises.any(queries.map { $0() })
+                .then { _ in
+                    complete(nil)
+                }.catch { error in
+                    // Used for handling timeout issues along with regular errors
+                    complete(XYQueryError.fromPromiseError(error))
+                }
         }
     }
 
