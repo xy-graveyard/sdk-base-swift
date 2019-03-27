@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		311C5A0C2242ACB8001C7DBD /* XYMyBridgesQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311C5A0B2242ACB8001C7DBD /* XYMyBridgesQuery.swift */; };
+		3129941A224C1E630084B3C7 /* XYTotalInNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31299419224C1E630084B3C7 /* XYTotalInNetwork.swift */; };
 		315591E72204FE5700DC4556 /* XyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 315591DE2204FE5700DC4556 /* XyCore.framework */; };
 		315591F62204FFDB00DC4556 /* XYBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315591D62204FCBF00DC4556 /* XYBase.swift */; };
 		315591F72204FFDF00DC4556 /* XYTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315591D52204FCBF00DC4556 /* XYTimer.swift */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		311C5A0B2242ACB8001C7DBD /* XYMyBridgesQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYMyBridgesQuery.swift; sourceTree = "<group>"; };
+		31299419224C1E630084B3C7 /* XYTotalInNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYTotalInNetwork.swift; sourceTree = "<group>"; };
 		315591BD2204FBB400DC4556 /* XyCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XyCore.h; sourceTree = "<group>"; };
 		315591BE2204FBB400DC4556 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		315591C82204FBB400DC4556 /* XyCoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XyCoreTests.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				31EAD79D2240458200DDA8C1 /* XYMySentinelsQuery.swift */,
 				31EAD79F2240459900DDA8C1 /* XYMyUserInfoQuery.swift */,
 				311C5A0B2242ACB8001C7DBD /* XYMyBridgesQuery.swift */,
+				31299419224C1E630084B3C7 /* XYTotalInNetwork.swift */,
 			);
 			path = "Query Models";
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				315591F72204FFDF00DC4556 /* XYTimer.swift in Sources */,
 				31DC14ED2208B3BB00F19571 /* XYApolloGQLApi.swift in Sources */,
 				31EAD79C2240456800DDA8C1 /* XYMyAttachedArchivistsQuery.swift in Sources */,
+				3129941A224C1E630084B3C7 /* XYTotalInNetwork.swift in Sources */,
 				315591F62204FFDB00DC4556 /* XYBase.swift in Sources */,
 				31D735582240406C00B6B230 /* XYQuery.swift in Sources */,
 				311C5A0C2242ACB8001C7DBD /* XYMyBridgesQuery.swift in Sources */,
