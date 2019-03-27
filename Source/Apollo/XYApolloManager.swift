@@ -36,7 +36,7 @@ public class XYApolloQueryManager {
     fileprivate static var store = ApolloStore(cache: InMemoryNormalizedCache())
 
     private static let xyAuthHeader = "X-Auth-Token"
-    private static let endpointUrl = "https://cmsltk3yhg.execute-api.us-east-1.amazonaws.com/dev/graphql"
+    private static let endpointUrl = "https://api-account.xy.company"
 
     private static var serverUrl: URL = {
         guard let url = URL(string: endpointUrl) else {

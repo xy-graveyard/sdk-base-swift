@@ -3057,3 +3057,112 @@ public final class GetNodeQuery: GraphQLQuery {
     }
   }
 }
+
+public final class GetTotalInNetworkQuery: GraphQLQuery {
+  public let operationDefinition =
+    "query GetTotalInNetwork {\n  blocks {\n    __typename\n    pagination {\n      __typename\n      count\n    }\n  }\n}"
+
+  public init() {
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Query"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("blocks", type: .object(Block.selections)),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(blocks: Block? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Query", "blocks": blocks.flatMap { (value: Block) -> ResultMap in value.resultMap }])
+    }
+
+    public var blocks: Block? {
+      get {
+        return (resultMap["blocks"] as? ResultMap).flatMap { Block(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "blocks")
+      }
+    }
+
+    public struct Block: GraphQLSelectionSet {
+      public static let possibleTypes = ["BlockList"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("pagination", type: .object(Pagination.selections)),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(pagination: Pagination? = nil) {
+        self.init(unsafeResultMap: ["__typename": "BlockList", "pagination": pagination.flatMap { (value: Pagination) -> ResultMap in value.resultMap }])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var pagination: Pagination? {
+        get {
+          return (resultMap["pagination"] as? ResultMap).flatMap { Pagination(unsafeResultMap: $0) }
+        }
+        set {
+          resultMap.updateValue(newValue?.resultMap, forKey: "pagination")
+        }
+      }
+
+      public struct Pagination: GraphQLSelectionSet {
+        public static let possibleTypes = ["Pagination"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("count", type: .scalar(Int.self)),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(count: Int? = nil) {
+          self.init(unsafeResultMap: ["__typename": "Pagination", "count": count])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var count: Int? {
+          get {
+            return resultMap["count"] as? Int
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "count")
+          }
+        }
+      }
+    }
+  }
+}
