@@ -1638,7 +1638,7 @@ public final class AllSentinelsQuery: GraphQLQuery {
 
 public final class MyUserInfoQuery: GraphQLQuery {
   public let operationDefinition =
-    "query MyUserInfo {\n  myUserInfo {\n    __typename\n    id\n    displayName\n    email\n    photoURL\n    publicKey\n    isAnonymous\n    defaultArchivistId\n    archivists {\n      __typename\n      id\n      name\n      publicKey\n      multiaddr\n    }\n  }\n}"
+    "query MyUserInfo {\n  myUserInfo {\n    __typename\n    id\n    displayName\n    email\n    photoURL\n    publicKey\n    isAnonymous\n    defaultArchivistId\n    archivists {\n      __typename\n      id\n      name\n      publicKey\n      multiaddr\n      graphqlPort\n      boundWitnessServerPort\n    }\n  }\n}"
 
   public init() {
   }
@@ -1784,6 +1784,8 @@ public final class MyUserInfoQuery: GraphQLQuery {
           GraphQLField("name", type: .scalar(String.self)),
           GraphQLField("publicKey", type: .scalar(String.self)),
           GraphQLField("multiaddr", type: .scalar(String.self)),
+          GraphQLField("graphqlPort", type: .scalar(Int.self)),
+          GraphQLField("boundWitnessServerPort", type: .scalar(Int.self)),
         ]
 
         public private(set) var resultMap: ResultMap
@@ -1792,8 +1794,8 @@ public final class MyUserInfoQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(id: String? = nil, name: String? = nil, publicKey: String? = nil, multiaddr: String? = nil) {
-          self.init(unsafeResultMap: ["__typename": "Archivist", "id": id, "name": name, "publicKey": publicKey, "multiaddr": multiaddr])
+        public init(id: String? = nil, name: String? = nil, publicKey: String? = nil, multiaddr: String? = nil, graphqlPort: Int? = nil, boundWitnessServerPort: Int? = nil) {
+          self.init(unsafeResultMap: ["__typename": "Archivist", "id": id, "name": name, "publicKey": publicKey, "multiaddr": multiaddr, "graphqlPort": graphqlPort, "boundWitnessServerPort": boundWitnessServerPort])
         }
 
         public var __typename: String {
@@ -1838,6 +1840,24 @@ public final class MyUserInfoQuery: GraphQLQuery {
           }
           set {
             resultMap.updateValue(newValue, forKey: "multiaddr")
+          }
+        }
+
+        public var graphqlPort: Int? {
+          get {
+            return resultMap["graphqlPort"] as? Int
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "graphqlPort")
+          }
+        }
+
+        public var boundWitnessServerPort: Int? {
+          get {
+            return resultMap["boundWitnessServerPort"] as? Int
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "boundWitnessServerPort")
           }
         }
       }

@@ -187,6 +187,8 @@ query MyUserInfo {
         name
         publicKey
         multiaddr
+        graphqlPort
+        boundWitnessServerPort        
       }
     }
   }
