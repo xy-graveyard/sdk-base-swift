@@ -158,7 +158,7 @@ public class XYApolloFetchRequest<Query: GraphQLQuery>: XYApolloRequest {
 
             self.cancelHandle = self.manager.client.fetch(query: self.query, queue: self.manager.queue) { [weak self] result, error in
                 self?.timer = nil
-                fulfill(XYQueryResult<QueryType>(data: result, error: error))
+                fulfill(XYQueryResult<QueryType>(data: result, error: error ?? result?.errors?.first))
             }
 
             self.timer = DispatchSource.singleTimer(interval: self.manager.timeout, queue: XYApolloQueryManager.timeoutQueue) { [weak self] in
@@ -198,7 +198,7 @@ public class XYApolloMutateRequest<Mutation: GraphQLMutation>: XYApolloRequest {
         return Promises.Promise<XYQueryResult<Mutation>> { fulfill, reject in
             self.cancelHandle = self.manager.client.perform(mutation: self.mutation, queue: self.manager.queue) { [weak self] result, error in
                 self?.timer = nil
-                fulfill(XYQueryResult<Mutation>(data: result, error: error))
+                fulfill(XYQueryResult<Mutation>(data: result, error: error ?? result?.errors?.first))
             }
 
             self.timer = DispatchSource.singleTimer(interval: self.manager.timeout, queue: XYApolloQueryManager.timeoutQueue) { [weak self] in

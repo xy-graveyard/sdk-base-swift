@@ -2329,7 +2329,7 @@ public final class DetachFromArchivistClientMutation: GraphQLMutation {
 
 public final class MyAttachedArchivistsQuery: GraphQLQuery {
   public let operationDefinition =
-    "query MyAttachedArchivists {\n  myAttachedArchivists {\n    __typename\n    id\n    name\n    owner\n    photoUrl\n    dns\n    publicKey\n    multiaddr\n    port\n    ip\n  }\n}"
+    "query MyAttachedArchivists {\n  myAttachedArchivists {\n    __typename\n    id\n    name\n    owner\n    photoUrl\n    dns\n    publicKey\n    multiaddr\n    port\n    ip\n    graphqlPort\n    boundWitnessServerPort\n  }\n}"
 
   public init() {
   }
@@ -2374,6 +2374,8 @@ public final class MyAttachedArchivistsQuery: GraphQLQuery {
         GraphQLField("multiaddr", type: .scalar(String.self)),
         GraphQLField("port", type: .scalar(Int.self)),
         GraphQLField("ip", type: .scalar(String.self)),
+        GraphQLField("graphqlPort", type: .scalar(Int.self)),
+        GraphQLField("boundWitnessServerPort", type: .scalar(Int.self)),
       ]
 
       public private(set) var resultMap: ResultMap
@@ -2382,8 +2384,8 @@ public final class MyAttachedArchivistsQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(id: String? = nil, name: String? = nil, owner: String? = nil, photoUrl: String? = nil, dns: String? = nil, publicKey: String? = nil, multiaddr: String? = nil, port: Int? = nil, ip: String? = nil) {
-        self.init(unsafeResultMap: ["__typename": "Archivist", "id": id, "name": name, "owner": owner, "photoUrl": photoUrl, "dns": dns, "publicKey": publicKey, "multiaddr": multiaddr, "port": port, "ip": ip])
+      public init(id: String? = nil, name: String? = nil, owner: String? = nil, photoUrl: String? = nil, dns: String? = nil, publicKey: String? = nil, multiaddr: String? = nil, port: Int? = nil, ip: String? = nil, graphqlPort: Int? = nil, boundWitnessServerPort: Int? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Archivist", "id": id, "name": name, "owner": owner, "photoUrl": photoUrl, "dns": dns, "publicKey": publicKey, "multiaddr": multiaddr, "port": port, "ip": ip, "graphqlPort": graphqlPort, "boundWitnessServerPort": boundWitnessServerPort])
       }
 
       public var __typename: String {
@@ -2474,6 +2476,24 @@ public final class MyAttachedArchivistsQuery: GraphQLQuery {
         }
         set {
           resultMap.updateValue(newValue, forKey: "ip")
+        }
+      }
+
+      public var graphqlPort: Int? {
+        get {
+          return resultMap["graphqlPort"] as? Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "graphqlPort")
+        }
+      }
+
+      public var boundWitnessServerPort: Int? {
+        get {
+          return resultMap["boundWitnessServerPort"] as? Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "boundWitnessServerPort")
         }
       }
     }

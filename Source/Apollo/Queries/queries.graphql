@@ -275,6 +275,8 @@ query MyAttachedArchivists {
     multiaddr
     port
     ip
+    graphqlPort
+    boundWitnessServerPort
   }
 }
 
