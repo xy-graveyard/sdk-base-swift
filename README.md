@@ -1,3 +1,12 @@
-# core-ios
+[logo]: https://cdn.xy.company/img/brand/XY_Logo_GitHub.png 
+[![logo]](https://xy.company)
 
-<p align="center">Made with  ❤️  by [<b>XY - The Persistent Company</b>] (https://xy.company)</p>
+# XyCore
+An internal library for connecting to GraphQL.
+
+## Requirements
+- iOS 11.0+
+- Xcode 10.1+
+- Swift 4.2+
+
+<p align="center">Made with ❤️ by <b><a href="https://xy.company">XY - The Persistent Company<a></b></p>

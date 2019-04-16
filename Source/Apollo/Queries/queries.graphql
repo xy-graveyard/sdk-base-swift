@@ -1,0 +1,342 @@
+query TotalXyoTokens($ethAddress: String) {
+  totalXyoTokens(ethAddress: $ethAddress)
+
+  historicalXyoTokensEarned(ethAddress: $ethAddress, from: 1548115722712)
+}
+
+query MyDevices {
+    mySentinels {
+      meta {
+        totalCount
+      }
+      items {
+        id
+        name
+        photoUrl
+        publicKey
+        uuid
+        major
+        minor
+        lastGps {
+          latitude
+          longitude
+        }
+      }
+    }
+    myBridges {
+      meta {
+        totalCount
+      }
+      items {
+        id
+        name
+        photoUrl
+        publicKey
+        uuid
+        major
+        minor
+        lastGps {
+          latitude
+          longitude
+        }
+      }
+    }
+  }
+
+mutation AddSentinel(
+    $id: String!
+    $name: String
+    $photoUrl: String
+    $publicKey: String
+    $uuid: String
+    $major: Int
+    $minor: Int
+  ) {
+    addSentinel(
+      address: {
+        id: $id
+        publicKey: $publicKey
+        name: $name
+        photoUrl: $photoUrl
+      }
+      sentinel: { uuid: $uuid, major: $major, minor: $minor }
+    ) {
+      id
+      name
+      photoUrl
+      publicKey
+      uuid
+      major
+      minor
+    }
+  }
+
+mutation UpdateSentinel(
+    $id: String!
+    $name: String
+    $photoUrl: String
+    $publicKey: String
+    $uuid: String
+    $major: Int
+    $minor: Int
+  ) {
+    updateSentinel(
+      address: {
+        id: $id
+        publicKey: $publicKey
+        name: $name
+        photoUrl: $photoUrl
+      }
+      sentinel: { uuid: $uuid, major: $major, minor: $minor }
+    ) {
+      id
+      name
+      photoUrl
+      publicKey
+      uuid
+      major
+      minor
+    }
+  }
+
+mutation DeleteSentinel($id: String!) {
+    deleteSentinel(id: $id) {
+      name
+      publicKey
+      photoUrl
+    }
+  }
+  
+mutation DeleteBridge($id: String!) {
+ deleteBridge(id: $id) {
+   name
+   id
+   photoUrl
+ }
+}
+
+query AllBridges($limit: Int, $cursor: String) {
+  bridges(paginate: { limit: $limit, cursor: $cursor }) {
+    meta {
+      totalCount
+      cursor
+    }
+    items {
+      publicKey
+      name
+      photoUrl
+      owner
+    }
+  }
+}
+
+mutation UpdateBridge(
+    $id: String!
+    $name: String
+    $photoUrl: String
+    $publicKey: String
+    $uuid: String
+    $major: Int
+    $minor: Int
+  ) {
+    updateBridge(
+      address: {
+        id: $id
+        publicKey: $publicKey
+        name: $name
+        photoUrl: $photoUrl
+      }
+      bridge: { uuid: $uuid, major: $major, minor: $minor }
+    ) {
+      id
+      name
+      photoUrl
+      publicKey
+      uuid
+      major
+      minor
+    }
+  }
+
+query AllSentinels($limit: Int, $cursor: String) {
+  sentinels(paginate: { limit: $limit, cursor: $cursor }) {
+    meta {
+      totalCount
+      cursor
+    }
+    items {
+      publicKey
+      name
+      photoUrl
+      owner
+    }
+  }
+}
+
+query MyUserInfo {
+    myUserInfo {
+      id
+      displayName
+      email
+      photoURL
+      publicKey
+      isAnonymous
+      defaultArchivistId
+      archivists {
+        id
+        name
+        publicKey
+        multiaddr
+        graphqlPort
+        boundWitnessServerPort        
+      }
+    }
+  }
+
+mutation UpdateMyUserInfo(
+    $displayName: String
+    $photoURL: String
+    $publicKey: String
+    $isAnonymous: Boolean
+    $defaultArchivistId: String
+  ) {
+    updateMyUserInfo(
+      info: {
+        displayName: $displayName
+        photoURL: $photoURL
+        publicKey: $publicKey
+        isAnonymous: $isAnonymous
+        defaultArchivistId: $defaultArchivistId
+      }
+    ) {
+      id
+      displayName
+      photoURL
+      email
+      publicKey
+      isAnonymous
+      defaultArchivistId
+    }
+  }
+
+  mutation AddBridge(
+    $id: String!
+    $name: String
+    $photoUrl: String
+    $publicKey: String
+    $uuid: String
+    $major: Int
+    $minor: Int
+  ) {
+    addBridge(
+      address: {
+        id: $id
+        publicKey: $publicKey
+        name: $name
+        photoUrl: $photoUrl
+      }
+      bridge: { uuid: $uuid, major: $major, minor: $minor }
+    ) {
+      id
+      name
+      photoUrl
+      publicKey
+      uuid
+      major
+      minor
+    }
+  }
+
+  mutation AttachToArchivistClient($multiaddr: String, $dns: String, $ip: String, $port: Int) {
+  attachToArchivistClient (archivist: {
+    multiaddr: $multiaddr
+    port: $port
+    dns: $dns
+    ip: $ip
+  }) {
+    id
+  }
+}
+
+mutation DetachFromArchivistClient($id: String!) {
+  detachFromArchivistClient (id: $id) {
+    id
+  }
+}
+
+query MyAttachedArchivists {
+  myAttachedArchivists {
+    id
+    name
+    owner
+    photoUrl
+    dns
+    publicKey
+    multiaddr
+    port
+    ip
+    graphqlPort
+    boundWitnessServerPort
+  }
+}
+
+mutation AddFeedback($value: Int!, $text: String) {
+    addFeedback(value: $value, text: $text) {
+      id
+      owner
+      value
+      text
+      created
+      updated
+    }
+  }
+
+  mutation UpdateFeedback($id: String!, $value: Int, $text: String) {
+    updateFeedback(id: $id, value: $value, text: $text) {
+      id
+      owner
+      value
+      text
+      created
+      updated
+    }
+  }
+
+mutation SetDefaultArchivist(
+    $defaultArchivistId: String
+  ) {
+    updateMyUserInfo(
+      info: {
+        defaultArchivistId: $defaultArchivistId
+      }
+    ) {
+      id
+    }
+  }
+
+query TotalArchivists {
+  archivists {
+    meta {
+      totalCount
+    }
+  }
+}
+
+query GetNode ($publicKey: String) {
+    node (publicKey: $publicKey) {
+    publicKey
+    displayName
+    lastGps {
+      latitude
+      longitude
+    }
+  }
+}
+
+query GetTotalInNetwork {
+ blocks {
+   pagination {
+     count
+   }
+ }
+}
