@@ -11,6 +11,8 @@ import Apollo
 final public class XYMyBridgesQuery: XYQuery {
     public typealias QueryModel = MyDevicesQuery.Data.MyBridge.Item
 
+    public typealias LastBridgeGps = MyDevicesQuery.Data.MyBridge.Item.LastGp
+
     public var queryData = XYQueryData<MyDevicesQuery, QueryModel>()
 
     public let queryManager: XYQueryManager
@@ -39,7 +41,8 @@ public extension XYMyBridgesQuery {
     func updateBridge(id: String, name: String? = nil, photoUrl: String? = nil, publicKey: String? = nil, uuid: String? = nil, major: Int? = nil, minor: Int? = nil, complete: @escaping CommitResult) {
         let mutation = UpdateBridgeMutation(id: id, name: name, photoUrl: photoUrl, publicKey: publicKey, uuid: uuid, major: major, minor: minor)
         self.mutateAndAlterCache(for: mutation, query: MyDevicesQuery(), with: { data, response in
-            let update = MyDevicesQuery.Data.MyBridge.Item(id: id, name: name, photoUrl: photoUrl, publicKey: publicKey, uuid: uuid, major: major, minor: minor)
+            let gps = LastBridgeGps(latitude: response?.data?.updateBridge?.lastGps?.latitude, longitude: response?.data?.updateBridge?.lastGps?.longitude)
+            let update = MyDevicesQuery.Data.MyBridge.Item(id: id, name: name, photoUrl: photoUrl, publicKey: publicKey, uuid: uuid, major: major, minor: minor, lastGps: gps)
             if let updateIndex = data.myBridges?.items?.index(where: { $0?.id == id }) {
                 data.myBridges?.items?[updateIndex] = update
             }
