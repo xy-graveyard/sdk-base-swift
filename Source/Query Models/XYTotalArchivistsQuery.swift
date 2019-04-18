@@ -9,20 +9,20 @@
 import Apollo
 
 final public class XYTotalArchivistsQuery: XYQuery {
-    public typealias QueryModel = TotalArchivistsQuery.Data.Archivist
+    public typealias QueryModel = GetTotalInNetworkQuery.Data.Block.Pagination
 
-    public var queryData = XYQueryData<TotalArchivistsQuery, QueryModel>()
+    public var queryData = XYQueryData<GetTotalInNetworkQuery, QueryModel>()
 
     public let queryManager: XYQueryManager
-    public var watcher: GraphQLQueryWatcher<TotalArchivistsQuery>?
-    public var listeners: [String : (GraphQLResult<TotalArchivistsQuery.Data>?, Error?) -> ()] = [:]
+    public var watcher: GraphQLQueryWatcher<GetTotalInNetworkQuery>?
+    public var listeners: [String : (GraphQLResult<GetTotalInNetworkQuery.Data>?, Error?) -> ()] = [:]
 
     public init(with authToken: String) {
         self.queryManager = XYApolloQueryManager.auth(token: authToken)
-        self.watcher = self.queryManager.watch(for: TotalArchivistsQuery(), then: self.processResponse)
+        self.watcher = self.queryManager.watch(for: GetTotalInNetworkQuery(), then: self.processResponse)
         self.queryData.setConvertor { queryData in
-            return queryData.data?.archivists?.meta != nil ?
-                [QueryModel(meta: (queryData.data?.archivists?.meta)!)] : []
+            return queryData.data?.blocks?.pagination?.count != nil ?
+                [QueryModel(count: queryData.data?.blocks?.pagination?.count!)] : []
         }
     }
 }
