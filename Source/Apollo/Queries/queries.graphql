@@ -96,6 +96,10 @@ mutation UpdateSentinel(
       uuid
       major
       minor
+     lastGps {
+        latitude
+        longitude
+      }
     }
   }
 
@@ -155,6 +159,10 @@ mutation UpdateBridge(
       uuid
       major
       minor
+     lastGps {
+        latitude
+        longitude
+      }      
     }
   }
 
