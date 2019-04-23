@@ -15,17 +15,16 @@ final public class XYMySentinelsQuery: XYQuery {
 
     public var queryData = XYQueryData<MyDevicesQuery, QueryModel>()
 
-    public let queryManager: XYQueryManager
-    public var watcher: GraphQLQueryWatcher<MyDevicesQuery>?
+    public fileprivate(set) var watcher: GraphQLQueryWatcher<MyDevicesQuery>?
     public var listeners: [String : (GraphQLResult<MyDevicesQuery.Data>?, Error?) -> ()] = [:]
 
-    public init(with authToken: String) {
-        self.queryManager = XYApolloQueryManager.auth(token: authToken)
-        self.watcher = self.queryManager.watch(for: MyDevicesQuery(), then: self.processResponse)
+    public init() {
+        self.watcher = XYApolloQueryManager.queryManager?.watch(for: MyDevicesQuery(), then: self.processResponse)
         self.queryData.setConvertor { queryData in
             return queryData.data?.mySentinels?.items as? [QueryModel]
         }
     }
+
 }
 
 public extension XYMySentinelsQuery {

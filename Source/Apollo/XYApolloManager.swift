@@ -24,6 +24,9 @@ public enum XYQueryManagerError: Error {
 
 public class XYApolloQueryManager {
 
+    public fileprivate(set) static var queryManager: XYApolloQueryManager?
+    fileprivate static var currentAuthToken: String?
+
     public static let defaultQueue = DispatchQueue(label:"com.xyonetwork.core.sdk.XYApolloQueryManagerOperationsQueue")
     public static let defaultTimeout: DispatchTimeInterval = .seconds(15)
 
@@ -35,16 +38,6 @@ public class XYApolloQueryManager {
 
     fileprivate static var store = ApolloStore(cache: InMemoryNormalizedCache())
 
-    private static let xyAuthHeader = "X-Auth-Token"
-    private static let endpointUrl = "https://api-account.xy.company"
-
-    private static var serverUrl: URL = {
-        guard let url = URL(string: endpointUrl) else {
-            fatalError("Invalid GraphQL connection URL")
-        }
-        return url
-    }()
-
     fileprivate init(client: ApolloClient, queue: DispatchQueue, timeout: DispatchTimeInterval) {
         self.client = client
         self.queue = queue
@@ -54,28 +47,31 @@ public class XYApolloQueryManager {
 
 public extension XYApolloQueryManager {
 
+    class func initialize(token: String) {
+        DispatchQueue.global().sync {
+            // Do nothing if we already have the manager built
+            guard self.queryManager == nil else { return }
+
+            // Create client and set the cache
+            let client = ApolloClient(networkTransport: XYHTTPNetworkTransport(token: token), store: store)
+            client.cacheKeyForObject = { $0["id"] }
+
+            // Create the "global" manager instance
+            self.queryManager = XYApolloQueryManager(
+                client: client,
+                queue: XYApolloQueryManager.defaultQueue,
+                timeout: XYApolloQueryManager.defaultTimeout)
+        }
+    }
+
+    class func reset() {
+        DispatchQueue.global().sync {
+            self.queryManager = nil
+        }
+    }
+
     class func clearCache() {
         self.store = ApolloStore(cache: InMemoryNormalizedCache())
-    }
-
-    class func nonAuth(
-        on queue: DispatchQueue = XYApolloQueryManager.defaultQueue,
-        with timeout: DispatchTimeInterval = XYApolloQueryManager.defaultTimeout,
-        configuration: URLSessionConfiguration = URLSessionConfiguration.default) -> XYApolloQueryManager {
-
-        let client = ApolloClient(networkTransport: HTTPNetworkTransport(url: serverUrl, configuration: configuration), store: store)
-        client.cacheKeyForObject = { $0["id"] }
-        return XYApolloQueryManager(client: client, queue: queue, timeout: timeout)
-    }
-
-    class func auth(
-        token: String,
-        on queue: DispatchQueue = XYApolloQueryManager.defaultQueue,
-        with timeout: DispatchTimeInterval = XYApolloQueryManager.defaultTimeout) -> XYApolloQueryManager {
-
-        let configuration = URLSessionConfiguration.default
-        configuration.httpAdditionalHeaders = [xyAuthHeader: token]
-        return self.nonAuth(on: queue, with: timeout, configuration: configuration)
     }
 
 }

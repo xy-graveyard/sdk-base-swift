@@ -13,17 +13,16 @@ final public class XYMyAttachedArchivistsQuery: XYQuery {
 
     public var queryData = XYQueryData<MyAttachedArchivistsQuery, QueryModel>()
 
-    public let queryManager: XYQueryManager
-    public var watcher: GraphQLQueryWatcher<MyAttachedArchivistsQuery>?
+    public fileprivate(set) var watcher: GraphQLQueryWatcher<MyAttachedArchivistsQuery>?
     public var listeners: [String : (GraphQLResult<MyAttachedArchivistsQuery.Data>?, Error?) -> ()] = [:]
 
-    public init(with authToken: String) {
-        self.queryManager = XYApolloQueryManager.auth(token: authToken)
-        self.watcher = self.queryManager.watch(for: MyAttachedArchivistsQuery(), then: self.processResponse)
+    public init() {
+        self.watcher = XYApolloQueryManager.queryManager?.watch(for: MyAttachedArchivistsQuery(), then: self.processResponse)
         self.queryData.setConvertor { queryData in
             return queryData.data?.myAttachedArchivists as? [QueryModel]
         }
     }
+
 }
 
 public extension XYMyAttachedArchivistsQuery {

@@ -33,11 +33,8 @@ public protocol XYQuery: class {
 
     var queryData: XYQueryData<QueryType, QueryModel> { get set }
 
-    var queryManager: XYQueryManager { get }
     var watcher: GraphQLQueryWatcher<QueryType>? { get }
     var listeners: [String: (_ result: GraphQLResult<QueryType.Data>?, _ error: Error?) -> ()] { get set }
-
-    init(with authToken: String)
 
     func listen(for key: String, listener: @escaping (_ result: GraphQLResult<QueryType.Data>?, _ error: Error?) -> ())
     func processResponse(_ result: GraphQLResult<QueryType.Data>?, error: Error?)
@@ -73,15 +70,20 @@ internal extension XYQuery {
 
     // Run a mutation and then refresh the cache for the associate QueryType which will trigger any watch() queries in the view models
     func mutateAndAlterCache<Mutation: GraphQLMutation>(for mutation: Mutation, query: QueryType, with alteration: @escaping (inout QueryType.Data, GraphQLResult<Mutation.Data>?) -> Void, callback: @escaping CommitResult) {
+        guard let manager = XYApolloQueryManager.queryManager else {
+            callback(nil)
+            return
+        }
+
         DispatchQueue.global().async {
-            let result = self.queryManager.mutate(for: mutation).execute()
+            let result = manager.mutate(for: mutation).execute()
             guard result.error == nil else {
                 callback(result.error)
                 return
             }
 
             // Update the cache with the new value, sending back the result of this query if needed for the cache alteration
-            _ = self.queryManager.cache.withinReadWriteTransaction { transaction in
+            _ = manager.cache.withinReadWriteTransaction { transaction in
                 try transaction.update(query: query) { (data: inout QueryType.Data) in
                     alteration(&data, result.data)
                 }
