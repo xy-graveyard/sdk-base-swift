@@ -56,4 +56,11 @@ public extension XYMySentinelsQuery {
         }, callback: complete)
     }
 
+    func detachSentinel(id: String, complete: @escaping CommitResult) {
+        let mutation = DetachFromSentinelMutation(id: id)
+        self.mutateAndAlterCache(for: mutation, query: MyDevicesQuery(), with: { data, response in
+            data.mySentinels?.items?.removeAll(where: { $0?.id == id })
+        }, callback: complete)
+    }
+
 }

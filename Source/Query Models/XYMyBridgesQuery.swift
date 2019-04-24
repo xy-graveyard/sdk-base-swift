@@ -58,9 +58,16 @@ public extension XYMyBridgesQuery {
     }
 
     func deleteBridge(id: String, complete: @escaping CommitResult) {
-        let mutation = DeleteSentinelMutation(id: id)
+        let mutation = DeleteBridgeMutation(id: id)
         self.mutateAndAlterCache(for: mutation, query: MyDevicesQuery(), with: { data, response in
-            data.mySentinels?.items?.removeAll(where: { $0?.id == id })
+            data.myBridges?.items?.removeAll(where: { $0?.id == id })
+        }, callback: complete)
+    }
+
+    func detachBridge(id: String, complete: @escaping CommitResult) {
+        let mutation = DetachFromBridgeMutation(id: id)
+        self.mutateAndAlterCache(for: mutation, query: MyDevicesQuery(), with: { data, response in
+            data.myBridges?.items?.removeAll(where: { $0?.id == id })
         }, callback: complete)
     }
 
