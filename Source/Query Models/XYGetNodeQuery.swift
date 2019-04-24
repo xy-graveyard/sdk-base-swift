@@ -8,19 +8,19 @@
 
 import Apollo
 
-final public class XYGetNodeQuery: XYQuery {
-    public typealias QueryModel = GetNodeQuery.Data.Node.LastGp
+final public class XYTotalNodesQuery: XYQuery {
+    public typealias QueryModel = TotalNodeCountQuery.Data.Node.Pagination
 
-    public var queryData = XYQueryData<GetNodeQuery, QueryModel>()
+    public var queryData = XYQueryData<TotalNodeCountQuery, QueryModel>()
 
-    public fileprivate(set) var watcher: GraphQLQueryWatcher<GetNodeQuery>?
-    public var listeners: [String : (GraphQLResult<GetNodeQuery.Data>?, Error?) -> ()] = [:]
+    public fileprivate(set) var watcher: GraphQLQueryWatcher<TotalNodeCountQuery>?
+    public var listeners: [String : (GraphQLResult<TotalNodeCountQuery.Data>?, Error?) -> ()] = [:]
 
     public init() {
-        self.watcher = XYApolloQueryManager.queryManager?.watch(for: GetNodeQuery(), then: self.processResponse)
+        self.watcher = XYApolloQueryManager.queryManager?.watch(for: TotalNodeCountQuery(), then: self.processResponse)
         self.queryData.setConvertor { queryData in
-            guard let data = queryData.data?.node?.lastGps else { return [] }
-            return [QueryModel(latitude: data.latitude, longitude: data.longitude)]
+            return queryData.data?.nodes?.pagination?.count != nil ?
+                [QueryModel(count: (queryData.data?.nodes?.pagination?.count)!)] : []
         }
     }
 }
