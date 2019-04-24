@@ -1,9 +1,3 @@
-query TotalXyoTokens($ethAddress: String) {
-  totalXyoTokens(ethAddress: $ethAddress)
-
-  historicalXyoTokensEarned(ethAddress: $ethAddress, from: 1548115722712)
-}
-
 query MyDevices {
     mySentinels {
       meta {
@@ -165,6 +159,38 @@ mutation UpdateBridge(
       }      
     }
   }
+
+mutation DetachFromSentinel($id: String!) {
+  detachFromSentinel (id: $id) {
+    id
+    name
+    photoUrl
+    publicKey
+    uuid
+    major
+    minor
+    lastGps {
+      latitude
+      longitude
+    }
+  }
+}
+
+mutation DetachFromBridge($id: String!) {
+  detachFromBridge (id: $id) {
+    id
+    name
+    photoUrl
+    publicKey
+    uuid
+    major
+    minor
+    lastGps {
+      latitude
+      longitude
+    }
+  }
+}
 
 query AllSentinels($limit: Int, $cursor: String) {
   sentinels(paginate: { limit: $limit, cursor: $cursor }) {
