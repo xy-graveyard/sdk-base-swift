@@ -3554,7 +3554,7 @@ public final class GetNodeQuery: GraphQLQuery {
 
 public final class GetTotalInNetworkQuery: GraphQLQuery {
   public let operationDefinition =
-    "query GetTotalInNetwork {\n  blocks {\n    __typename\n    pagination {\n      __typename\n      count\n    }\n  }\n}"
+    "query GetTotalInNetwork {\n  countWitnesses {\n    __typename\n    count\n  }\n}"
 
   public init() {
   }
@@ -3563,7 +3563,7 @@ public final class GetTotalInNetworkQuery: GraphQLQuery {
     public static let possibleTypes = ["Query"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("blocks", type: .object(Block.selections)),
+      GraphQLField("countWitnesses", type: .object(CountWitness.selections)),
     ]
 
     public private(set) var resultMap: ResultMap
@@ -3572,25 +3572,25 @@ public final class GetTotalInNetworkQuery: GraphQLQuery {
       self.resultMap = unsafeResultMap
     }
 
-    public init(blocks: Block? = nil) {
-      self.init(unsafeResultMap: ["__typename": "Query", "blocks": blocks.flatMap { (value: Block) -> ResultMap in value.resultMap }])
+    public init(countWitnesses: CountWitness? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Query", "countWitnesses": countWitnesses.flatMap { (value: CountWitness) -> ResultMap in value.resultMap }])
     }
 
-    public var blocks: Block? {
+    public var countWitnesses: CountWitness? {
       get {
-        return (resultMap["blocks"] as? ResultMap).flatMap { Block(unsafeResultMap: $0) }
+        return (resultMap["countWitnesses"] as? ResultMap).flatMap { CountWitness(unsafeResultMap: $0) }
       }
       set {
-        resultMap.updateValue(newValue?.resultMap, forKey: "blocks")
+        resultMap.updateValue(newValue?.resultMap, forKey: "countWitnesses")
       }
     }
 
-    public struct Block: GraphQLSelectionSet {
-      public static let possibleTypes = ["BlockList"]
+    public struct CountWitness: GraphQLSelectionSet {
+      public static let possibleTypes = ["Count"]
 
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-        GraphQLField("pagination", type: .object(Pagination.selections)),
+        GraphQLField("count", type: .scalar(Int.self)),
       ]
 
       public private(set) var resultMap: ResultMap
@@ -3599,8 +3599,8 @@ public final class GetTotalInNetworkQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(pagination: Pagination? = nil) {
-        self.init(unsafeResultMap: ["__typename": "BlockList", "pagination": pagination.flatMap { (value: Pagination) -> ResultMap in value.resultMap }])
+      public init(count: Int? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Count", "count": count])
       }
 
       public var __typename: String {
@@ -3612,49 +3612,12 @@ public final class GetTotalInNetworkQuery: GraphQLQuery {
         }
       }
 
-      public var pagination: Pagination? {
+      public var count: Int? {
         get {
-          return (resultMap["pagination"] as? ResultMap).flatMap { Pagination(unsafeResultMap: $0) }
+          return resultMap["count"] as? Int
         }
         set {
-          resultMap.updateValue(newValue?.resultMap, forKey: "pagination")
-        }
-      }
-
-      public struct Pagination: GraphQLSelectionSet {
-        public static let possibleTypes = ["Pagination"]
-
-        public static let selections: [GraphQLSelection] = [
-          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("count", type: .scalar(Int.self)),
-        ]
-
-        public private(set) var resultMap: ResultMap
-
-        public init(unsafeResultMap: ResultMap) {
-          self.resultMap = unsafeResultMap
-        }
-
-        public init(count: Int? = nil) {
-          self.init(unsafeResultMap: ["__typename": "Pagination", "count": count])
-        }
-
-        public var __typename: String {
-          get {
-            return resultMap["__typename"]! as! String
-          }
-          set {
-            resultMap.updateValue(newValue, forKey: "__typename")
-          }
-        }
-
-        public var count: Int? {
-          get {
-            return resultMap["count"] as? Int
-          }
-          set {
-            resultMap.updateValue(newValue, forKey: "count")
-          }
+          resultMap.updateValue(newValue, forKey: "count")
         }
       }
     }

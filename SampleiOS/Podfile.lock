@@ -1,12 +1,12 @@
 PODS:
-  - Apollo (0.9.4):
-    - Apollo/Core (= 0.9.4)
-  - Apollo/Core (0.9.4)
+  - Apollo (0.10.1):
+    - Apollo/Core (= 0.10.1)
+  - Apollo/Core (0.10.1)
   - PromisesObjC (1.2.7)
   - PromisesSwift (1.2.7):
     - PromisesObjC (= 1.2.7)
-  - XyCore (1.0.9):
-    - Apollo
+  - XyCore (0.0.1):
+    - Apollo (~> 0.10.1)
     - PromisesSwift (~> 1.2.4)
 
 DEPENDENCIES:
@@ -23,11 +23,11 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Apollo: 450856adbdebcdf28c3c671f81732ac3f9944065
+  Apollo: 4d690a9b2e48e8820182df4b988d7a253e1ee589
   PromisesObjC: 7b28ddd1e78cce8f80f1ada927d2217663a9c672
   PromisesSwift: b27f410f9ea693753cfd4cfd8ac1c60a471f137b
-  XyCore: e0b78c87c93f57fe57cfecf0d726bdc56ae0b6e0
+  XyCore: 86d48bf61f0f6b3d34b49a1e7c8fdc547baa967f
 
 PODFILE CHECKSUM: 228d6f0e59388f11f8591c3b399360712d53d2cf
 
-COCOAPODS: 1.7.0.beta.2
+COCOAPODS: 1.7.0.beta.3

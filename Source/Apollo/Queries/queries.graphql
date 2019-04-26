@@ -368,11 +368,9 @@ query GetNode ($publicKey: String) {
 }
 
 query GetTotalInNetwork {
- blocks {
-   pagination {
-     count
-   }
- }
+  countWitnesses {
+    count
+  }
 }
 
 query TotalNodeCount {
