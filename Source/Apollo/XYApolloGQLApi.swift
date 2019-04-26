@@ -3552,9 +3552,9 @@ public final class GetNodeQuery: GraphQLQuery {
   }
 }
 
-public final class GetTotalInNetworkQuery: GraphQLQuery {
+public final class TotalWitnessesQuery: GraphQLQuery {
   public let operationDefinition =
-    "query GetTotalInNetwork {\n  countWitnesses {\n    __typename\n    count\n  }\n}"
+    "query TotalWitnesses {\n  countWitnesses {\n    __typename\n    count\n  }\n}"
 
   public init() {
   }

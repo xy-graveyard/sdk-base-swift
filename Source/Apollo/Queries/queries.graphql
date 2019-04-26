@@ -367,7 +367,7 @@ query GetNode ($publicKey: String) {
   }
 }
 
-query GetTotalInNetwork {
+query TotalWitnesses {
   countWitnesses {
     count
   }

@@ -9,18 +9,18 @@
 import Apollo
 
 final public class XYTotalInNetworkQuery: XYQuery {
-    public typealias QueryModel = GetTotalInNetworkQuery.Data.Block.Pagination
+    public typealias QueryModel = TotalWitnessesQuery.Data.CountWitness
 
-    public var queryData = XYQueryData<GetTotalInNetworkQuery, QueryModel>()
+    public var queryData = XYQueryData<TotalWitnessesQuery, QueryModel>()
 
-    public fileprivate(set) var watcher: GraphQLQueryWatcher<GetTotalInNetworkQuery>?
-    public var listeners: [String : (GraphQLResult<GetTotalInNetworkQuery.Data>?, Error?) -> ()] = [:]
+    public fileprivate(set) var watcher: GraphQLQueryWatcher<TotalWitnessesQuery>?
+    public var listeners: [String : (GraphQLResult<TotalWitnessesQuery.Data>?, Error?) -> ()] = [:]
 
     public init() {
-        self.watcher = XYApolloQueryManager.queryManager?.watch(for: GetTotalInNetworkQuery(), then: self.processResponse)
+        self.watcher = XYApolloQueryManager.queryManager?.watch(for: TotalWitnessesQuery(), then: self.processResponse)
         self.queryData.setConvertor { queryData in
-            return queryData.data?.blocks?.pagination?.count != nil ?
-            [QueryModel(count: (queryData.data?.blocks?.pagination?.count)!)] : []
+            return queryData.data?.countWitnesses?.count != nil ?
+            [QueryModel(count: queryData.data?.countWitnesses?.count)] : []
         }
     }
 }
