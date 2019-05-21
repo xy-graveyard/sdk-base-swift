@@ -7,3 +7,6 @@
 [submodule "Carthage/Checkouts/apollo-ios"]
 	path = Carthage/Checkouts/apollo-ios
 	url = https://github.com/apollostack/apollo-ios.git
+[submodule "Carthage/Checkouts/promises"]
+	path = Carthage/Checkouts/promises
+	url = https://github.com/google/promises.git
