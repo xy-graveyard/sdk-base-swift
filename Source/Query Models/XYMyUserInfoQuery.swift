@@ -17,7 +17,7 @@ final public class XYMyUserInfoQuery: XYQuery {
     fileprivate var newToken: String?
 
     public fileprivate(set) var watcher: GraphQLQueryWatcher<QueryType>?
-    public var listeners: [String : (GraphQLResult<QueryType.Data>?, Error?) -> ()] = [:]
+    public var listeners: [String: (GraphQLResult<QueryType.Data>?, Error?) -> Void] = [:]
 
     public init() {
         self.watcher = XYApolloQueryManager.queryManager?.watch(for: QueryType(), then: self.processResponse)
@@ -40,7 +40,7 @@ public extension XYMyUserInfoQuery {
 
     func updateUser(displayName: String? = nil, photoURL: String? = nil, publicKey: String? = nil, isAnonymous: Bool? = nil, defaultArchivistId: String? = nil, complete: @escaping CommitResult) {
         let mutation = UpdateMyUserInfoMutation(displayName: displayName, photoURL: photoURL, publicKey: publicKey, isAnonymous: isAnonymous, defaultArchivistId: defaultArchivistId)
-        self.mutateAndAlterCache(for: mutation, query: QueryType(), with: { data, response in
+        self.mutateAndAlterCache(for: mutation, query: QueryType(), with: { data, _ in
             data.myUserInfo?.displayName = displayName
             data.myUserInfo?.photoUrl = photoURL
             data.myUserInfo?.publicKey = publicKey

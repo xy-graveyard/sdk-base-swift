@@ -34,15 +34,15 @@ public protocol XYQuery: class {
     var queryData: XYQueryData<QueryType, QueryModel> { get set }
 
     var watcher: GraphQLQueryWatcher<QueryType>? { get }
-    var listeners: [String: (_ result: GraphQLResult<QueryType.Data>?, _ error: Error?) -> ()] { get set }
+    var listeners: [String: (_ result: GraphQLResult<QueryType.Data>?, _ error: Error?) -> Void] { get set }
 
-    func listen(for key: String, listener: @escaping (_ result: GraphQLResult<QueryType.Data>?, _ error: Error?) -> ())
+    func listen(for key: String, listener: @escaping (_ result: GraphQLResult<QueryType.Data>?, _ error: Error?) -> Void)
     func processResponse(_ result: GraphQLResult<QueryType.Data>?, error: Error?)
 }
 
 public extension XYQuery {
     // Enables listening for this query
-    func listen(for key: String, listener: @escaping (_ result: GraphQLResult<QueryType.Data>?, _ error: Error?) -> ()) {
+    func listen(for key: String, listener: @escaping (_ result: GraphQLResult<QueryType.Data>?, _ error: Error?) -> Void) {
         guard self.listeners[key] == nil else { return }
         self.listeners[key] = listener
     }
@@ -57,7 +57,7 @@ public extension XYQuery {
     // Will timeout after 15 seconds
     func preload() -> Promises.Promise<Bool> {
         let preloadKey = "XYQuery.Preload"
-        return Promises.Promise<Bool>(on: .global()) { fulfill, reject in
+        return Promises.Promise<Bool>(on: .global()) { fulfill, _ in
             self.listen(for: preloadKey) { _, _ in
                 self.listeners[preloadKey] = nil
                 fulfill(true)

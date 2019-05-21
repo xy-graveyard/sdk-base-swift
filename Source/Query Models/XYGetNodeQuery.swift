@@ -14,7 +14,7 @@ final public class XYTotalNodesQuery: XYQuery {
     public var queryData = XYQueryData<TotalNodeCountQuery, QueryModel>()
 
     public fileprivate(set) var watcher: GraphQLQueryWatcher<TotalNodeCountQuery>?
-    public var listeners: [String : (GraphQLResult<TotalNodeCountQuery.Data>?, Error?) -> ()] = [:]
+    public var listeners: [String: (GraphQLResult<TotalNodeCountQuery.Data>?, Error?) -> Void] = [:]
 
     public init() {
         self.watcher = XYApolloQueryManager.queryManager?.watch(for: TotalNodeCountQuery(), then: self.processResponse)

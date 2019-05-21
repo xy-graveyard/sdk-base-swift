@@ -27,10 +27,10 @@ public class XYApolloQueryManager {
     public fileprivate(set) static var queryManager: XYApolloQueryManager?
     fileprivate static var currentAuthToken: String?
 
-    public static let defaultQueue = DispatchQueue(label:"com.xyonetwork.core.sdk.XYApolloQueryManagerOperationsQueue")
+    public static let defaultQueue = DispatchQueue(label: "com.xyonetwork.core.sdk.XYApolloQueryManagerOperationsQueue")
     public static let defaultTimeout: DispatchTimeInterval = .seconds(15)
 
-    fileprivate static let timeoutQueue = DispatchQueue(label:"com.xyonetwork.core.sdk.XYApolloQueryManagerTimeoutQueue")
+    fileprivate static let timeoutQueue = DispatchQueue(label: "com.xyonetwork.core.sdk.XYApolloQueryManagerTimeoutQueue")
 
     internal let client: ApolloClient
     internal let queue: DispatchQueue
