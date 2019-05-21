@@ -32,8 +32,8 @@ public class XYDateFormatter: DateFormatter {
 
 open class XYBase: NSObject {
 
-    open class func dump() -> Dictionary<String, Any> {
-        var dump = Dictionary<String, Any>()
+    open class func dump() -> [String: Any] {
+        var dump = [String: Any]()
         dump["infoLoggingEnabled"] = infoLoggingEnabled
         dump["errorLoggingEnabled"] = errorLoggingEnabled
         dump["haltOnError"] = haltOnError
@@ -41,8 +41,8 @@ open class XYBase: NSObject {
         return dump
     }
 
-    open func dump() -> Dictionary<String, Any> {
-        var dump = Dictionary<String, Any>()
+    open func dump() -> [String: Any] {
+        var dump = [String: Any]()
         dump["Static"] = XYBase.dump()
         return dump
     }
@@ -64,7 +64,7 @@ open class XYBase: NSObject {
     internal static var logInfoExecuteCount = 0
     internal static var logErrorAttemptCount = 0
     internal static var logErrorExecuteCount = 0
-    internal static var reportStatus = Array<String>()
+    internal static var reportStatus = [String]()
 
     internal static func now() -> String {
         return XYDateFormatter.sharedFormatter().string(from: Date())
@@ -83,7 +83,7 @@ open class XYBase: NSObject {
     }
 
     open func verifyMainThreadAsync(closure : @escaping () -> Void) {
-        if (Thread.isMainThread) {
+        if Thread.isMainThread {
             closure()
         } else {
             //logInfo(module: #file, function: #function, message: "verifyMainThreadAsync: Dispatching to Main Thread!");
@@ -92,7 +92,7 @@ open class XYBase: NSObject {
     }
 
     public static func verifyMainThreadAsync(closure : @escaping () -> Void) {
-        if (Thread.isMainThread) {
+        if Thread.isMainThread {
             closure()
         } else {
             //logInfo(nil, module: #file, function: #function, message: "verifyMainThreadAsync: Dispatching to Main Thread!");
@@ -106,7 +106,7 @@ open class XYBase: NSObject {
 
     public static func logInfo(_ object: Any?, module: String, function: String, message: String) {
         logInfoAttemptCount+=1
-        if (infoLoggingEnabled) {
+        if infoLoggingEnabled {
             logInfoExecuteCount+=1
             log("XY-Info", object: object, module: module, function: function, message: message)
         }
@@ -122,7 +122,7 @@ open class XYBase: NSObject {
 
     public static func logExtreme(_ object: Any?, module: String, function: String, message: String) {
         logExtremeAttemptCount+=1
-        if (extremeLoggingEnabled) {
+        if extremeLoggingEnabled {
             logExtremeExecuteCount+=1
             log("XY-Extreme", object: object, module: module, function: function, message: message)
         }
@@ -142,16 +142,16 @@ open class XYBase: NSObject {
 
     public static func logError(_ object: Any? = nil, module: String, function: String, message: String, data: Any? = nil, halt: Bool? = nil) {
         logErrorAttemptCount+=1
-        if (errorLoggingEnabled) {
+        if errorLoggingEnabled {
             logErrorExecuteCount+=1
         }
         externalLoggingClosure?("XY-Error", object, module, function, message, nil)
         log("XY-Error", object: object, module: module, function: function, message: message)
-        if (halt != nil) {
-            if (halt!) {
+        if halt != nil {
+            if halt! {
                 fatalError()
             }
-        } else if (haltOnError) {
+        } else if haltOnError {
             fatalError()
         }
     }

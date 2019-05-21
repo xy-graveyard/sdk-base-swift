@@ -25,7 +25,8 @@ open class XYTimer: XYBase {
      timer.invalidate()      // cancel it.
      */
     public static func setTimeout(_ delay: TimeInterval, block:@escaping () -> Void) -> Timer {
-        return Timer.scheduledTimer(timeInterval: delay, target: BlockOperation(block: block), selector: #selector(Operation.main), userInfo: nil, repeats: false)
+        return Timer.scheduledTimer(
+            timeInterval: delay, target: BlockOperation(block: block), selector: #selector(Operation.main), userInfo: nil, repeats: false)
     }
 
     /**
@@ -42,6 +43,7 @@ open class XYTimer: XYBase {
      when the block no longer required. such as deinit, or viewDidDisappear()
      */
     public static func setInterval(_ interval: TimeInterval, block:@escaping () -> Void) -> Timer {
-        return Timer.scheduledTimer(timeInterval: interval, target: BlockOperation(block: block), selector: #selector(Operation.main), userInfo: nil, repeats: true)
+        return Timer.scheduledTimer(
+            timeInterval: interval, target: BlockOperation(block: block), selector: #selector(Operation.main), userInfo: nil, repeats: true)
     }
 }

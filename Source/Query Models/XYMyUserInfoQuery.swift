@@ -38,8 +38,12 @@ public extension XYMyUserInfoQuery {
         return (nil, result?.error)
     }
 
-    func updateUser(displayName: String? = nil, photoURL: String? = nil, publicKey: String? = nil, isAnonymous: Bool? = nil, defaultArchivistId: String? = nil, complete: @escaping CommitResult) {
-        let mutation = UpdateMyUserInfoMutation(displayName: displayName, photoURL: photoURL, publicKey: publicKey, isAnonymous: isAnonymous, defaultArchivistId: defaultArchivistId)
+    func updateUser(
+        displayName: String? = nil, photoURL: String? = nil, publicKey: String? = nil,
+        isAnonymous: Bool? = nil, defaultArchivistId: String? = nil, complete: @escaping CommitResult) {
+        let mutation = UpdateMyUserInfoMutation(
+            displayName: displayName, photoURL: photoURL, publicKey: publicKey,
+            isAnonymous: isAnonymous, defaultArchivistId: defaultArchivistId)
         self.mutateAndAlterCache(for: mutation, query: QueryType(), with: { data, _ in
             data.myUserInfo?.displayName = displayName
             data.myUserInfo?.photoUrl = photoURL

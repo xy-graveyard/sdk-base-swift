@@ -27,7 +27,8 @@ final public class XYMyAttachedArchivistsQuery: XYQuery {
 
 public extension XYMyAttachedArchivistsQuery {
 
-    func setDefault(for id: String, with alteration: @escaping (inout QueryType.Data, GraphQLResult<SetDefaultArchivistMutation.Data>?) -> Void, complete: @escaping CommitResult) {
+    func setDefault(for id: String, with alteration: @escaping (inout QueryType.Data, GraphQLResult<SetDefaultArchivistMutation.Data>?) -> Void,
+                    complete: @escaping CommitResult) {
         let mutation = SetDefaultArchivistMutation(defaultArchivistId: id)
         self.mutateAndAlterCache(for: mutation, query: MyAttachedArchivistsQuery(), with: alteration, callback: complete)
     }

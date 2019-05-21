@@ -11,7 +11,7 @@ import Foundation
 
 public extension DispatchSource {
     // Similar to before but the scheduling queue is passed as a parameter
-    public class func singleTimer(interval: DispatchTimeInterval, leeway: DispatchTimeInterval = .nanoseconds(0), queue: DispatchQueue, handler: @escaping ()
+    class func singleTimer(interval: DispatchTimeInterval, leeway: DispatchTimeInterval = .nanoseconds(0), queue: DispatchQueue, handler: @escaping ()
         -> Void) -> DispatchSourceTimer {
         // Use the specified queue
         let result = DispatchSource.makeTimerSource(queue: queue)

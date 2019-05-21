@@ -69,7 +69,10 @@ public extension XYQuery {
 internal extension XYQuery {
 
     // Run a mutation and then refresh the cache for the associate QueryType which will trigger any watch() queries in the view models
-    func mutateAndAlterCache<Mutation: GraphQLMutation>(for mutation: Mutation, query: QueryType, with alteration: @escaping (inout QueryType.Data, GraphQLResult<Mutation.Data>?) -> Void, callback: @escaping CommitResult) {
+    func mutateAndAlterCache<Mutation: GraphQLMutation>(
+        for mutation: Mutation, query: QueryType,
+        with alteration: @escaping (inout QueryType.Data, GraphQLResult<Mutation.Data>?) -> Void, callback: @escaping CommitResult) {
+
         guard let manager = XYApolloQueryManager.queryManager else {
             callback(nil)
             return
