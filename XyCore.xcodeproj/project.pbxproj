@@ -22,6 +22,13 @@
 		31D7355C224040BE00B6B230 /* XYTotalArchivistsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D7355B224040BE00B6B230 /* XYTotalArchivistsQuery.swift */; };
 		31DC14ED2208B3BB00F19571 /* XYApolloGQLApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DC14EC2208B3BB00F19571 /* XYApolloGQLApi.swift */; };
 		31DC14EF2208B3D000F19571 /* XYApolloManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DC14EE2208B3D000F19571 /* XYApolloManager.swift */; };
+		31E31AD922949BD0002E57B0 /* ApolloSQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31E31AD422949BD0002E57B0 /* ApolloSQLite.framework */; };
+		31E31ADA22949BD0002E57B0 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31E31AD522949BD0002E57B0 /* SQLite.framework */; };
+		31E31ADB22949BD0002E57B0 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31E31AD622949BD0002E57B0 /* Starscream.framework */; };
+		31E31ADC22949BD0002E57B0 /* Apollo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31E31AD722949BD0002E57B0 /* Apollo.framework */; };
+		31E31ADD22949BD0002E57B0 /* ApolloWebSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31E31AD822949BD0002E57B0 /* ApolloWebSocket.framework */; };
+		31E31AE022949D3A002E57B0 /* FBLPromises.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31E31ADE22949D3A002E57B0 /* FBLPromises.framework */; };
+		31E31AE122949D3A002E57B0 /* Promises.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31E31ADF22949D3A002E57B0 /* Promises.framework */; };
 		31EAD79C2240456800DDA8C1 /* XYMyAttachedArchivistsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EAD79B2240456800DDA8C1 /* XYMyAttachedArchivistsQuery.swift */; };
 		31EAD79E2240458200DDA8C1 /* XYMySentinelsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EAD79D2240458200DDA8C1 /* XYMySentinelsQuery.swift */; };
 		31EAD7A02240459900DDA8C1 /* XYMyUserInfoQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EAD79F2240459900DDA8C1 /* XYMyUserInfoQuery.swift */; };
@@ -59,6 +66,13 @@
 		31D7355B224040BE00B6B230 /* XYTotalArchivistsQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYTotalArchivistsQuery.swift; sourceTree = "<group>"; };
 		31DC14EC2208B3BB00F19571 /* XYApolloGQLApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XYApolloGQLApi.swift; sourceTree = "<group>"; };
 		31DC14EE2208B3D000F19571 /* XYApolloManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYApolloManager.swift; sourceTree = "<group>"; };
+		31E31AD422949BD0002E57B0 /* ApolloSQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApolloSQLite.framework; path = Carthage/Build/iOS/ApolloSQLite.framework; sourceTree = "<group>"; };
+		31E31AD522949BD0002E57B0 /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = Carthage/Build/iOS/SQLite.framework; sourceTree = "<group>"; };
+		31E31AD622949BD0002E57B0 /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = Carthage/Build/iOS/Starscream.framework; sourceTree = "<group>"; };
+		31E31AD722949BD0002E57B0 /* Apollo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Apollo.framework; path = Carthage/Build/iOS/Apollo.framework; sourceTree = "<group>"; };
+		31E31AD822949BD0002E57B0 /* ApolloWebSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApolloWebSocket.framework; path = Carthage/Build/iOS/ApolloWebSocket.framework; sourceTree = "<group>"; };
+		31E31ADE22949D3A002E57B0 /* FBLPromises.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBLPromises.framework; path = Carthage/Build/iOS/FBLPromises.framework; sourceTree = "<group>"; };
+		31E31ADF22949D3A002E57B0 /* Promises.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Promises.framework; path = Carthage/Build/iOS/Promises.framework; sourceTree = "<group>"; };
 		31EAD79B2240456800DDA8C1 /* XYMyAttachedArchivistsQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYMyAttachedArchivistsQuery.swift; sourceTree = "<group>"; };
 		31EAD79D2240458200DDA8C1 /* XYMySentinelsQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYMySentinelsQuery.swift; sourceTree = "<group>"; };
 		31EAD79F2240459900DDA8C1 /* XYMyUserInfoQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYMyUserInfoQuery.swift; sourceTree = "<group>"; };
@@ -70,6 +84,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31E31AE022949D3A002E57B0 /* FBLPromises.framework in Frameworks */,
+				31E31AE122949D3A002E57B0 /* Promises.framework in Frameworks */,
+				31E31AD922949BD0002E57B0 /* ApolloSQLite.framework in Frameworks */,
+				31E31ADA22949BD0002E57B0 /* SQLite.framework in Frameworks */,
+				31E31ADB22949BD0002E57B0 /* Starscream.framework in Frameworks */,
+				31E31ADC22949BD0002E57B0 /* Apollo.framework in Frameworks */,
+				31E31ADD22949BD0002E57B0 /* ApolloWebSocket.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +111,7 @@
 				315591BC2204FBB400DC4556 /* Source */,
 				315591C72204FBB400DC4556 /* XyCoreTests */,
 				315591BB2204FBB400DC4556 /* Products */,
+				31E31AD322949B73002E57B0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -194,6 +216,20 @@
 			path = Apollo;
 			sourceTree = "<group>";
 		};
+		31E31AD322949B73002E57B0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				31E31ADE22949D3A002E57B0 /* FBLPromises.framework */,
+				31E31ADF22949D3A002E57B0 /* Promises.framework */,
+				31E31AD722949BD0002E57B0 /* Apollo.framework */,
+				31E31AD422949BD0002E57B0 /* ApolloSQLite.framework */,
+				31E31AD822949BD0002E57B0 /* ApolloWebSocket.framework */,
+				31E31AD522949BD0002E57B0 /* SQLite.framework */,
+				31E31AD622949BD0002E57B0 /* Starscream.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -212,6 +248,7 @@
 			buildConfigurationList = 315591F32204FE5700DC4556 /* Build configuration list for PBXNativeTarget "XyCoreiOS" */;
 			buildPhases = (
 				315591D92204FE5700DC4556 /* Headers */,
+				312F482D2294A9CE0021A0AB /* SwiftLint */,
 				315591DA2204FE5700DC4556 /* Sources */,
 				315591DB2204FE5700DC4556 /* Frameworks */,
 				315591DC2204FE5700DC4556 /* Resources */,
@@ -297,6 +334,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		312F482D2294A9CE0021A0AB /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		315591DA2204FE5700DC4556 /* Sources */ = {
@@ -472,6 +530,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Source/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -497,6 +559,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Source/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (

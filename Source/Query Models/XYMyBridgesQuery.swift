@@ -17,7 +17,7 @@ final public class XYMyBridgesQuery: XYQuery {
     public var queryData = XYQueryData<QueryType, QueryModel>()
 
     public fileprivate(set) var watcher: GraphQLQueryWatcher<QueryType>?
-    public var listeners: [String : (GraphQLResult<QueryType.Data>?, Error?) -> ()] = [:]
+    public var listeners: [String: (GraphQLResult<QueryType.Data>?, Error?) -> Void] = [:]
 
     public init() {
         self.watcher = XYApolloQueryManager.queryManager?.watch(for: QueryType(), then: self.processResponse)
@@ -38,15 +38,19 @@ public extension XYMyBridgesQuery {
         return ([], result?.error)
     }
 
-    func addBridge(id: String, name: String? = nil, photoUrl: String? = nil, publicKey: String? = nil, uuid: String? = nil, major: Int? = nil, minor: Int? = nil, complete: @escaping CommitResult) {
+    func addBridge(
+        id: String, name: String? = nil, photoUrl: String? = nil, publicKey: String? = nil,
+        uuid: String? = nil, major: Int? = nil, minor: Int? = nil, complete: @escaping CommitResult) {
         let mutation = AddBridgeMutation(id: id, name: name, photoUrl: photoUrl, publicKey: publicKey, uuid: uuid, major: major, minor: minor)
-        self.mutateAndAlterCache(for: mutation, query: QueryType(), with: { data, response in
+        self.mutateAndAlterCache(for: mutation, query: QueryType(), with: { data, _ in
             let update = QueryModel(id: id, name: name, photoUrl: photoUrl, publicKey: publicKey, uuid: uuid, major: major, minor: minor)
             data.myBridges?.items?.append(update)
         }, callback: complete)
     }
 
-    func updateBridge(id: String, name: String? = nil, photoUrl: String? = nil, publicKey: String? = nil, uuid: String? = nil, major: Int? = nil, minor: Int? = nil, complete: @escaping CommitResult) {
+    func updateBridge(
+        id: String, name: String? = nil, photoUrl: String? = nil, publicKey: String? = nil,
+        uuid: String? = nil, major: Int? = nil, minor: Int? = nil, complete: @escaping CommitResult) {
         let mutation = UpdateBridgeMutation(id: id, name: name, photoUrl: photoUrl, publicKey: publicKey, uuid: uuid, major: major, minor: minor)
         self.mutateAndAlterCache(for: mutation, query: QueryType(), with: { data, response in
             let gps = LastBridgeGps(latitude: response?.data?.updateBridge?.lastGps?.latitude, longitude: response?.data?.updateBridge?.lastGps?.longitude)
@@ -59,14 +63,14 @@ public extension XYMyBridgesQuery {
 
     func deleteBridge(id: String, complete: @escaping CommitResult) {
         let mutation = DeleteBridgeMutation(id: id)
-        self.mutateAndAlterCache(for: mutation, query: MyDevicesQuery(), with: { data, response in
+        self.mutateAndAlterCache(for: mutation, query: MyDevicesQuery(), with: { data, _ in
             data.myBridges?.items?.removeAll(where: { $0?.id == id })
         }, callback: complete)
     }
 
     func detachBridge(id: String, complete: @escaping CommitResult) {
         let mutation = DetachFromBridgeMutation(id: id)
-        self.mutateAndAlterCache(for: mutation, query: MyDevicesQuery(), with: { data, response in
+        self.mutateAndAlterCache(for: mutation, query: MyDevicesQuery(), with: { data, _ in
             data.myBridges?.items?.removeAll(where: { $0?.id == id })
         }, callback: complete)
     }

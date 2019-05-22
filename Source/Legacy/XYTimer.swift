@@ -8,7 +8,7 @@
 
 import Foundation
 
-open class XYTimer : XYBase {
+open class XYTimer: XYBase {
     /**
      setTimeout()
      
@@ -24,10 +24,11 @@ open class XYTimer : XYBase {
      }
      timer.invalidate()      // cancel it.
      */
-    public static func setTimeout(_ delay:TimeInterval, block:@escaping ()->Void) -> Timer {
-        return Timer.scheduledTimer(timeInterval: delay, target: BlockOperation(block: block), selector: #selector(Operation.main), userInfo: nil, repeats: false)
+    public static func setTimeout(_ delay: TimeInterval, block:@escaping () -> Void) -> Timer {
+        return Timer.scheduledTimer(
+            timeInterval: delay, target: BlockOperation(block: block), selector: #selector(Operation.main), userInfo: nil, repeats: false)
     }
-    
+
     /**
      setInternval()
      
@@ -41,7 +42,8 @@ open class XYTimer : XYBase {
      In addition, ``Timer`` returned should kept as member variable, and call invalidated()
      when the block no longer required. such as deinit, or viewDidDisappear()
      */
-    public static func setInterval(_ interval:TimeInterval, block:@escaping ()->Void) -> Timer {
-        return Timer.scheduledTimer(timeInterval: interval, target: BlockOperation(block: block), selector: #selector(Operation.main), userInfo: nil, repeats: true)
+    public static func setInterval(_ interval: TimeInterval, block:@escaping () -> Void) -> Timer {
+        return Timer.scheduledTimer(
+            timeInterval: interval, target: BlockOperation(block: block), selector: #selector(Operation.main), userInfo: nil, repeats: true)
     }
 }

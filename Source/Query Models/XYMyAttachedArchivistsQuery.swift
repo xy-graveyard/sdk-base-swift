@@ -14,7 +14,7 @@ final public class XYMyAttachedArchivistsQuery: XYQuery {
     public var queryData = XYQueryData<MyAttachedArchivistsQuery, QueryModel>()
 
     public fileprivate(set) var watcher: GraphQLQueryWatcher<MyAttachedArchivistsQuery>?
-    public var listeners: [String : (GraphQLResult<MyAttachedArchivistsQuery.Data>?, Error?) -> ()] = [:]
+    public var listeners: [String: (GraphQLResult<MyAttachedArchivistsQuery.Data>?, Error?) -> Void] = [:]
 
     public init() {
         self.watcher = XYApolloQueryManager.queryManager?.watch(for: MyAttachedArchivistsQuery(), then: self.processResponse)
@@ -27,7 +27,8 @@ final public class XYMyAttachedArchivistsQuery: XYQuery {
 
 public extension XYMyAttachedArchivistsQuery {
 
-    func setDefault(for id: String, with alteration: @escaping (inout QueryType.Data, GraphQLResult<SetDefaultArchivistMutation.Data>?) -> Void, complete: @escaping CommitResult) {
+    func setDefault(for id: String, with alteration: @escaping (inout QueryType.Data, GraphQLResult<SetDefaultArchivistMutation.Data>?) -> Void,
+                    complete: @escaping CommitResult) {
         let mutation = SetDefaultArchivistMutation(defaultArchivistId: id)
         self.mutateAndAlterCache(for: mutation, query: MyAttachedArchivistsQuery(), with: alteration, callback: complete)
     }
@@ -65,7 +66,7 @@ public extension XYMyAttachedArchivistsQuery {
 
     func detach(for id: String, complete: @escaping CommitResult) {
         let mutation = DetachFromArchivistClientMutation(id: id)
-        self.mutateAndAlterCache(for: mutation, query: MyAttachedArchivistsQuery(), with: { data, response in
+        self.mutateAndAlterCache(for: mutation, query: MyAttachedArchivistsQuery(), with: { data, _ in
             data.myAttachedArchivists?.removeAll(where: { $0?.id == id })
         }, callback: { error in
             complete(error)
