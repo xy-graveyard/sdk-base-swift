@@ -6,6 +6,8 @@
 # XyCore
 An internal library for connecting to GraphQL.
 
+## Important - read the getting started guide before approaching
+
 ## Requirements
 - iOS 11.0+
 - Xcode 10.1+
