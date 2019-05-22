@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.com/XYOracleNetwork/sdk-base-swift.svg?token=DwLaRUVjarU2ZypyaHXe&branch=master)](https://travis-ci.com/XYOracleNetwork/sdk-base-swift)
 
 # XyCore
-An internal library for connecting to GraphQL.
+An internal library for connecting to GraphQL. Travis Test poke.
 
 ## Requirements
 - iOS 11.0+
