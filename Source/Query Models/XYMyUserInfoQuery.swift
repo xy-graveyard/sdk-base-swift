@@ -30,6 +30,7 @@ final public class XYMyUserInfoQuery: XYQuery {
 public extension XYMyUserInfoQuery {
 
     func getUser() -> (model: QueryModel?, error: Error?) {
+
         let result = XYApolloQueryManager.queryManager?.fetch(for: QueryType()).execute()
         if let data = result?.data {
             return (data.data?.myUserInfo, nil)
