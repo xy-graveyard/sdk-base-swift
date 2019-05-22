@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'XyCore'
-  s.version = '0.0.1'
+  s.version = '0.0.2'
   s.summary = 'XY Core Library'
   s.homepage = 'https://github.com/xycorp/sdk-core-ios'
   s.social_media_url = 'https://twitter.com/xyodevs'
