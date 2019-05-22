@@ -1,7 +1,7 @@
 [logo]: https://cdn.xy.company/img/brand/XY_Logo_GitHub.png 
 [![logo]](https://xy.company)
 
-[![BCH compliance](https://bettercodehub.com/edge/badge/XYOracleNetwork/sdk-base-swift?branch=develop&token=f76c6000578b5e144c8c643dc8412f223e613940)](https://bettercodehub.com/)
+[![Build Status](https://travis-ci.com/XYOracleNetwork/sdk-base-swift.svg?token=DwLaRUVjarU2ZypyaHXe&branch=master)](https://travis-ci.com/XYOracleNetwork/sdk-base-swift)
 
 # XyCore
 An internal library for connecting to GraphQL.
