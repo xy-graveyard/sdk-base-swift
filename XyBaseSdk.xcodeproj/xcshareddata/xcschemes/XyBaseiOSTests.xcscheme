@@ -17,9 +17,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "315591E52204FE5700DC4556"
-               BuildableName = "sdk-base-swiftTests.xctest"
-               BlueprintName = "sdk-base-swiftTests"
-               ReferencedContainer = "container:sdk-base-swift.xcodeproj">
+               BuildableName = "XyBaseSdkTests.xctest"
+               BlueprintName = "XyBaseSdkTests"
+               ReferencedContainer = "container:XyBaseSdk.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>

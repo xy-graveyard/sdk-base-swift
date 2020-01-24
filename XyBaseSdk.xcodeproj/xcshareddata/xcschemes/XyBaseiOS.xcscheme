@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "315591DD2204FE5700DC4556"
-               BuildableName = "sdk-base-swift.framework"
-               BlueprintName = "sdk-base-swift"
-               ReferencedContainer = "container:sdk-base-swift.xcodeproj">
+               BuildableName = "XyBaseSdk.framework"
+               BlueprintName = "XyBaseSdk"
+               ReferencedContainer = "container:XyBaseSdk.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -31,9 +31,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "315591DD2204FE5700DC4556"
-            BuildableName = "sdk-base-swift.framework"
-            BlueprintName = "sdk-base-swift"
-            ReferencedContainer = "container:sdk-base-swift.xcodeproj">
+            BuildableName = "XyBaseSdk.framework"
+            BlueprintName = "XyBaseSdk"
+            ReferencedContainer = "container:XyBaseSdk.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <Testables>
@@ -42,9 +42,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "315591E52204FE5700DC4556"
-               BuildableName = "sdk-base-swiftTests.xctest"
-               BlueprintName = "sdk-base-swiftTests"
-               ReferencedContainer = "container:sdk-base-swift.xcodeproj">
+               BuildableName = "XyBaseSdkTests.xctest"
+               BlueprintName = "XyBaseSdkTests"
+               ReferencedContainer = "container:XyBaseSdk.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -63,9 +63,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "315591DD2204FE5700DC4556"
-            BuildableName = "sdk-base-swift.framework"
-            BlueprintName = "sdk-base-swift"
-            ReferencedContainer = "container:sdk-base-swift.xcodeproj">
+            BuildableName = "XyBaseSdk.framework"
+            BlueprintName = "XyBaseSdk"
+            ReferencedContainer = "container:XyBaseSdk.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </LaunchAction>
@@ -79,9 +79,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "315591DD2204FE5700DC4556"
-            BuildableName = "sdk-base-swift.framework"
-            BlueprintName = "sdk-base-swift"
-            ReferencedContainer = "container:sdk-base-swift.xcodeproj">
+            BuildableName = "XyBaseSdk.framework"
+            BlueprintName = "XyBaseSdk"
+            ReferencedContainer = "container:XyBaseSdk.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

@@ -3,36 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		311C5A0C2242ACB8001C7DBD /* XYMyBridgesQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311C5A0B2242ACB8001C7DBD /* XYMyBridgesQuery.swift */; };
-		3129941A224C1E630084B3C7 /* XYTotalInNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31299419224C1E630084B3C7 /* XYTotalInNetwork.swift */; };
-		3143FCEE224EA13300532B34 /* XYGetNodeQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3143FCED224EA13300532B34 /* XYGetNodeQuery.swift */; };
-		315591E72204FE5700DC4556 /* sdk-base-swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 315591DE2204FE5700DC4556 /* sdk-base-swift.framework */; };
-		315591F62204FFDB00DC4556 /* XYBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315591D62204FCBF00DC4556 /* XYBase.swift */; };
-		315591F72204FFDF00DC4556 /* XYTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315591D52204FCBF00DC4556 /* XYTimer.swift */; };
-		3175AFF9226F7E61000B8BF7 /* XYHTTPNetworkTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3175AFF8226F7E61000B8BF7 /* XYHTTPNetworkTransport.swift */; };
+		26470BC023DA7D2A006732D9 /* XYTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26470BBF23DA7D2A006732D9 /* XYTimer.swift */; };
+		26470BC323DA7D37006732D9 /* XYBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26470BC123DA7D37006732D9 /* XYBase.swift */; };
+		315591E72204FE5700DC4556 /* XyBaseSdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 315591DE2204FE5700DC4556 /* XyBaseSdk.framework */; };
+		315591F62204FFDB00DC4556 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		315591F72204FFDF00DC4556 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		3175AFFC226FCB6A000B8BF7 /* XYRepeatingTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3175AFFB226FCB6A000B8BF7 /* XYRepeatingTimer.swift */; };
 		319A815C223ACDCD0002210B /* Dispatch+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319A815B223ACDCD0002210B /* Dispatch+extensions.swift */; };
-		319AB243220910A6009D37D1 /* queries.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 319AB240220910A6009D37D1 /* queries.graphql */; };
-		319AB245220910A6009D37D1 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 319AB242220910A6009D37D1 /* schema.json */; };
-		31D735582240406C00B6B230 /* XYQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D735572240406C00B6B230 /* XYQuery.swift */; };
-		31D7355C224040BE00B6B230 /* XYTotalArchivistsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D7355B224040BE00B6B230 /* XYTotalArchivistsQuery.swift */; };
-		31DC14ED2208B3BB00F19571 /* XYApolloGQLApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DC14EC2208B3BB00F19571 /* XYApolloGQLApi.swift */; };
-		31DC14EF2208B3D000F19571 /* XYApolloManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DC14EE2208B3D000F19571 /* XYApolloManager.swift */; };
-		31E31AD922949BD0002E57B0 /* ApolloSQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31E31AD422949BD0002E57B0 /* ApolloSQLite.framework */; };
-		31E31ADA22949BD0002E57B0 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31E31AD522949BD0002E57B0 /* SQLite.framework */; };
-		31E31ADB22949BD0002E57B0 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31E31AD622949BD0002E57B0 /* Starscream.framework */; };
-		31E31ADC22949BD0002E57B0 /* Apollo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31E31AD722949BD0002E57B0 /* Apollo.framework */; };
-		31E31ADD22949BD0002E57B0 /* ApolloWebSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31E31AD822949BD0002E57B0 /* ApolloWebSocket.framework */; };
-		31E31AE022949D3A002E57B0 /* FBLPromises.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31E31ADE22949D3A002E57B0 /* FBLPromises.framework */; };
-		31E31AE122949D3A002E57B0 /* Promises.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31E31ADF22949D3A002E57B0 /* Promises.framework */; };
-		31EAD79C2240456800DDA8C1 /* XYMyAttachedArchivistsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EAD79B2240456800DDA8C1 /* XYMyAttachedArchivistsQuery.swift */; };
-		31EAD79E2240458200DDA8C1 /* XYMySentinelsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EAD79D2240458200DDA8C1 /* XYMySentinelsQuery.swift */; };
-		31EAD7A02240459900DDA8C1 /* XYMyUserInfoQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EAD79F2240459900DDA8C1 /* XYMyUserInfoQuery.swift */; };
-		31F9D37B2241ACF4002905CD /* XYQueryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F9D37A2241ACF4002905CD /* XYQueryData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,42 +22,20 @@
 			containerPortal = 315591B12204FBB300DC4556 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 315591DD2204FE5700DC4556;
-			remoteInfo = XyCoreiOS;
+			remoteInfo = XyBaseSdk;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		311C5A0B2242ACB8001C7DBD /* XYMyBridgesQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYMyBridgesQuery.swift; sourceTree = "<group>"; };
-		31299419224C1E630084B3C7 /* XYTotalInNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYTotalInNetwork.swift; sourceTree = "<group>"; };
-		3143FCED224EA13300532B34 /* XYGetNodeQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYGetNodeQuery.swift; sourceTree = "<group>"; };
-		315591BD2204FBB400DC4556 /* XyCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XyCore.h; sourceTree = "<group>"; };
+		26470BBF23DA7D2A006732D9 /* XYTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XYTimer.swift; sourceTree = "<group>"; };
+		26470BC123DA7D37006732D9 /* XYBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XYBase.swift; sourceTree = "<group>"; };
 		315591BE2204FBB400DC4556 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		315591C82204FBB400DC4556 /* XyCoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XyCoreTests.swift; sourceTree = "<group>"; };
+		315591C82204FBB400DC4556 /* XyBaseSdkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XyBaseSdkTests.swift; sourceTree = "<group>"; };
 		315591CA2204FBB400DC4556 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		315591D52204FCBF00DC4556 /* XYTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XYTimer.swift; sourceTree = "<group>"; };
-		315591D62204FCBF00DC4556 /* XYBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XYBase.swift; sourceTree = "<group>"; };
-		315591DE2204FE5700DC4556 /* sdk-base-swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "sdk-base-swift.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		315591E62204FE5700DC4556 /* sdk-base-swiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "sdk-base-swiftTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3175AFF8226F7E61000B8BF7 /* XYHTTPNetworkTransport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYHTTPNetworkTransport.swift; sourceTree = "<group>"; };
+		315591DE2204FE5700DC4556 /* XyBaseSdk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XyBaseSdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		315591E62204FE5700DC4556 /* XyBaseSdkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XyBaseSdkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3175AFFB226FCB6A000B8BF7 /* XYRepeatingTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYRepeatingTimer.swift; sourceTree = "<group>"; };
 		319A815B223ACDCD0002210B /* Dispatch+extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dispatch+extensions.swift"; sourceTree = "<group>"; };
-		319AB240220910A6009D37D1 /* queries.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = queries.graphql; sourceTree = "<group>"; };
-		319AB242220910A6009D37D1 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
-		31D735572240406C00B6B230 /* XYQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYQuery.swift; sourceTree = "<group>"; };
-		31D7355B224040BE00B6B230 /* XYTotalArchivistsQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYTotalArchivistsQuery.swift; sourceTree = "<group>"; };
-		31DC14EC2208B3BB00F19571 /* XYApolloGQLApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XYApolloGQLApi.swift; sourceTree = "<group>"; };
-		31DC14EE2208B3D000F19571 /* XYApolloManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYApolloManager.swift; sourceTree = "<group>"; };
-		31E31AD422949BD0002E57B0 /* ApolloSQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApolloSQLite.framework; path = Carthage/Build/iOS/ApolloSQLite.framework; sourceTree = "<group>"; };
-		31E31AD522949BD0002E57B0 /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = Carthage/Build/iOS/SQLite.framework; sourceTree = "<group>"; };
-		31E31AD622949BD0002E57B0 /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = Carthage/Build/iOS/Starscream.framework; sourceTree = "<group>"; };
-		31E31AD722949BD0002E57B0 /* Apollo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Apollo.framework; path = Carthage/Build/iOS/Apollo.framework; sourceTree = "<group>"; };
-		31E31AD822949BD0002E57B0 /* ApolloWebSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApolloWebSocket.framework; path = Carthage/Build/iOS/ApolloWebSocket.framework; sourceTree = "<group>"; };
-		31E31ADE22949D3A002E57B0 /* FBLPromises.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBLPromises.framework; path = Carthage/Build/iOS/FBLPromises.framework; sourceTree = "<group>"; };
-		31E31ADF22949D3A002E57B0 /* Promises.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Promises.framework; path = Carthage/Build/iOS/Promises.framework; sourceTree = "<group>"; };
-		31EAD79B2240456800DDA8C1 /* XYMyAttachedArchivistsQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYMyAttachedArchivistsQuery.swift; sourceTree = "<group>"; };
-		31EAD79D2240458200DDA8C1 /* XYMySentinelsQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYMySentinelsQuery.swift; sourceTree = "<group>"; };
-		31EAD79F2240459900DDA8C1 /* XYMyUserInfoQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYMyUserInfoQuery.swift; sourceTree = "<group>"; };
-		31F9D37A2241ACF4002905CD /* XYQueryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYQueryData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,13 +43,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				31E31AE022949D3A002E57B0 /* FBLPromises.framework in Frameworks */,
-				31E31AE122949D3A002E57B0 /* Promises.framework in Frameworks */,
-				31E31AD922949BD0002E57B0 /* ApolloSQLite.framework in Frameworks */,
-				31E31ADA22949BD0002E57B0 /* SQLite.framework in Frameworks */,
-				31E31ADB22949BD0002E57B0 /* Starscream.framework in Frameworks */,
-				31E31ADC22949BD0002E57B0 /* Apollo.framework in Frameworks */,
-				31E31ADD22949BD0002E57B0 /* ApolloWebSocket.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,7 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				315591E72204FE5700DC4556 /* sdk-base-swift.framework in Frameworks */,
+				315591E72204FE5700DC4556 /* XyBaseSdk.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,7 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				315591BC2204FBB400DC4556 /* Source */,
-				315591C72204FBB400DC4556 /* XyCoreTests */,
+				315591C72204FBB400DC4556 /* XyBaseSdkTests */,
 				315591BB2204FBB400DC4556 /* Products */,
 				31E31AD322949B73002E57B0 /* Frameworks */,
 			);
@@ -118,8 +70,8 @@
 		315591BB2204FBB400DC4556 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				315591DE2204FE5700DC4556 /* sdk-base-swift.framework */,
-				315591E62204FE5700DC4556 /* sdk-base-swiftTests.xctest */,
+				315591DE2204FE5700DC4556 /* XyBaseSdk.framework */,
+				315591E62204FE5700DC4556 /* XyBaseSdkTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -127,38 +79,26 @@
 		315591BC2204FBB400DC4556 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				26470BC123DA7D37006732D9 /* XYBase.swift */,
 				3175AFFA226FCB28000B8BF7 /* Components */,
-				31D735562240405400B6B230 /* Query Models */,
 				319A815A223ACDCD0002210B /* Extensions */,
-				31DC14EB2208B3A300F19571 /* Apollo */,
 				315591F82205002A00DC4556 /* Supporting Files */,
-				315591D42204FCA300DC4556 /* Legacy */,
 			);
 			path = Source;
 			sourceTree = "<group>";
 		};
-		315591C72204FBB400DC4556 /* XyCoreTests */ = {
+		315591C72204FBB400DC4556 /* XyBaseSdkTests */ = {
 			isa = PBXGroup;
 			children = (
-				315591C82204FBB400DC4556 /* XyCoreTests.swift */,
+				315591C82204FBB400DC4556 /* XyBaseSdkTests.swift */,
 				315591CA2204FBB400DC4556 /* Info.plist */,
 			);
-			path = XyCoreTests;
-			sourceTree = "<group>";
-		};
-		315591D42204FCA300DC4556 /* Legacy */ = {
-			isa = PBXGroup;
-			children = (
-				315591D62204FCBF00DC4556 /* XYBase.swift */,
-				315591D52204FCBF00DC4556 /* XYTimer.swift */,
-			);
-			path = Legacy;
+			path = XyBaseSdkTests;
 			sourceTree = "<group>";
 		};
 		315591F82205002A00DC4556 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				315591BD2204FBB400DC4556 /* XyCore.h */,
 				315591BE2204FBB400DC4556 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -167,6 +107,7 @@
 		3175AFFA226FCB28000B8BF7 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				26470BBF23DA7D2A006732D9 /* XYTimer.swift */,
 				3175AFFB226FCB6A000B8BF7 /* XYRepeatingTimer.swift */,
 			);
 			path = Components;
@@ -180,52 +121,9 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		319AB23F220910A6009D37D1 /* Queries */ = {
-			isa = PBXGroup;
-			children = (
-				319AB240220910A6009D37D1 /* queries.graphql */,
-				319AB242220910A6009D37D1 /* schema.json */,
-			);
-			path = Queries;
-			sourceTree = "<group>";
-		};
-		31D735562240405400B6B230 /* Query Models */ = {
-			isa = PBXGroup;
-			children = (
-				31D735572240406C00B6B230 /* XYQuery.swift */,
-				31F9D37A2241ACF4002905CD /* XYQueryData.swift */,
-				31D7355B224040BE00B6B230 /* XYTotalArchivistsQuery.swift */,
-				31EAD79B2240456800DDA8C1 /* XYMyAttachedArchivistsQuery.swift */,
-				31EAD79D2240458200DDA8C1 /* XYMySentinelsQuery.swift */,
-				31EAD79F2240459900DDA8C1 /* XYMyUserInfoQuery.swift */,
-				311C5A0B2242ACB8001C7DBD /* XYMyBridgesQuery.swift */,
-				31299419224C1E630084B3C7 /* XYTotalInNetwork.swift */,
-				3143FCED224EA13300532B34 /* XYGetNodeQuery.swift */,
-			);
-			path = "Query Models";
-			sourceTree = "<group>";
-		};
-		31DC14EB2208B3A300F19571 /* Apollo */ = {
-			isa = PBXGroup;
-			children = (
-				319AB23F220910A6009D37D1 /* Queries */,
-				31DC14EC2208B3BB00F19571 /* XYApolloGQLApi.swift */,
-				31DC14EE2208B3D000F19571 /* XYApolloManager.swift */,
-				3175AFF8226F7E61000B8BF7 /* XYHTTPNetworkTransport.swift */,
-			);
-			path = Apollo;
-			sourceTree = "<group>";
-		};
 		31E31AD322949B73002E57B0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				31E31ADE22949D3A002E57B0 /* FBLPromises.framework */,
-				31E31ADF22949D3A002E57B0 /* Promises.framework */,
-				31E31AD722949BD0002E57B0 /* Apollo.framework */,
-				31E31AD422949BD0002E57B0 /* ApolloSQLite.framework */,
-				31E31AD822949BD0002E57B0 /* ApolloWebSocket.framework */,
-				31E31AD522949BD0002E57B0 /* SQLite.framework */,
-				31E31AD622949BD0002E57B0 /* Starscream.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -243,9 +141,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		315591DD2204FE5700DC4556 /* sdk-base-swift */ = {
+		315591DD2204FE5700DC4556 /* XyBaseSdk */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 315591F32204FE5700DC4556 /* Build configuration list for PBXNativeTarget "sdk-base-swift" */;
+			buildConfigurationList = 315591F32204FE5700DC4556 /* Build configuration list for PBXNativeTarget "XyBaseSdk" */;
 			buildPhases = (
 				315591D92204FE5700DC4556 /* Headers */,
 				312F482D2294A9CE0021A0AB /* SwiftLint */,
@@ -257,14 +155,14 @@
 			);
 			dependencies = (
 			);
-			name = "sdk-base-swift";
-			productName = XyCoreiOS;
-			productReference = 315591DE2204FE5700DC4556 /* sdk-base-swift.framework */;
+			name = XyBaseSdk;
+			productName = XyBaseSdk;
+			productReference = 315591DE2204FE5700DC4556 /* XyBaseSdk.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		315591E52204FE5700DC4556 /* sdk-base-swiftTests */ = {
+		315591E52204FE5700DC4556 /* XyBaseSdkTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 315591F42204FE5700DC4556 /* Build configuration list for PBXNativeTarget "sdk-base-swiftTests" */;
+			buildConfigurationList = 315591F42204FE5700DC4556 /* Build configuration list for PBXNativeTarget "XyBaseSdkTests" */;
 			buildPhases = (
 				315591E22204FE5700DC4556 /* Sources */,
 				315591E32204FE5700DC4556 /* Frameworks */,
@@ -275,9 +173,9 @@
 			dependencies = (
 				315591E92204FE5700DC4556 /* PBXTargetDependency */,
 			);
-			name = "sdk-base-swiftTests";
-			productName = XyCoreiOSTests;
-			productReference = 315591E62204FE5700DC4556 /* sdk-base-swiftTests.xctest */;
+			name = XyBaseSdkTests;
+			productName = XyBaseSdkTests;
+			productReference = 315591E62204FE5700DC4556 /* XyBaseSdkTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -298,8 +196,8 @@
 					};
 				};
 			};
-			buildConfigurationList = 315591B42204FBB300DC4556 /* Build configuration list for PBXProject "sdk-base-swift" */;
-			compatibilityVersion = "Xcode 9.3";
+			buildConfigurationList = 315591B42204FBB300DC4556 /* Build configuration list for PBXProject "XyBaseSdk" */;
+			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -310,8 +208,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				315591DD2204FE5700DC4556 /* sdk-base-swift */,
-				315591E52204FE5700DC4556 /* sdk-base-swiftTests */,
+				315591DD2204FE5700DC4556 /* XyBaseSdk */,
+				315591E52204FE5700DC4556 /* XyBaseSdkTests */,
 			);
 		};
 /* End PBXProject section */
@@ -321,8 +219,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				319AB243220910A6009D37D1 /* queries.graphql in Resources */,
-				319AB245220910A6009D37D1 /* schema.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,22 +257,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				31DC14EF2208B3D000F19571 /* XYApolloManager.swift in Sources */,
-				31F9D37B2241ACF4002905CD /* XYQueryData.swift in Sources */,
 				3175AFFC226FCB6A000B8BF7 /* XYRepeatingTimer.swift in Sources */,
 				319A815C223ACDCD0002210B /* Dispatch+extensions.swift in Sources */,
-				31EAD7A02240459900DDA8C1 /* XYMyUserInfoQuery.swift in Sources */,
-				31D7355C224040BE00B6B230 /* XYTotalArchivistsQuery.swift in Sources */,
-				315591F72204FFDF00DC4556 /* XYTimer.swift in Sources */,
-				31DC14ED2208B3BB00F19571 /* XYApolloGQLApi.swift in Sources */,
-				31EAD79C2240456800DDA8C1 /* XYMyAttachedArchivistsQuery.swift in Sources */,
-				3129941A224C1E630084B3C7 /* XYTotalInNetwork.swift in Sources */,
-				3175AFF9226F7E61000B8BF7 /* XYHTTPNetworkTransport.swift in Sources */,
-				315591F62204FFDB00DC4556 /* XYBase.swift in Sources */,
-				3143FCEE224EA13300532B34 /* XYGetNodeQuery.swift in Sources */,
-				31D735582240406C00B6B230 /* XYQuery.swift in Sources */,
-				311C5A0C2242ACB8001C7DBD /* XYMyBridgesQuery.swift in Sources */,
-				31EAD79E2240458200DDA8C1 /* XYMySentinelsQuery.swift in Sources */,
+				26470BC023DA7D2A006732D9 /* XYTimer.swift in Sources */,
+				26470BC323DA7D37006732D9 /* XYBase.swift in Sources */,
+				315591F72204FFDF00DC4556 /* (null) in Sources */,
+				315591F62204FFDB00DC4556 /* (null) in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,7 +278,7 @@
 /* Begin PBXTargetDependency section */
 		315591E92204FE5700DC4556 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 315591DD2204FE5700DC4556 /* sdk-base-swift */;
+			target = 315591DD2204FE5700DC4556 /* XyBaseSdk */;
 			targetProxy = 315591E82204FE5700DC4556 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -450,6 +336,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -507,6 +394,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -539,8 +427,9 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = network.xyo.XyCore;
-				PRODUCT_NAME = "sdk-base-swift";
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = network.xyo.sdk.base;
+				PRODUCT_NAME = XyBaseSdk;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -568,8 +457,9 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = network.xyo.XyCore;
-				PRODUCT_NAME = "sdk-base-swift";
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = network.xyo.sdk.base;
+				PRODUCT_NAME = XyBaseSdk;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -582,14 +472,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HFUC9P67W4;
-				INFOPLIST_FILE = XyCoreTests/Info.plist;
+				INFOPLIST_FILE = XyBaseSdkTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = network.xyo.XyCoreTests;
-				PRODUCT_NAME = "sdk-base-swiftTests";
+				PRODUCT_BUNDLE_IDENTIFIER = network.xyo.XyBaseSdkTests;
+				PRODUCT_NAME = XyBaseSdkTests;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -601,14 +491,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HFUC9P67W4;
-				INFOPLIST_FILE = XyCoreTests/Info.plist;
+				INFOPLIST_FILE = XyBaseSdkTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = network.xyo.XyCoreTests;
-				PRODUCT_NAME = "sdk-base-swiftTests";
+				PRODUCT_BUNDLE_IDENTIFIER = network.xyo.sdk.base.tests;
+				PRODUCT_NAME = XyBaseSdkTests;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -617,7 +507,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		315591B42204FBB300DC4556 /* Build configuration list for PBXProject "sdk-base-swift" */ = {
+		315591B42204FBB300DC4556 /* Build configuration list for PBXProject "XyBaseSdk" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				315591CC2204FBB400DC4556 /* Debug */,
@@ -626,7 +516,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		315591F32204FE5700DC4556 /* Build configuration list for PBXNativeTarget "sdk-base-swift" */ = {
+		315591F32204FE5700DC4556 /* Build configuration list for PBXNativeTarget "XyBaseSdk" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				315591EF2204FE5700DC4556 /* Debug */,
@@ -635,7 +525,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		315591F42204FE5700DC4556 /* Build configuration list for PBXNativeTarget "sdk-base-swiftTests" */ = {
+		315591F42204FE5700DC4556 /* Build configuration list for PBXNativeTarget "XyBaseSdkTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				315591F12204FE5700DC4556 /* Debug */,
