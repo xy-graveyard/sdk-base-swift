@@ -12,7 +12,7 @@
 		31DC15022208B48500F19571 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31DC15002208B48500F19571 /* Main.storyboard */; };
 		31DC15042208B48500F19571 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31DC15032208B48500F19571 /* Assets.xcassets */; };
 		31DC15072208B48500F19571 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31DC15052208B48500F19571 /* LaunchScreen.storyboard */; };
-		F1780D04DD96C4C5FD8BD403 /* Pods_SampleiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F710BA4DC8744744FEA48DA1 /* Pods_SampleiOS.framework */; };
+		53E6E7F366E0D4C8A84F482A /* Pods_SampleiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE6A9CEE7B27F90BCDDC4EA3 /* Pods_SampleiOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +25,7 @@
 		31DC15062208B48500F19571 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		31DC15082208B48500F19571 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B8ED546E27E0E0B12DA0CA9 /* Pods-SampleiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleiOS.debug.xcconfig"; path = "Target Support Files/Pods-SampleiOS/Pods-SampleiOS.debug.xcconfig"; sourceTree = "<group>"; };
-		F710BA4DC8744744FEA48DA1 /* Pods_SampleiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SampleiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE6A9CEE7B27F90BCDDC4EA3 /* Pods_SampleiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SampleiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,7 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1780D04DD96C4C5FD8BD403 /* Pods_SampleiOS.framework in Frameworks */,
+				53E6E7F366E0D4C8A84F482A /* Pods_SampleiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,7 +83,7 @@
 		E4AE28E3CBC6FCEB737223D3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F710BA4DC8744744FEA48DA1 /* Pods_SampleiOS.framework */,
+				CE6A9CEE7B27F90BCDDC4EA3 /* Pods_SampleiOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -377,8 +377,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = network.xyo.SampleiOS;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = network.xyo.sdk.base.sample.ios;
+				PRODUCT_NAME = SampleiOS;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -396,8 +396,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = network.xyo.SampleiOS;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = network.xyo.sdk.base.sample.ios;
+				PRODUCT_NAME = SampleiOS;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

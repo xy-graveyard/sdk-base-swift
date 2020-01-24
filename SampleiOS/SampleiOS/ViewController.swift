@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import XyCore
+import XyBaseSdk
 
 class ViewController: UIViewController {
 

@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "315591DD2204FE5700DC4556"
-               BuildableName = "XyCore.framework"
-               BlueprintName = "XyCoreiOS"
-               ReferencedContainer = "container:XyCore.xcodeproj">
+               BuildableName = "sdk-base-swift.framework"
+               BlueprintName = "sdk-base-swift"
+               ReferencedContainer = "container:sdk-base-swift.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -27,29 +27,27 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "315591DD2204FE5700DC4556"
+            BuildableName = "sdk-base-swift.framework"
+            BlueprintName = "sdk-base-swift"
+            ReferencedContainer = "container:sdk-base-swift.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "315591E52204FE5700DC4556"
-               BuildableName = "XyCoreTests.xctest"
-               BlueprintName = "XyCoreiOSTests"
-               ReferencedContainer = "container:XyCore.xcodeproj">
+               BuildableName = "sdk-base-swiftTests.xctest"
+               BlueprintName = "sdk-base-swiftTests"
+               ReferencedContainer = "container:sdk-base-swift.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "315591DD2204FE5700DC4556"
-            BuildableName = "XyCore.framework"
-            BlueprintName = "XyCoreiOS"
-            ReferencedContainer = "container:XyCore.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -65,13 +63,11 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "315591DD2204FE5700DC4556"
-            BuildableName = "XyCore.framework"
-            BlueprintName = "XyCoreiOS"
-            ReferencedContainer = "container:XyCore.xcodeproj">
+            BuildableName = "sdk-base-swift.framework"
+            BlueprintName = "sdk-base-swift"
+            ReferencedContainer = "container:sdk-base-swift.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -83,9 +79,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "315591DD2204FE5700DC4556"
-            BuildableName = "XyCore.framework"
-            BlueprintName = "XyCoreiOS"
-            ReferencedContainer = "container:XyCore.xcodeproj">
+            BuildableName = "sdk-base-swift.framework"
+            BlueprintName = "sdk-base-swift"
+            ReferencedContainer = "container:sdk-base-swift.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

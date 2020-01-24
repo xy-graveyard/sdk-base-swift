@@ -1,33 +1,27 @@
 PODS:
-  - Apollo (0.10.1):
-    - Apollo/Core (= 0.10.1)
-  - Apollo/Core (0.10.1)
-  - PromisesObjC (1.2.7)
-  - PromisesSwift (1.2.7):
-    - PromisesObjC (= 1.2.7)
-  - XyCore (0.0.1):
-    - Apollo (~> 0.10.1)
-    - PromisesSwift (~> 1.2.4)
+  - PromisesObjC (1.2.8)
+  - PromisesSwift (1.2.8):
+    - PromisesObjC (= 1.2.8)
+  - XyBaseSdk (1.0.1):
+    - PromisesSwift
 
 DEPENDENCIES:
-  - XyCore (from `../`)
+  - XyBaseSdk (from `../`)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - Apollo
+  trunk:
     - PromisesObjC
     - PromisesSwift
 
 EXTERNAL SOURCES:
-  XyCore:
+  XyBaseSdk:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Apollo: 4d690a9b2e48e8820182df4b988d7a253e1ee589
-  PromisesObjC: 7b28ddd1e78cce8f80f1ada927d2217663a9c672
-  PromisesSwift: b27f410f9ea693753cfd4cfd8ac1c60a471f137b
-  XyCore: 86d48bf61f0f6b3d34b49a1e7c8fdc547baa967f
+  PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
+  PromisesSwift: 37bad6f4daddb02f7c9c531efe91e8b21c13ee2f
+  XyBaseSdk: fa625d5e9dff34e9180e52b36ea5d7a5ee59a302
 
-PODFILE CHECKSUM: 228d6f0e59388f11f8591c3b399360712d53d2cf
+PODFILE CHECKSUM: d4ee1eaf86bfe494c41e2e3c6285af286bc094cc
 
-COCOAPODS: 1.7.0.beta.3
+COCOAPODS: 1.9.0.beta.2
