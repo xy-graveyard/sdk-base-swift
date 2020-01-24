@@ -3,10 +3,9 @@ name: Base Build CI
 on: 
   push: 
 
-
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: macOS-latest
     strategy: 
       matrix:
         destination: ['platform=iOS Simulator,OS=latest,name=iPhone11']
