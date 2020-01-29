@@ -1,4 +1,4 @@
-name: Base Build CI
+name: Base Build
 
 on: 
   push: 
