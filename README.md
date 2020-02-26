@@ -18,6 +18,12 @@
 
 ## Getting Started 
 
+### Swift Package Manager
+
+```swift
+  .package(url: "https://github.com/XYOracleNetwork/sdk-base-swift.git", from: "1.0.2")
+```
+
 ### Requirements
 - iOS 11.0+
 - Xcode 10.1+
