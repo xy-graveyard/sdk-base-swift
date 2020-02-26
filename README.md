@@ -5,8 +5,7 @@
 # sdk-base-swift
 
 ![](https://github.com/XYOracleNetwork/sdk-base-swift/workflows/Base%20Build/badge.svg)
-[![BCH compliance](https://bettercodehub.com/edge/badge/XYOracleNetwork/sdk-base-swift?branch=master&token=0c95939d44cd72eb10c7a4391e99343599ed0c44)](https://bettercodehub.com/) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/f0e5f13a91e84387995f21225d9ac962)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=XYOracleNetwork/sdk-base-swift&amp;utm_campaign=Badge_Grade) [![Maintainability](https://api.codeclimate.com/v1/badges/b95cadb03945a19a9bdc/maintainability)](https://codeclimate.com/github/XYOracleNetwork/sdk-base-swift/maintainability)
-
+[![BCH compliance](https://bettercodehub.com/edge/badge/XYOracleNetwork/sdk-base-swift?branch=master&token=0c95939d44cd72eb10c7a4391e99343599ed0c44)](https://bettercodehub.com/) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/f0e5f13a91e84387995f21225d9ac962)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=XYOracleNetwork/sdk-base-swift&amp;utm_campaign=Badge_Grade)
 
 ## Table of Contents
 
