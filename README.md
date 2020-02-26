@@ -20,7 +20,7 @@
 ### Swift Package Manager
 
 ```swift
-  .package(url: "https://github.com/XYOracleNetwork/sdk-base-swift.git", from: "1.0.2")
+  .package(url: "https://github.com/XYOracleNetwork/sdk-base-swift.git", from: "1.0.3")
 ```
 
 ### Requirements
