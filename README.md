@@ -5,7 +5,7 @@
 # sdk-base-swift
 
 ![](https://github.com/XYOracleNetwork/sdk-base-swift/workflows/Base%20Build/badge.svg)
-[![BCH compliance](https://bettercodehub.com/edge/badge/XYOracleNetwork/sdk-base-swift?branch=master&token=0c95939d44cd72eb10c7a4391e99343599ed0c44)](https://bettercodehub.com/) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/f0e5f13a91e84387995f21225d9ac962)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=XYOracleNetwork/sdk-base-swift&amp;utm_campaign=Badge_Grade)
+[![BCH compliance](https://bettercodehub.com/edge/badge/XYOracleNetwork/sdk-base-swift?branch=master&token=0c95939d44cd72eb10c7a4391e99343599ed0c44)](https://bettercodehub.com/) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/f0e5f13a91e84387995f21225d9ac962)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=XYOracleNetwork/sdk-base-swift&amp;utm_campaign=Badge_Grade) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 ## Table of Contents
 
