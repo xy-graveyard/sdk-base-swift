@@ -7,6 +7,8 @@
 ![](https://github.com/XYOracleNetwork/sdk-base-swift/workflows/Base%20Build/badge.svg)
 [![BCH compliance](https://bettercodehub.com/edge/badge/XYOracleNetwork/sdk-base-swift?branch=master&token=0c95939d44cd72eb10c7a4391e99343599ed0c44)](https://bettercodehub.com/) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/f0e5f13a91e84387995f21225d9ac962)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=XYOracleNetwork/sdk-base-swift&amp;utm_campaign=Badge_Grade) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
+> The XYO Foundation provides this source code available in our efforts to advance the understanding of the XYO Procotol and its possible uses. We continue to maintain this software in the interest of developer education. Usage of this source code is not intended for production.
+
 ## Table of Contents
 
 -   [Title](#sdk-base-swift)
