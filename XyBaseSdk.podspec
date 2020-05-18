@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'XyBaseSdk'
-  s.version = '1.0.1'
+  s.version = '1.0.4'
   s.license = { :type => 'LGPL3', :file => 'LICENSE' }
   s.summary = 'XY Base Swift Library'
   s.homepage = 'https://github.com/xyoraclenetwork/sdk-base-swift'
