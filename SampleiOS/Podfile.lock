@@ -1,7 +1,7 @@
 PODS:
-  - PromisesObjC (1.2.8)
-  - PromisesSwift (1.2.8):
-    - PromisesObjC (= 1.2.8)
+  - PromisesObjC (1.2.12)
+  - PromisesSwift (1.2.12):
+    - PromisesObjC (= 1.2.12)
   - XyBaseSdk (1.0.4):
     - PromisesSwift
 
@@ -18,10 +18,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
-  PromisesSwift: 37bad6f4daddb02f7c9c531efe91e8b21c13ee2f
+  PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
+  PromisesSwift: 64085cf6e5fc1b5001f90cf31e87a1f1621fefee
   XyBaseSdk: 0fe4bfdc26648f0e5e344fb20e9c3215a9ba83fd
 
 PODFILE CHECKSUM: 9127724fe903da8ba31d4e5ae6d01c72d3238ccf
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.10.1

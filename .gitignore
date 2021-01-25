@@ -79,3 +79,5 @@ iOSInjectionProject/
 
 # iOS Dot Files
 .DS_Store
+
+.swiftpm
