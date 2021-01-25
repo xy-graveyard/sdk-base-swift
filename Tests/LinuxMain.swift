@@ -1,7 +1,7 @@
 import XCTest
 
-import sdk_base_swiftTests
+import XyBaseSdkTests
 
 var tests = [XCTestCaseEntry]()
-tests += sdk_base_swiftTests.allTests()
+tests += XyBaseSdkTests.allTests()
 XCTMain(tests)
