@@ -86,7 +86,7 @@ open class XYBase: NSObject {
         if Thread.isMainThread {
             closure()
         } else {
-            //logInfo(module: #file, function: #function, message: "verifyMainThreadAsync: Dispatching to Main Thread!");
+            // logInfo(module: #file, function: #function, message: "verifyMainThreadAsync: Dispatching to Main Thread!");
             DispatchQueue.main.async(execute: closure)
         }
     }
@@ -95,7 +95,7 @@ open class XYBase: NSObject {
         if Thread.isMainThread {
             closure()
         } else {
-            //logInfo(nil, module: #file, function: #function, message: "verifyMainThreadAsync: Dispatching to Main Thread!");
+            // logInfo(nil, module: #file, function: #function, message: "verifyMainThreadAsync: Dispatching to Main Thread!");
             DispatchQueue.main.async(execute: closure)
         }
     }
