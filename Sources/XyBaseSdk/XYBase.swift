@@ -74,14 +74,6 @@ open class XYBase: NSObject {
         extremeLoggingEnabled = enable
     }
 
-    public typealias ExternalLoggingClosure = (_ prefix: String, _ object: Any?, _ module: String, _ function: String, _ message: String, _ data: Data?) -> Void
-
-    internal static var externalLoggingClosure: ExternalLoggingClosure?
-
-    open class func setExternalLogging(closure: @escaping ExternalLoggingClosure) {
-        externalLoggingClosure = closure
-    }
-
     open func verifyMainThreadAsync(closure : @escaping () -> Void) {
         if Thread.isMainThread {
             closure()
@@ -100,53 +92,40 @@ open class XYBase: NSObject {
         }
     }
 
-    public static func log(_ prefix: String, object: Any?, module: String, function: String, message: String) {
-        print("\(now()) \(prefix):\((module as NSString).lastPathComponent):\(String(describing: object)):\(function):\(message)")
+  public static func log(_ message: String, _ file: String = #file, _ function: String = #function) {
+        print("\(now()) \(message):\((file as NSString).lastPathComponent):\(function)")
     }
 
-    public static func logInfo(_ object: Any?, module: String, function: String, message: String) {
+    public static func logInfo(_ message: String, _ file: String = #file, _ function: String = #function) {
         logInfoAttemptCount+=1
         if infoLoggingEnabled {
             logInfoExecuteCount+=1
-            log("XY-Info", object: object, module: module, function: function, message: message)
+          log("XY-Info: \(message)", file, function)
         }
     }
+  
+  public func logInfo(_ message: String, _ file: String = #file, _ function: String = #function) {
+    XYBase.logInfo(message, file, function)
+  }
 
-    public static func logInfo(module: String, function: String, message: String) {
-        logInfo(nil, module: module, function: function, message: message)
-    }
-
-    open func logInfo(module: String, function: String, message: String) {
-        XYBase.logInfo(self, module: module, function: function, message: message)
-    }
-
-    public static func logExtreme(_ object: Any?, module: String, function: String, message: String) {
+    public static func logExtreme(_ message: String, _ file: String = #file, _ function: String = #function) {
         logExtremeAttemptCount+=1
         if extremeLoggingEnabled {
             logExtremeExecuteCount+=1
-            log("XY-Extreme", object: object, module: module, function: function, message: message)
+          log("XY-Extreme: \(message)", file, function)
         }
     }
+  
+  public func logExtreme(_ message: String, _ file: String = #file, _ function: String = #function) {
+    XYBase.logExtreme(message, file, function)
+  }
 
-    public static func logExtreme(module: String, function: String, message: String) {
-        logExtreme(nil, module: module, function: function, message: message)
-    }
-
-    open func logExtreme(module: String, function: String, message: String) {
-        XYBase.logExtreme(self, module: module, function: function, message: message)
-    }
-
-    public static func logException(_ object: Any?, module: String, function: String, exception: exception) {
-        externalLoggingClosure?("XY-Exception", object, module, function, String(describing: exception), nil)
-    }
-
-    public static func logError(_ object: Any? = nil, module: String, function: String, message: String, data: Any? = nil, halt: Bool? = nil) {
+    public static func logError(_ message: String, _ halt: Bool? = nil, _ file: String = #file, _ function: String = #function) {
         logErrorAttemptCount+=1
         if errorLoggingEnabled {
             logErrorExecuteCount+=1
         }
-        externalLoggingClosure?("XY-Error", object, module, function, message, nil)
-        log("XY-Error", object: object, module: module, function: function, message: message)
+      log("XY-Error: \(message)", file, function)
         if halt != nil {
             if halt! {
                 fatalError()
@@ -155,22 +134,10 @@ open class XYBase: NSObject {
             fatalError()
         }
     }
-
-    public static func logError(_ object: Any? = nil, module: String, function: String, message: String, halt: Bool?) {
-        logError(object, module: module, function: function, message: message, data: nil, halt: halt)
-    }
-
-    public static func logError(module: String, function: String, message: String, halt: Bool? = nil) {
-        logError(nil, module: module, function: function, message: message, data: nil, halt: halt)
-    }
-
-    open func logError(module: String, function: String, message: String, data: Any? = nil, halt: Bool? = nil) {
-        XYBase.logError(self, module: module, function: function, message: message, data: data, halt: halt)
-    }
-
-    open func logError(module: String, function: String, message: String, data: Any?) {
-        XYBase.logError(self, module: module, function: function, message: message, data: data)
-    }
+  
+  public func logError(_ message: String, _ halt: Bool? = nil, _ file: String = #file, _ function: String = #function) {
+    XYBase.logError(message, halt, file, function)
+  }
 
     open class func reportStatus(_ status: String) {
         reportStatus.append(status)
