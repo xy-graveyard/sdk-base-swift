@@ -8,26 +8,12 @@
 
 import Foundation
 
-public class XYDateFormatter: DateFormatter {
-  
-  public class func sharedFormatter() -> DateFormatter {
-    // current thread's hash
-    let threadHash = Thread.current.hash
-    // check if a date formatter has already been created for this thread
-    if let existingFormatter = Thread.current.threadDictionary[threadHash] as? DateFormatter {
-      // a date formatter has already been created, return that
-      return existingFormatter
-    } else {
-      // otherwise, create a new date formatter
-      let dateFormatter = DateFormatter()
-      dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss.SSSS"
-      // and store it in the threadDictionary (so that we can access it later on in the current thread)
-      Thread.current.threadDictionary[threadHash] = dateFormatter
-      return dateFormatter
-      
+extension Date {
+   func getFormattedDate(format: String = "yyyy-MM-dd'T'HH:mm:ssZ") -> String {
+        let dateformat = DateFormatter()
+        dateformat.dateFormat = format
+        return dateformat.string(from: self)
     }
-    
-  }
 }
 
 open class XYBase: NSObject {
@@ -67,7 +53,7 @@ open class XYBase: NSObject {
   internal static var reportStatus = [String]()
   
   internal static func now() -> String {
-    return XYDateFormatter.sharedFormatter().string(from: Date())
+    return Date().getFormattedDate()
   }
   
   open class func enableExtremeLogging(_ enable: Bool) {
